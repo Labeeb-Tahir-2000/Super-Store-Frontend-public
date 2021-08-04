@@ -1,0 +1,14 @@
+body {
+	font-family: "Open Sans", sans-serif;
+}
+.my-col{
+    background-color:aliceblue;
+    opacity: 1;
+   
+}
+.row{
+    padding:30px;
+    width:100%;
+    background-color: aliceblue;
+    opacity: 1;
+}

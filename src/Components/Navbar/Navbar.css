@@ -1,0 +1,14 @@
+
+.mr-auto{
+   position:absolute;
+    right:5px;
+}
+@media  (max-width: 990px) {
+    .mr-auto {
+        position:relative;
+        text-align: center;
+    }
+   .navigation-bar{
+       padding-right: 20px;
+   }
+}

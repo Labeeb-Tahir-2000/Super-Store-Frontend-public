@@ -1,14 +1,14 @@
 import React,{Component} from 'react';
 import "../SignIn.css";
-import AddProductFunc from './AddProductFunc';
+import addProductFunc from './AddProductFunc';
 
 function AddProducts (){
-
+	const submit = addProductFunc();
     return(
         <div className="text-center" style={{adding:'50px' }}>
 	<div className="logo">Add Products</div>
 	<div className="login-form-1">
-		<form id="register-form" className="text-left" onSubmit={AddProductFunc}>
+		<form id="register-form" className="text-left" onSubmit={submit}>
 			<div className="login-form-main-message"></div>
 			<div className="main-login-form">
 				<div className="login-group">

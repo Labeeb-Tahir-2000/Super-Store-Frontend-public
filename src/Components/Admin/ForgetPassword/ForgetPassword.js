@@ -1,6 +1,6 @@
 import  React from "react";
 import "../SignIn.css";
-import Forgetfunc from "./Forgetfunc.js";
+import Forgetfunc from "./Forgetfunc";
 function forget(){
      const style={
         padding:"50px",

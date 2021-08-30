@@ -5,6 +5,7 @@ import {useCookies} from "react-cookie";
 export default function AddProductFunc(){
 
     const [cookie] = useCookies(['jwt']); 
+    
     return async function(e)
     {
         e.preventDefault();

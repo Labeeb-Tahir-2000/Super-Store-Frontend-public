@@ -17,6 +17,8 @@ function useLogin(){
        
         e.preventDefault();
         try{
+            // const res=  await Axios.post('http://localhost:3000/api/v1/users/signin',{
+
             const res=  await Axios.post('https://super-store-backend.herokuapp.com/api/v1/admin/sign-in',{
                 email: e.target.email.value,
                 password: e.target.password.value
@@ -30,7 +32,7 @@ function useLogin(){
         }
         catch(err){
             console.log(err)
-            console.log(err.response)
+            console.log(err.message)
         }
     }
       

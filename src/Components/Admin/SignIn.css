@@ -27,8 +27,9 @@ a:hover {
 }
 /*=== 3. Text Outside the Box ===*/
 .etc-login-form {
-  color: #919191;
+  color: #39c4ee;
   padding: 10px 20px;
+  font-size: 20px !important;
 }
 .etc-login-form p {
   margin-bottom: 5px;
@@ -38,27 +39,31 @@ a:hover {
   max-width: 300px;
   border-radius: 5px;
   display: inline-block;
+  
 }
 .main-login-form {
   position: relative;
 }
 .login-form-1 .form-control {
+  width:100%;
   border: 0;
   box-shadow: 0 0 0;
   border-radius: 0;
   background: transparent;
   color: #555555;
-  padding: 7px 0;
+  padding: 10px 0px;
   font-weight: bold;
   height:auto;
 }
 .login-form-1 .form-control::-webkit-input-placeholder {
-  color: #999999;
+  color: #a8a8a8;
+  font-size: 20px;
 }
 .login-form-1 .form-control:-moz-placeholder,
 .login-form-1 .form-control::-moz-placeholder,
 .login-form-1 .form-control:-ms-input-placeholder {
-  color: #999999;
+  color: #6b6b6b;
+ 
 }
 .login-form-1 .form-group {
   margin-bottom: 0;
@@ -175,7 +180,7 @@ label.form-invalid:after {
 [type="radio"]:not(:checked) + label,
 [type="radio"]:checked + label {
   position: relative;
-  margin-left: 20px;
+ 
   padding-left: 24px;
   padding-top: 1px;
   
@@ -274,14 +279,16 @@ label:hover:before {
 /*=== 9. Misc ===*/
 .logo {
   padding: 15px 0;
-  font-size: 25px;
-  color: #aaaaaa;
+  font-size: 40px;
+  color: #868686;
   font-weight: bold;
 }
-@media (max-width: 576px) {
- .selection{
-  width:100%;
-  
+@media (max-width: 380px) {
+ .text-center{
+ padding:2px !important;
+ }
+ .login-form-1{
+   width:250px !important;
  }
  
 }

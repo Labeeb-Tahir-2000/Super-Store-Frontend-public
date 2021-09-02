@@ -13,7 +13,7 @@ import ProductContext from './ProductContext';
         try{ 
             e.preventDefault(); 
             // const data={ 
-            //     allProduct: e.target.AllProducts.value, 
+            //     allProduct:e.target.AllProducts.value , 
             //     type :type, 
             //    cetegories :cetegory ,
             //     jwt : cookie.jwt, 
@@ -21,9 +21,9 @@ import ProductContext from './ProductContext';
             const res= await Axios.get('https://jsonplaceholder.typicode.com/todos'); 
             // const res = await Axios.post('https://super-store-backend.herokuapp.com/api/v1/admin/',{ data }); 
             // setProducts(res.data); 
-            // console.log(products); 
+            // console.log(product); 
             console.log(res.data); 
-            // console.log(e.target.AllProducts.value); 
+            // console.log(allProducts); 
             // console.log(cetegory); 
             // console.log(type); 
         } 

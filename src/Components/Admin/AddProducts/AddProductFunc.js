@@ -16,8 +16,8 @@ export default function AddProductFunc(){
                 cetegory : e.target.pCetegory.value,
                 price: e.target.pPrice.value,
                 noOfItems : e.target.pCount.value,
-                onSale: e.target.OnSale.value,
-                edible: e.target.Edible.value,
+                onSale: e.target.onSale.value,
+                edible: e.target.edible.value,
                 picture: e.target.image.value,
                 jwt : cookie.jwt,
             }

@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
-import "../SignIn.css";
+import "./../SignIn.css";
 import addProductFunc from './AddProductFunc';
 
 function AddProducts (){
 	const submit = addProductFunc();
     return(
-        <div className="text-center" style={{adding:'50px' }}>
+        <div className="text-center" style={{padding:'50px' }}>
 	<div className="logo">Add Products</div>
 	<div className="login-form-1">
 		<form id="register-form" className="text-left" onSubmit={submit}>
@@ -39,10 +39,10 @@ function AddProducts (){
 					</div>
                    
                     <div className="form-group login-group-checkbox "  >                 
-						<input type="checkbox" className="" name="OnSale" id="Sale" />
+						<input type="checkbox" className="" name="onSale" id="Sale" />
 						<label for="Sale">Edible </label>
                         
-						<input  type="checkbox" className="" name="Edible" id="Edible"/>
+						<input  type="checkbox" className="" name="edible" id="Edible"/>
 						<label for="Edible">On Sale</label>
 					</div>
 

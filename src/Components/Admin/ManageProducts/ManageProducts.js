@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import {useCookies} from 'react-cookie';
-import "../SignIn.css";
+
 import useManageProductsFunc from "./useManageProductsFunc";
 
 
@@ -20,7 +20,7 @@ function ManageProducts (){
        setType(event.target.Type.value)
      }
     function productChangeHandler(event){
-        setAllProducts(event.target.AllProduct.value)
+         setAllProducts(event.target.AllProduct.value)
     }
     function cetegoryChangeHandler(event){
        setCetegory(event.target.Cetegory.value)

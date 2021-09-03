@@ -1,15 +1,32 @@
 import React,{Component} from 'react';
 import "./../SignIn.css";
-import addProductFunc from './AddProductFunc';
+import useAddProductFunc from './AddProductFunc';
 import { app }  from './../../firebase/firebaseConfig';
 import { useState } from 'react';
 
 function AddProducts (){
 	const [image, setImage]= useState(null);
+	const [sale, setSale]= useState(' ');
+	const [edible, setEdible]= useState(' ');
 	const [URL, setURL] = useState(' ');
-	const [progress, setProgress] = useState(0);
 
+	const useAddProductFuncCall = useAddProductFunc();
 
+	const saleChangeLisner =()=>{
+	if(sale === ' '){
+		setSale('onSale');
+	}else{
+		setSale(' ');
+	}
+
+	}
+	const edibleChangeLisner =()=>{
+	if(edible === ' '){
+		setEdible('edible');
+	}else{
+		setEdible(' ');
+	}
+}
 	const handleChange = (e) => {
 
 		 if (e.target.files[0]) {
@@ -37,7 +54,7 @@ function AddProducts (){
         <div className="text-center" style={{padding:'50px' }}>
 	<div className="logo">Add Products</div>
 	<div className="login-form-1">
-		<form id="register-form" className="text-left"  onSubmit={addProductFunc}>
+		<form id="register-form" className="text-left"  onSubmit={useAddProductFuncCall}>
 			<div className="login-form-main-message"></div>
 			<div className="main-login-form">
 				<div className="login-group">
@@ -64,15 +81,15 @@ function AddProducts (){
 					</div>
 					
                     <div className="form-group">
-						<label for="pCount" className="sr-only">Number of Products</label>
+						<label for="pCount" className="sr-only">Stock</label>
 						<input type="text" className="form-control" id="pCount" name="pStock" placeholder="Number of Products"/>
 					</div>
                    
                     <div className="form-group login-group-checkbox "  >                 
-						<input type="checkbox" className="" name="pEdible" id='Edible' value='edible'/>
+						<input type="checkbox" className="" name="pEdible"  onChange={edibleChangeLisner} id='Edible' value={edible} />
 						<label for="Edible" >Edible </label>
                         
-						<input  type="checkbox" className="" name="pOnSale" id="Sale" value='onSale' />
+						<input  type="checkbox" className="" name="pOnSale" onChange={saleChangeLisner} id="Sale"  value={sale}/>
 						<label for="Sale">On Sale</label>
 					</div>
 
@@ -80,10 +97,10 @@ function AddProducts (){
                     <input  onChange={handleChange} className="pic" type="file"   />
                     </div>
 					<div >
-                    <input onClick={handleUpload} class="btn btn-outline-secondary" /> {/* can not use button inside button this will also trigger outside button. so make upload button outside  or just use input tags*/}
+                    <input onClick={handleUpload} class="btn btn-outline-secondary" name="pURL" value={URL}/> {/* can not use button inside button this will also trigger outside button. so make upload button outside  or just use input tags*/}
                     </div>
 				</div>
-				<button type="submit" onSubmit={addProductFunc} className="login-button"><i className="fa fa-chevron-right"></i></button>
+				<button type="submit" onSubmit={useAddProductFuncCall} className="login-button"><i className="fa fa-chevron-right"></i></button>
 			</div>
 			
 		</form>

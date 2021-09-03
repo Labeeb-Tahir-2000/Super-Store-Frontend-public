@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import {useCookies} from "react-cookie";
 
-export default function AddProductFunc(){
+function useAddProductFunc(){
 
     const [cookie] = useCookies(['jwt']); 
     
@@ -11,21 +11,23 @@ export default function AddProductFunc(){
         e.preventDefault();
         try{
             const data={
-                pTitle: e.target.pTitle.value,
-                PCetegory : e.target.pCetegory.value,
-                pPrice: e.target.pPrice.value,
-                pStock : e.target.pCount.value,
-                pOnSale: e.target.ponSale.value,
-                pEdible: e.target.pedible.value,
-                pImagePatch: e.target.URL,
-                pDescription:e.target.pDescription.value,
+              
             }
-           
-            const res = await Axios.post('http://localhost:3000/api/v1/products/addProduct',{ data },{
+           console.log(e.target.pURL.value,)
+            const res = await Axios.post('http://localhost:3000/api/v1/products/addProduct',{ 
+                pTitle: e.target.pTitle.value,
+                pCetegory : e.target.pCetegory.value,
+                pPrice: e.target.pPrice.value,
+                pStock : e.target.pStock.value,
+                pOnSale: e.target.pOnSale.value,
+                pEdible: e.target.pEdible.value,
+                pImagePath:e.target.pURL.value,
+                pDescription:e.target.pDescription.value,
+            },{
                 headers:{
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${cookie}`        
+                    'Authorization': `Bearer ${cookie.jwt}`        
                 }
 
             });
@@ -38,3 +40,4 @@ export default function AddProductFunc(){
         }
     }
 }
+export default useAddProductFunc;

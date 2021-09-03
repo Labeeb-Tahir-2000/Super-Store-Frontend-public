@@ -11,18 +11,24 @@ export default function AddProductFunc(){
         e.preventDefault();
         try{
             const data={
-                name: e.target.pName.value,
-                type : e.target.pType.value,
-                cetegory : e.target.pCetegory.value,
-                price: e.target.pPrice.value,
-                noOfItems : e.target.pCount.value,
-                onSale: e.target.onSale.value,
-                edible: e.target.edible.value,
-                picture: e.target.image.value,
-                jwt : cookie.jwt,
+                pTitle: e.target.pTitle.value,
+                PCetegory : e.target.pCetegory.value,
+                pPrice: e.target.pPrice.value,
+                pStock : e.target.pCount.value,
+                pOnSale: e.target.ponSale.value,
+                pEdible: e.target.pedible.value,
+                pImagePatch: e.target.URL,
+                pDescription:e.target.pDescription.value,
             }
            
-            const res = await Axios.post('https://super-store-backend.herokuapp.com/api/v1/admin',{ data });
+            const res = await Axios.post('http://localhost:3000/api/v1/products/addProduct',{ data },{
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${cookie}`        
+                }
+
+            });
             console.log(res);
             console.log(res.data);
         }

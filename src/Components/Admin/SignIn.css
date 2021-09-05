@@ -9,8 +9,48 @@ body {
   display : flex;
   justify-content: space-between;
 }
+.form-group-select{
+ 
+ padding: none !important;
+  border-bottom: 2px solid #efefef;
+  position: relative;
+}
+select option { 
+  color: #6e6e6e;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 0px !important;
+ }
 
+select {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  color: #999999;
+  font-weight: bold;
+  font-size: 20px;
+  padding: none !important;
+ text-decoration: none !important;
+ box-shadow: none !important;
+ margin-bottom:3px !important;
+ margin-top:7px !important;
+ border:none !important;
+ border-color: none !important;
+ text-decoration-color:none !important;
+ }
 
+select:focus  {
+  color: #6e6e6e !important;
+  font-weight: bold;
+  font-size: 20px;
+  padding: none !important;
+ text-decoration: none !important;
+ box-shadow: none !important;
+ margin-bottom:3px !important;
+ margin-top:7px !important;
+ border:none !important;
+ border-color: none !important;
+ text-decoration-color:none !important;
+}
 .pic{
   border-color:#777777;
   color:red;
@@ -25,18 +65,10 @@ a:hover {
   color: #333333;
   text-decoration: none;
 }
-/*=== 3. Text Outside the Box ===*/
-.etc-login-form {
-  color: #39c4ee;
-  padding: 10px 20px;
-  font-size: 20px !important;
-}
-.etc-login-form p {
-  margin-bottom: 5px;
-}
+
 /*=== 4. Main Form ===*/
 .login-form-1 {
-  max-width: 300px;
+  max-width: 350px;
   border-radius: 5px;
   display: inline-block;
   
@@ -44,27 +76,27 @@ a:hover {
 .main-login-form {
   position: relative;
 }
+.form-control {
+
+  padding-left: 7px !important;
+}
 .login-form-1 .form-control {
   width:100%;
   border: 0;
   box-shadow: 0 0 0;
   border-radius: 0;
   background: transparent;
-  color: #555555;
+  color: #6e6e6e;
   padding: 10px 0px;
   font-weight: bold;
   height:auto;
+  font-size: 20px;
 }
 .login-form-1 .form-control::-webkit-input-placeholder {
   color: #a8a8a8;
   font-size: 20px;
 }
-.login-form-1 .form-control:-moz-placeholder,
-.login-form-1 .form-control::-moz-placeholder,
-.login-form-1 .form-control:-ms-input-placeholder {
-  color: #6b6b6b;
- 
-}
+
 .login-form-1 .form-group {
   margin-bottom: 0;
   border-bottom: 2px solid #efefef;
@@ -78,18 +110,19 @@ a:hover {
   background: #ffffff;
   color: #999999;
   border-radius: 8px;
-  padding: 10px 20px;
+  padding: 10px 25px;
+  width: 100%
 }
 .login-group-checkbox {
-  padding: 5px 0;
+  padding: 5px 3px ;
 }
 /*=== 5. Login Button ===*/
 .login-form-1 .login-button {
   position: absolute;
   right: -25px;
   top: 50%;
-  background: #ffffff;
-  color: #999999;
+  background: #406af5;
+  color: #f8f8f8;
   padding: 11px 0;
   width: 50px;
   height: 50px;
@@ -99,21 +132,13 @@ a:hover {
   transition: all ease-in-out 500ms;
 }
 .login-form-1 .login-button:hover {
-  color: #555555;
+  color: #000000;
   transform: rotate(450deg);
 }
 .login-form-1 .login-button.clicked {
-  color: #555555;
+  color: #000000;
 }
-.login-form-1 .login-button.clicked:hover {
-  transform: none;
-}
-.login-form-1 .login-button.clicked.success {
-  color: #2ecc71;
-}
-.login-form-1 .login-button.clicked.error {
-  color: #e74c3c;
-}
+
 /*=== 6. Form Invalid ===*/
 label.form-invalid {
   position: absolute;
@@ -155,46 +180,31 @@ label.form-invalid:after {
   opacity: 0;
   transition: all ease-in-out 200ms;
 }
-.login-form-main-message.show {
-  height: auto;
-  opacity: 1;
-  padding: 10px 20px 10px 17px;
-}
-.login-form-main-message.success {
-  border-left-color: #2ecc71;
-}
-.login-form-main-message.error {
-  border-left-color: #e74c3c;
-}
 /*=== 8. Custom Checkbox & Radio ===*/
 /* Base for label styling */
 [type="checkbox"]:not(:checked),
-[type="checkbox"]:checked,
-[type="radio"]:not(:checked),
-[type="radio"]:checked {
+[type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
 }
 [type="checkbox"]:not(:checked) + label,
-[type="checkbox"]:checked + label,
-[type="radio"]:not(:checked) + label,
-[type="radio"]:checked + label {
+[type="checkbox"]:checked + label{
   position: relative;
  
-  padding-left: 24px;
+  padding-left: 54px;
   padding-top: 1px;
-  
+  padding-right: 3px !important;
   cursor: pointer;
 }
 /* checkbox aspect */
 [type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before,
-[type="radio"]:not(:checked) + label:before,
-[type="radio"]:checked + label:before {
+[type="checkbox"]:checked + label:before{
   content: '';
   position: absolute;
-  left: 0px;
+  padding-right: 7px !important;
+
   top: 2px;
+  left: 30px;
   width: 17px;
   height: 17px;
   border: 0px solid #aaa;
@@ -204,41 +214,19 @@ label.form-invalid:after {
 }
 /* checked mark aspect */
 [type="checkbox"]:not(:checked) + label:after,
-[type="checkbox"]:checked + label:after,
-[type="radio"]:not(:checked) + label:after,
-[type="radio"]:checked + label:after {
+[type="checkbox"]:checked + label:after {
   position: absolute;
   color: #555555;
   transition: all .2s;
 }
 /* checked mark aspect changes */
-[type="checkbox"]:not(:checked) + label:after,
-[type="radio"]:not(:checked) + label:after {
+[type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   transform: scale(0);
 }
-[type="checkbox"]:checked + label:after,
-[type="radio"]:checked + label:after {
-  opacity: 1;
-  transform: scale(1);
-}
-/* disabled checkbox */
-[type="checkbox"]:disabled:not(:checked) + label:before,
-[type="checkbox"]:disabled:checked + label:before,
-[type="radio"]:disabled:not(:checked) + label:before,
-[type="radio"]:disabled:checked + label:before {
-  box-shadow: none;
-  border-color: #8c8c8c;
-  background-color: #878787;
-}
-[type="checkbox"]:disabled:checked + label:after,
-[type="radio"]:disabled:checked + label:after {
-  color: #555555;
-}
-[type="checkbox"]:disabled + label,
-[type="radio"]:disabled + label {
-  color: #8c8c8c;
-}
+
+
+
 /* accessibility */
 [type="checkbox"]:checked:focus + label:before,
 [type="checkbox"]:not(:checked):focus + label:before,
@@ -246,36 +234,24 @@ label.form-invalid:after {
 [type="checkbox"]:not(:checked):focus + label:before {
   border: 1px dotted #f6f6f6;
 }
-/* hover style just for information */
-label:hover:before {
-  border: 1px solid #f6f6f6 !important;
-}
+
 /*=== Customization ===*/
 /* radio aspect */
 [type="checkbox"]:not(:checked) + label:before,
 [type="checkbox"]:checked + label:before {
   border-radius: 3px;
 }
-[type="radio"]:not(:checked) + label:before,
-[type="radio"]:checked + label:before {
-  border-radius: 35px;
-}
+
 /* selected mark aspect */
 [type="checkbox"]:not(:checked) + label:after,
 [type="checkbox"]:checked + label:after {
   content: '✔';
+  
   top: 0;
-  left: 2px;
+  left: 32px;
   font-size: 14px;
 }
-[type="radio"]:not(:checked) + label:after,
-[type="radio"]:checked + label:after {
-  content: '\2022';
-  top: 0;
-  left: 3px;
-  font-size: 30px;
-  line-height: 25px;
-}
+
 /*=== 9. Misc ===*/
 .logo {
   padding: 15px 0;
@@ -283,6 +259,12 @@ label:hover:before {
   color: #868686;
   font-weight: bold;
 }
+@media (max-width: 750px) {
+ 
+  .login-form-1{
+    width:300px !important;
+  }
+ }
 @media (max-width: 380px) {
  .text-center{
  padding:2px !important;
@@ -290,5 +272,14 @@ label:hover:before {
  .login-form-1{
    width:250px !important;
  }
- 
+ .text-center{
+   padding-top: 4px !important;
+ }
 }
+@media (max-height: 700px) {
+ 
+  .text-center{
+    padding-top: 2px !important;
+  }
+ }
+ 

@@ -31,10 +31,16 @@ function useAddProductFunc(){
                 }
 
             });
+            if(res.data.status === 'success'){
+                alert('Successfuly Uploaded data');
+            }else{
+                alert('Error in Uploading data');
+            }
             console.log(res);
             console.log(res.data);
         }
         catch(err){
+            alert('Error in Uploading data');
             console.log(err);
             console.log(err.response);
         }

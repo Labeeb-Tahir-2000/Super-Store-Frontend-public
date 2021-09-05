@@ -49,6 +49,7 @@ function MyNavbar(){
         <Link style={style2} to="/ManageProducts">Manage-Products</Link>
         <Link style={style2} to="/Home">Home</Link>
         <Link style={style2} to="/Sale">Sale</Link>
+       
         <a style={style2} onClick={useSignOut}><i class="fa fa-sign-out" aria-hidden="true"></i></a>
         </Nav>
         </Navbar.Collapse>

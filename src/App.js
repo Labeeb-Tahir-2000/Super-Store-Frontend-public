@@ -11,6 +11,7 @@ import About from "./Components/About/about";
 import Signin  from "./Components/Admin/signIn/SignIn";
 import Forget  from "./Components/Admin/forgetPassword/ForgetPassword";
 import AddProducts  from "./Components/Admin/addProducts/AddProducts";
+
 import ManageProducts from "./Components/Admin/manageProducts/ManageProducts";
 import ChangeUserName   from "./Components/Admin/changeUserName/ChangeUserName";
 import SignUp from "./Components/Admin/signUp/SignUp";
@@ -28,7 +29,6 @@ function App() {
     <Route path = "/" exact>
         <Signin/>
       </Route>
-      
       <Route path = "/SignUp" exact>
         {/* {context.user.role === 'user' ? <NavbarAdmin/> : <NavbarUser/>} */}
         <SignUp/>

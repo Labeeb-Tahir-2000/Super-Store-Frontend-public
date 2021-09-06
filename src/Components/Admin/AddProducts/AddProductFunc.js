@@ -10,9 +10,7 @@ function useAddProductFunc(){
     {
         e.preventDefault();
         try{
-            const data={
-              
-            }
+
            console.log(e.target.pURL.value,)
             const res = await Axios.post('http://localhost:3000/api/v1/products/addProduct',{ 
                 pTitle: e.target.pTitle.value,

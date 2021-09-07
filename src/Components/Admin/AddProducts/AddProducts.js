@@ -17,7 +17,10 @@ function AddProducts (){
 		{ key: 4, value: "Biscuits" },
 		{ key: 5, value: "Spices" },
 		{ key: 6, value: "Deturjunts" },
-		{ key: 7, value: "Sprays" }
+		{ key: 7, value: "Sprays" },
+		{ key: 8, value: "Cooking Oil" },
+		{ key: 9, value: "Stationary" },
+		{ key: 10, value: "Chocolate" }
 	]
 	const useAddProductFuncCall = useAddProductFunc();
 

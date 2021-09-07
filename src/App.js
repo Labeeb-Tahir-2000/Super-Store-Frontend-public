@@ -11,8 +11,8 @@ import About from "./Components/About/about";
 import Signin  from "./Components/Admin/signIn/SignIn";
 import Forget  from "./Components/Admin/forgetPassword/ForgetPassword";
 import AddProducts  from "./Components/Admin/addProducts/AddProducts";
-
-import ManageProducts from "./Components/Admin/manageProducts/ManageProducts";
+import ShowProducts from "./Components/Admin/manageProducts/ShowProducts";
+import EditProducts from "./Components/Admin/manageProducts/EditProducts";
 import ChangeUserName   from "./Components/Admin/changeUserName/ChangeUserName";
 import SignUp from "./Components/Admin/signUp/SignUp";
 
@@ -42,8 +42,10 @@ function App() {
       <Route path = "/Home" exact>
         <Home/>
       </Route>
-      <Route path = "/ManageProducts" exact>
-        <ManageProducts/>
+      <Route path = "/ShowProducts" exact>
+        <ShowProducts/>
+      </Route><Route path = "/EditProducts" exact>
+        <EditProducts/>
       </Route>
       <Route path = "/addProducts" exact>
           <AddProducts/>

@@ -43,10 +43,12 @@ function MyNavbar(){
         <Nav  className=" mr-auto  ">
         <Link style={style2} to="/">Login</Link>
         <Link style={style2} to="/SignUp">SignUp</Link>
-        <Link style={style2} to="/ChangeUserName">Change-UserName</Link>
-        <Link style={style2} to="/forgetPassword">Forget-Password</Link>
-        <Link style={style2} to="/addProducts">Add-Products</Link>
-        <Link style={style2} to="/ManageProducts">Manage-Products</Link>
+        <Link style={style2} to="/ChangeUserName">Change UserName</Link>
+        <Link style={style2} to="/forgetPassword">ForgetmPassword</Link>
+        <Link style={style2} to="/addProducts">Add Products</Link>
+        <Link style={style2} to="/ShowProducts">Show Products</Link>
+        <Link style={style2} to="/EditProducts">Edit Products</Link>
+        <Link style={style2} to="/Home">Home</Link>
         <Link style={style2} to="/Home">Home</Link>
         <Link style={style2} to="/Sale">Sale</Link>
        

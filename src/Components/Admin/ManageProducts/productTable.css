@@ -1,0 +1,71 @@
+@media (max-width: 500px) {
+    .myTable{
+      font-size: 10px !important;
+      background: #3af83a !important ;
+    }
+    .toNonDisplay{
+      display:none
+    }
+   }
+   @media (max-width: 380px) {
+    .myTable{
+      font-size: 8px !important;
+      background: #3af83a !important ;
+    }
+    .toNonDisplay{
+      display:none
+    }
+   }
+   @media (min-width: 500px) and (max-width: 700px) {
+    .myTable{
+      font-size: 10px !important;
+      background: #3af83a !important ;
+    }
+   }
+   @media (min-width: 700px) and (max-width: 800px) {
+    .myTable{
+      font-size: 12px !important;
+      background: #3af83a !important ;
+    }
+   }
+   @media (min-width: 800px) and (max-width: 1100px) {
+    .myTable{
+      font-size: 15px !important;
+      background: #3af83a !important ;
+    }
+   }
+   @media (min-width: 1100px) {
+    .myTable{
+      font-size: 23px !important;
+      background: #3af83a !important ;
+    }
+   }
+   @media (min-width: 100px) {
+    .myFilterBar{
+      background: #F5C654 !important ;
+    }
+    .myTable{
+      background: #e2e2e2 !important ;
+      padding: 0px !important;
+      margin:0px !important;
+      margin-top :15px;
+    }
+   }
+   @media (min-width: 600px) and (max-width: 800px) {
+    .myForm{
+      padding-left: 1px !important;
+      padding-right: 0px !important;
+      margin-left:0px !important;
+      margin-right:0px !important;
+    }
+   }
+   @media (max-width: 600px) {
+    .myForm{
+      padding-left: 1px !important;
+      padding-right: 1px !important;
+      padding-bottom: 3px;
+      padding-top: 3px;
+      margin-left:0px !important;
+      margin-right:0px !important;
+    }
+   }

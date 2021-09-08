@@ -113,12 +113,12 @@ const nonEdibleCetegories = [
     return(
         
         <div >
-         <div className="container-fluid myFilterBar row myForm" style={{ margin:'0px' }} >
+         <div className="container-fluid myFilterBar row myForm" style={{paddingTop:'20px', paddingBottom:'20px', paddingLeft:'30px',margin:'0px' }} >
             <div className="col-sm-12">
-                <form className="form-inline flex-container myForm" onSubmit={Submit} >
+                <form  className="form-inline flex-container myForm" onSubmit={Submit} >
                     
-                    <div className="form-group login-group-checkbox "  >
-						<input type="checkbox"  name="allProducts" id="Products"  onChange={onAllProductChange}  value={allProducts}
+                    <div className="form-group login-group-checkbox " style={{paddingLeft:'0px '}}   >
+						<input  style={{paddingLeft:'0px '}} type="checkbox"  name="allProducts" id="Products"  onChange={onAllProductChange}  value={allProducts}
                          disabled={Edible === "edible" || nonEdible === "nonEdible" ? true : false}  />	
                         <label for="Products" >All Products </label>
 					</div>
@@ -175,7 +175,10 @@ const nonEdibleCetegories = [
                 </form>
             </div>
          </div>  
-        {productTableDisplay}
+         <div style={{paddingTop:'10px'}}>
+         {productTableDisplay}
+         </div>
+        
        
          </div>   
       

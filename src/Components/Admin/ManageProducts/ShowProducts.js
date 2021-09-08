@@ -170,7 +170,7 @@ const nonEdibleCetegories = [
                     }
                     
                     <div>
-                        <button type="submit"    class="btn btn-outline-dark" onSubmit={Submit}>Aplly Filter</button>
+                        <button type="submit"    onSubmit={Submit}>Aplly Filter</button>
                     </div>
                 </form>
             </div>

@@ -5,9 +5,10 @@ import Axios from "axios";
 import {useCookies} from "react-cookie";
 import CardProductsJSX from "./cardProductsJSX";
 import './line.css'
+import SaleSlider from "./Sliders/SaleSlider";
 
 function Home(){
-  const {Meta} =Card;
+  
   const [cookie] = useCookies(['jwt']);
    const[products , setProduct] = useState([]);
   
@@ -38,7 +39,7 @@ function Home(){
           return <div className="col-sm-4 col-lg-3 col-6 " style={{marginRight:'0px',paddingRight:'3px'}}>
                <CardProductsJSX  url={item.pImagePath} title={item.pTitle} price={item.pPrice} />
           </div>
-      });;
+      });
       const itemsSale= products.map(item=>{
         if(item.pOnSale === 'onSale'){
           return <div className="col-sm-4 col-lg-3 col-6 " style={{marginRight:'0px',paddingRight:'3px'}}>
@@ -46,10 +47,12 @@ function Home(){
           </div>
           }else{
             return ;
-          }
-        
+          }   
     });
 
+
+    const productCount = products.length;
+    
     return(
   <div>
        <ImageSLider/>
@@ -59,12 +62,15 @@ function Home(){
                     <h2>No post yet...</h2>
                 </div> :
                 <div>
-                  <hr style={{marginTop:'50px'}}className="hr-text" data-content="AND"/>
+                   <hr style={{marginTop:'40px'}}className="hr-text" data-content="AND"/>
+                    <SaleSlider />
+                   
+                  <hr style={{marginTop:'40px'}}className="hr-text" data-content="AND"/>
                     <div style={{marginTop:'50px' , marginRight:'0px',paddingRight:'3px'}} className="row container-fluid">
                       {itemsSale}
                     </div>
 
-                  <hr style={{marginTop:'50px'}}className="hr-text" data-content="AND"/>
+                  <hr style={{marginTop:'40px'}}className="hr-text" data-content="AND"/>
                     <div style={{marginTop:'50px' , marginRight:'0px',paddingRight:'3px'}} className="row container-fluid">
                       {items}
                     </div>

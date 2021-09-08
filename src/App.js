@@ -1,5 +1,5 @@
 import React from "react";
-import './App.css';
+// import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {useContext} from 'react';
 import {BrowserRouter as Router , Route,Switch ,Redirect} from "react-router-dom";
@@ -15,7 +15,7 @@ import ShowProducts from "./Components/Admin/manageProducts/ShowProducts";
 import EditProducts from "./Components/Admin/manageProducts/EditProducts";
 import ChangeUserName   from "./Components/Admin/changeUserName/ChangeUserName";
 import SignUp from "./Components/Admin/signUp/SignUp";
-
+import SaleSlider from "./Components/Home/Sliders/SaleSlider";
 
 
 function App() {
@@ -33,6 +33,9 @@ function App() {
         {/* {context.user.role === 'user' ? <NavbarAdmin/> : <NavbarUser/>} */}
         <SignUp/>
       </Route>
+      <Route path = "/SaleSlider" exact>
+        <SaleSlider/>
+        </Route>
       <Route path = "/forgetPassword" exact>
         <Forget/>
       </Route>

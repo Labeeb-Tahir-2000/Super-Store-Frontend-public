@@ -20,7 +20,8 @@ function AddProducts (){
 		{ key: 7, value: "Sprays" },
 		{ key: 8, value: "Cooking Oil" },
 		{ key: 9, value: "Stationary" },
-		{ key: 10, value: "Chocolate" }
+		{ key: 10, value: "Chocolate" },
+		{ key: 11, value: "Cell" }
 	]
 	const useAddProductFuncCall = useAddProductFunc();
 
@@ -75,29 +76,29 @@ function AddProducts (){
 			<div className="main-login-form">
 				<div className="login-group">
 					<div className="form-group">
-						<input type="text" className="form-control"  name="pTitle" placeholder="Prodcut Name"/>
+						<input type="text" className="form-control"  name="pTitle" placeholder="Prodcut Name" required='true'/>
 					</div>
 
                     <div className="form-group">
-						<input type="text" className="form-control"  name="pPrice" placeholder="Product Price"/>
+						<input type="text" className="form-control"  name="pPrice" placeholder="Product Price" required='true'/>
 					</div>
 
 					<div className="form-group">
-						<input type="text" className="form-control"  name="pDescription" placeholder="Product Decription"/>
+						<input type="text" className="form-control"  name="pDescription" placeholder="Product Decription" required='true'/>
 					</div>
 					
                     <div className="form-group">
-						<input type="text" className="form-control" id="pCount" name="pStock" placeholder="Number of Products"/>
+						<input type="text" className="form-control" id="pCount" name="pStock" placeholder="Number of Products" required='true'/>
 					</div>
 
 					<div className="form-group-select" >
 					
 						<select className="form-select form-select-sm  " style={{color:'#6e6e6e ',fontWeight: 'bold',
-						fontSize: '20px',padding: 'none ',marginBottom:'3px !important',marginTop:'7px !important'}}
+						fontSize: '20px',padding: 'none ',marginBottom:'3px !important',marginTop:'7px !important' , overflow:'scroll'}}
 						name="pCetegory" onChange={onCetegoryChange} value={cetegoryValue}>
 
 						{Cetegories.map(item => (
-							<option key={item.key} value={item.value}>{item.value} </option>
+							<option style={{overflow:'scroll !important'}}key={item.key} value={item.value}>{item.value} </option>
 						))}
 
                			</select>
@@ -114,18 +115,20 @@ function AddProducts (){
 					</div>
 					
                     <div className=" rounded form-group  ">
-                    <input  style={{marginBottom:'8px'}} onChange={handleChange} className="pic" type="file" />
+                    <input  style={{marginBottom:'8px'}} onChange={handleChange} className="pic" type="file" required='true'/>
                     </div>
 					
 					{image?
 					<div  className="form-group" >
 					<input style={{marginTop:'8px',padding:'2px', width:'110%'}} type="button" className="btn btn-outline-primary btn-lg"  onClick={handleUpload}  value='Click here to upload the image'/>
-                    <input style={{display:'none'}} role='button'   name="pURL" value={URL}/>
+                    <input style={{display:'none'}} role='button'   name="pURL" value={URL} required='true'/>
                     </div>
 					:
 					null
 					}
-					
+					<div >
+						<p id='errMessage' style={{visibility:'hidden',color:'red',paddingTop:'10px'}}>empty</p>
+					</div>
 				</div>
 				<button type="submit" onSubmit={useAddProductFuncCall} className="login-button"><i className="fa fa-chevron-right"></i></button>
 			</div>

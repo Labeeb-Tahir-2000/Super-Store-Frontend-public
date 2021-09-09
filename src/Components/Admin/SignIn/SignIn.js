@@ -17,17 +17,15 @@ return(
 			<div className="main-login-form">
 				<div className="login-group">
 					<div className="form-group">
-						<label for="lg_username" className="sr-only">Username</label>
-						<input type="text" className="form-control"  name="email" placeholder="Email" style={{fontSize:'20px'}}/>
+						<input type="email" className="form-control"  name="email" placeholder="Email" style={{fontSize:'20px'}} required='true'/>
 					</div>
 					<div className="form-group">
-						<label for="lg_password" className="sr-only">Password</label>
-						<input type="password" className="form-control"  name="password" placeholder="password" style={{fontSize:'20px'}}/>
+						<input type="password" className="form-control"  name="password" placeholder="password" style={{fontSize:'20px'}} required='true'/>
 					</div>
-					<div className="form-group login-group-checkbox">
-						<input type="checkbox" id="lg_remember" name="lg_remember"/>
-						<label for="lg_remember">remember</label>
+					<div >
+					<p id='errMessage' style={{visibility:'hidden',color:'red',paddingTop:'10px'}}>empty</p>
 					</div>
+
 				</div>
 				<button type="submit" className="login-button"><i className="fa fa-chevron-right"></i></button>
 			</div>

@@ -29,15 +29,12 @@ function useLogin(){
             });
                 setCookie('jwt',res.data.jwt, { path:'/' , expires : new Date(Date.now()+(1000*60*60*24*7)) }); 
                 setUser(res.data);
-                console.log(user);
-                console.log(cookie);
-            console.log(res.data)
-            if(res.data && res.data.jwt && res.data.status === "success") return history.push("/Home");
-        }
-        catch(err){
-            alert(err.message)
-            console.log(err.status)
-            console.log(err.message)
+
+                if(res.data && res.data.jwt && res.data.status === "success") return history.push("/Home");
+          
+        }catch(err){
+            document.getElementById('errMessage').innerHTML = err.response.data.message;
+            document.getElementById('errMessage').style.visibility = 'visible';
         }
     }
 

@@ -13,20 +13,19 @@ function  SignUp(){
 			<div className="main-login-form">
 				<div className="login-group">
 					<div className="form-group">
-						<label for="lg_username" className="sr-only">Name</label>
-						<input type="text" className="form-control"  name="name" placeholder="name" style={{fontSize:'20px'}}/>
+						<input type="text" className="form-control"  name="name" placeholder="name" style={{fontSize:'20px'}} required='true'/>
 					</div>
                     <div className="form-group">
-						<label for="lg_password" className="sr-only">Username</label>
-						<input type="email" className="form-control"  name="email" placeholder="username"style={{fontSize:'20px'}}/>
+						<input type="email" className="form-control"  name="email" placeholder="username"style={{fontSize:'20px'}} required='true'/>
 					</div>
 					<div className="form-group">
-						<label for="lg_password" className="sr-only">Password</label>
-						<input type="password" className="form-control"  name="password" placeholder="password" style={{fontSize:'20px'}}/>
+						<input type="password" className="form-control"  name="password" placeholder="password" style={{fontSize:'20px'}} required='true'/>
 					</div>
                     <div className="form-group">
-						<label for="lg_password" className="sr-only">Confrirm Password</label>
-						<input type="password" className="form-control"  name="confirmPassword" placeholder="confirm password" style={{fontSize:'20px'}}/>
+						<input type="password" className="form-control"  name="confirmPassword" placeholder="confirm password" style={{fontSize:'20px'}} required='true'/>
+					</div>
+					<div >
+					<p id='errMessage' style={{visibility:'hidden',color:'red',paddingTop:'10px'}}>empty</p>
 					</div>
 				</div>
 				<button type="submit" onSubmit={signUp} className="login-button"><i className="fa fa-chevron-right"></i></button>

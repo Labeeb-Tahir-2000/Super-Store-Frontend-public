@@ -11,12 +11,7 @@ function UseSignUp(){
     try
       {
         e.preventDefault();
-        // const data={
-        //     name :e.target.name.value,
-        //    email :e.target.email.value,
-        //     password :e.target.password.value,
-        //     confirmPassword:e.target.confirmPassword.value
-        // }
+        
        const res =await Axios.post('http://localhost:3000/api/v1/users/signup',{
         name :e.target.name.value,
         email :e.target.email.value,
@@ -24,13 +19,11 @@ function UseSignUp(){
          confirmPassword:e.target.confirmPassword.value
        });
        setCookie('jwt',res.data.jwt, { path:'/' , expires : new Date(Date.now()+(1000*60*60*24*7)) }); 
-       console.log(cookie);
-       console.log(res.data)
        if(res.data && res.data.jwt && res.data.status === "success") return history.push("/Home");
-    }
-    catch(err){
-        console.log(err)
-        console.log(err.message)
+       
+    }catch(err){
+      document.getElementById('errMessage').innerHTML = err.response.data.message;
+      document.getElementById('errMessage').style.visibility = 'visible';
     }
     }
 }

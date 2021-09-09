@@ -20,7 +20,8 @@ function EditProducts(){
 		{ key: 7, value: "Sprays" },
 		{ key: 8, value: "Cooking Oil" },
 		{ key: 9, value: "Stationary" },
-		{ key: 10, value: "Chocolate" }
+		{ key: 10, value: "Chocolate" },
+		{ key: 11, value: "Cell" }
 	]
 	const useEditProductFuncCall = useEditProductFunc();
 
@@ -60,9 +61,7 @@ function EditProducts(){
 		const fileRef = storageRef.child(image.name);
 		await fileRef.put(image);
 		setURL(await fileRef.getDownloadURL());
-		console.log(URL);
-		 console.log(image.name);
-	  console.log(image);
+
 		
 	 }
     return(
@@ -74,7 +73,7 @@ function EditProducts(){
 			<div className="main-login-form">
 				<div className="login-group">
                 <div className="form-group">
-						<input type="text" className="form-control"  name="pID" placeholder="Prodcut ID"/>
+						<input type="text" className="form-control"  name="pID" placeholder="Prodcut ID" required='true'/>
 					</div>
 					<div className="form-group">
 						<input type="text" className="form-control"  name="pTitle" placeholder="Prodcut Name"/>
@@ -95,7 +94,7 @@ function EditProducts(){
 					<div className="form-group-select" >
 					
 						<select className="form-select form-select-sm  " style={{color:'#6e6e6e ',fontWeight: 'bold',
-						fontSize: '20px',padding: 'none ',marginBottom:'3px !important',marginTop:'7px !important'}}
+						fontSize: '20px',padding: 'none ',marginBottom:'3px !important',marginTop:'7px !important',overflow:'scroll'}}
 						name="pCetegory" onChange={onCetegoryChange} value={cetegoryValue}>
 
 						{Cetegories.map(item => (
@@ -119,14 +118,14 @@ function EditProducts(){
                     <input  style={{marginBottom:'8px'}} onChange={handleChange} className="pic" type="file" />
                     </div>
 					
-					{image?
+					
 					<div  className="form-group" >
 					<input style={{marginTop:'8px',padding:'2px', width:'110%'}} type="button" className="btn btn-outline-primary btn-lg"  onClick={handleUpload}  value='Click here to upload the image'/>
                     <input style={{display:'none'}} role='button'   name="pURL" value={URL}/>
                     </div>
-					:
-					null
-					}
+					<div >
+						<p id='errMessage' style={{visibility:'hidden',color:'red',paddingTop:'10px'}}>empty</p>
+					</div>
 					
 				</div>
 				<button type="submit" onSubmit={useEditProductFuncCall} className="login-button"><i className="fa fa-chevron-right"></i></button>

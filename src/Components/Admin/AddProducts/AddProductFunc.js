@@ -11,7 +11,10 @@ function useAddProductFunc(){
         e.preventDefault();
         try{
 
-           console.log(e.target.pURL.value,)
+           if(e.target.pURL.value === " "){
+               alert('please upload image')
+               return;
+           }
             const res = await Axios.post('http://localhost:3000/api/v1/products/addProduct',{ 
                 pTitle: e.target.pTitle.value,
                 pCetegory : e.target.pCetegory.value,
@@ -30,17 +33,18 @@ function useAddProductFunc(){
 
             });
             if(res.data.status === 'success'){
-                alert('Successfuly Uploaded data');
+                document.getElementById('errMessage').innerHTML = 'Successfully uploaded data';
+                document.getElementById('errMessage').style.visibility = 'visible';
+                document.getElementById('errMessage').style.paddingLeft = '45px';
+            document.getElementById('errMessage').style.color = 'green';
             }else{
-                alert('Error in Uploading data');
+                document.getElementById('errMessage').innerHTML = 'Error in uploading data';
+                document.getElementById('errMessage').style.visibility = 'visible';
             }
-            console.log(res);
-            console.log(res.data);
         }
         catch(err){
-            alert('Error in Uploading data');
-            console.log(err);
-            console.log(err.response);
+            document.getElementById('errMessage').innerHTML = err.response.data.message;
+            document.getElementById('errMessage').style.visibility = 'visible';
         }
     }
 }

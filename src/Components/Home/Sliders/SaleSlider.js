@@ -14,7 +14,7 @@ function SaleSlider(){
     
     const getSaleProducts= async()=>{
         try{
-        const res =  await Axios.post('http://localhost:3000/api/v1/products/getProducts ',{ }, {
+        const res =  await Axios.post('http://localhost:3000/api/v1/products/getSaleProducts ',{ }, {
             headers:{
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ function SaleSlider(){
   <div>
         
     <div
-    id="carouselBasicExample"
+    id="carouselSaleSlider"
     className="carousel slide carousel-fade"
     data-mdb-ride="carousel"
     >
@@ -114,7 +114,7 @@ function SaleSlider(){
   <button
     className="carousel-control-prev"
     type="button"
-    data-mdb-target="#carouselBasicExample"
+    data-mdb-target="#carouselSaleSlider"
     data-mdb-slide="prev"
   >
     <span style={{color:"black"}} className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -123,7 +123,7 @@ function SaleSlider(){
   <button
     className="carousel-control-next"
     type="button"
-    data-mdb-target="#carouselBasicExample"
+    data-mdb-target="#carouselSaleSlider"
     data-mdb-slide="next"
   >
     <span style={{backgorundColor:"black"}}  className="carousel-control-next-icon" aria-hidden="true"></span>

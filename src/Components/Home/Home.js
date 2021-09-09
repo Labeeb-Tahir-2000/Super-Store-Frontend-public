@@ -1,11 +1,13 @@
 import React,{useEffect,useState} from "react";
-import { Icon, Col, Card, Row, Divider } from 'antd';
-import ImageSLider from "./Sliders/ImageSlider";
+import ImageSLiderSmall from "./Sliders/ImageSliderSmaller";
 import Axios from "axios";
 import {useCookies} from "react-cookie";
 import CardProductsJSX from "./cardProductsJSX";
-import './line.css'
+import './line.css';
+import './imageSlider.css'
 import SaleSlider from "./Sliders/SaleSlider";
+import ImageSliderLarge from "./Sliders/ImageSliderLarger";
+
 
 function Home(){
   
@@ -50,27 +52,34 @@ function Home(){
           }   
     });
 
-
-    const productCount = products.length;
     
     return(
   <div>
-       <ImageSLider/>
+    <div className="imageSliderLarge">
+    <ImageSliderLarge/>
+    </div>
+    <div className="imageSliderSmall">
+    <ImageSLiderSmall/>
+    </div>
+      
        
        {products.length === 0 ?
                 <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
                     <h2>No post yet...</h2>
                 </div> :
                 <div>
-                   <hr style={{marginTop:'40px'}}className="hr-text" data-content="AND"/>
+                  <div className="saleSliderLarger">
+                   <hr  style={{marginTop:'40px'}}className="hr-text" data-content="Big Discount "/>
                     <SaleSlider />
-                   
-                  <hr style={{marginTop:'40px'}}className="hr-text" data-content="AND"/>
+                   </div>
+                   <div className='saleCardSmall' >
+
+                  <hr style={{marginTop:'40px'}}className="hr-text" data-content="Big Discount"/>
                     <div style={{marginTop:'50px' , marginRight:'0px',paddingRight:'3px'}} className="row container-fluid">
                       {itemsSale}
                     </div>
-
-                  <hr style={{marginTop:'40px'}}className="hr-text" data-content="AND"/>
+                    </div>
+                  <hr style={{marginTop:'40px'}}className="hr-text" data-content="All Products"/>
                     <div style={{marginTop:'50px' , marginRight:'0px',paddingRight:'3px'}} className="row container-fluid">
                       {items}
                     </div>

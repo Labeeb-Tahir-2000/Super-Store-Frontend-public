@@ -30,6 +30,7 @@ const nonEdibleCetegories = [
     { key: 1, value: "Deturjunts" },
     { key: 2, value: "Sprays" },
     { key: 3, value: "Stationary" },
+    { key: 11, value: "Cell" }
     
 ]
 
@@ -139,7 +140,7 @@ const nonEdibleCetegories = [
                 	
                     {nonEdible === "nonEdible"?
                         <div className="form-group" >
-                        <select className="form-select form-select-sm  " style={{color:'#6e6e6e ',fontWeight: 'bold',
+                        <select className="form-select form-select-sm  " style={{color:'#6e6e6e ',fontWeight: 'bold',overflow:'scroll',
                             fontSize: '20px'}}
                             name="pNonEdibleCetegory" onChange={onNonEdibleCetegoryChange} value={nonEdibleCetegoryValue}>
 

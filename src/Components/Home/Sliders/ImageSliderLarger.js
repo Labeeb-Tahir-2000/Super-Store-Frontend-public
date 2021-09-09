@@ -18,7 +18,7 @@ const ImageSlider =()=>{
         <div style={style}  className="container-fluid">
  <Carousel  slides={slides} autoplay={true} interval={2000}/>
         </div>
-
+ 
     );
 
 }

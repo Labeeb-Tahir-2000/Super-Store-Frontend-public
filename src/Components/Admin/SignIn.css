@@ -282,4 +282,10 @@ label.form-invalid:after {
     padding-top: 2px !important;
   }
  }
+ @media (max-width: 380px) {
+  input{
+ font-size:15px !important;
+  }
+
+ }
  

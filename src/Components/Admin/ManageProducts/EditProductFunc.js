@@ -43,7 +43,7 @@ function useEditProductFunc(){
                 document.getElementById('errMessage').innerHTML = err.response.data.message;
                 document.getElementById('errMessage').style.visibility = 'visible';
             }else{
-                alert(err)
+                alert(err.message)
             }
             
          

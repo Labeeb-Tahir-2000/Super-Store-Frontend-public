@@ -118,11 +118,13 @@ function EditProducts(){
                     <input  style={{marginBottom:'8px'}} onChange={handleChange} className="pic" type="file" />
                     </div>
 					
-					
+				
 					<div  className="form-group" >
 					<input style={{marginTop:'8px',padding:'2px', width:'110%'}} type="button" className="btn btn-outline-primary btn-lg"  onClick={handleUpload}  value='Click here to upload the image'/>
-                    <input style={{display:'none'}} role='button'   name="pURL" value={URL}/>
+                    <input style={{display:'none'}} role='button'   name="pURL" value={URL} />
                     </div>
+				
+
 					<div >
 						<p id='errMessage' style={{visibility:'hidden',color:'red',paddingTop:'10px'}}>empty</p>
 					</div>

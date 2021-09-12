@@ -38,18 +38,41 @@ function Home(){
 
     //product image must have size 500x500 for better adjustment in card
       const items= products.map(item=>{
-          return <div className="col-sm-4 col-lg-3 col-6 " style={{marginRight:'0px',paddingRight:'3px'}}>
-               <CardProductsJSX  url={item.pImagePath} title={item.pTitle} price={item.pPrice} />
+          return <div className="col-sm-4 col-lg-3 col-6 " >
+               <CardProductsJSX  url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription}/>
           </div>
       });
-      const itemsSale= products.map(item=>{
-        if(item.pOnSale === 'onSale'){
-          return <div className="col-sm-4 col-lg-3 col-6 " style={{marginRight:'0px',paddingRight:'3px'}}>
-          <CardProductsJSX  url={item.pImagePath} title={item.pTitle} price={item.pPrice} />
-          </div>
-          }else{
+
+      var hrCount =0;
+      const hrLine = products.map(item=>{
+        if(item.pOnSale === 'onSale'){ 
+          hrCount =hrCount +1;                     
+          return ( 
+           <div>
+            { hrCount === 1?  
+            <hr className="hr-text" data-content="Big Discounts" style={{marginBottom:'50px'}}/>
+             :
+              null}
+            
+             </div>
+           )
+        } else{
             return ;
-          }   
+          }  
+        
+    });
+
+      const itemsSale= products.map(item=>{
+        if(item.pOnSale === 'onSale'){                       
+          return (  
+          <div  className="col-sm-4 col-lg-3 col-6 " >
+          <CardProductsJSX  url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription}/>
+          </div>
+           )
+        } else{
+            return ;
+          }  
+        
     });
 
     
@@ -68,19 +91,17 @@ function Home(){
                     <h2>No post yet...</h2>
                 </div> :
                 <div>
-                  <div className="saleSliderLarger">
-                   <hr  style={{marginTop:'40px'}}className="hr-text" data-content="Big Discount "/>
+                  <div className="saleSliderLarger" >             
                     <SaleSlider />
                    </div>
                    <div className='saleCardSmall' >
-
-                  <hr style={{marginTop:'40px'}}className="hr-text" data-content="Big Discount"/>
-                    <div style={{marginTop:'50px' , marginRight:'0px',paddingRight:'3px'}} className="row container-fluid">
-                      {itemsSale}
+                      <div style={{marginTop:'15px' , marginRight:'0px',paddingRight:'3px'}} className="row container-fluid">
+                        {hrLine}
+                        {itemsSale}
+                     </div>
                     </div>
-                    </div>
-                  <hr style={{marginTop:'40px'}}className="hr-text" data-content="All Products"/>
-                    <div style={{marginTop:'50px' , marginRight:'0px',paddingRight:'3px'}} className="row container-fluid">
+                  <hr style={{marginTop:'30px'}}className="hr-text" data-content="All Products"/>
+                    <div style={{marginTop:'50px' ,paddingRight:'4px',paddingLeft:'5%'}} className="row container-fluid myAllProducts">
                       {items}
                     </div>
                     

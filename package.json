@@ -10,6 +10,7 @@
     "antd": "^4.16.13",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
+    "bootstrap-icons": "^1.5.0",
     "browserslist": "^4.16.6",
     "css-what": "^5.0.1",
     "firebase": "^8.6.1",

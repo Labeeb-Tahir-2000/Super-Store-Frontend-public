@@ -1,5 +1,5 @@
 import React from "react";
-// import './App.css';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {useContext} from 'react';
 import {BrowserRouter as Router , Route,Switch ,Redirect} from "react-router-dom";
@@ -16,7 +16,7 @@ import EditProducts from "./Components/Admin/manageProducts/EditProducts";
 import ChangeUserName   from "./Components/Admin/changeUserName/ChangeUserName";
 import SignUp from "./Components/Admin/signUp/SignUp";
 import SaleSlider from "./Components/Home/Sliders/SaleSlider";
-
+import Cart from "./Components/shoopingCart/Cart";
 
 function App() {
   // const context = useContext(userContext);
@@ -39,6 +39,9 @@ function App() {
       <Route path = "/forgetPassword" exact>
         <Forget/>
       </Route>
+      <Route path = "/Cart" exact>
+        <Cart/>
+        </Route>
       <Route path = "/ChangeUserName" exact>
         <ChangeUserName/>
       </Route>

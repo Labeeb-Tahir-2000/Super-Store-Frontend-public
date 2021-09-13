@@ -18,8 +18,7 @@ class sale extends Component{
 const items= this.state.product.map(item=>{
     return  <SaleJSX key={item.id}id={item.id} url={item.url} title={item.title} />
 });
-        return( 
-            
+        return(   
            items
               );
     } 

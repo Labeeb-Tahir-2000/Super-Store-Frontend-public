@@ -5,10 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {Link} from "react-router-dom"
 
 function CardProducts (props){
-    return(
-        
-      
-            
+    return(       
                 <div className="card product_item" >
                     <div className="body" >
                         <div className="cp_img">

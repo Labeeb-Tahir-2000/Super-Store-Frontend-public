@@ -79,17 +79,27 @@ function Home(){
     return(
   <div>
     <div className="imageSliderLarge">
-    <ImageSliderLarge/>
-    </div>
-    <div className="imageSliderSmall">
-    <ImageSLiderSmall/>
-    </div>
-      
+                    <ImageSliderLarge/>
+                    </div>
+                    <div className="imageSliderSmall">
+                    <ImageSLiderSmall/>
+      </div>
+      <div>
+      <hr className="hr-text" data-content="Filter Products" style={{marginBottom:'50px'}}/>
+        <div>
+          <ul style={{display:'flex-block', justifyContent:'space-around'}} >
+           <div> <li style={{textDecoration:'none',display:'inline', background:'red'}}>Edible Products</li> </div>
+           <div> <li style={{textDecoration:'none' ,display:'inline'}}>Non Edible Products</li> </div>
+          </ul>
+        </div>
+      </div>
        
        {products.length === 0 ?
                 <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
                     <h2>No post yet...</h2>
-                </div> :
+                </div> 
+                :
+
                 <div>
                   <div className="saleSliderLarger" >             
                     <SaleSlider />

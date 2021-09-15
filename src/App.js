@@ -17,6 +17,7 @@ import ChangeUserName   from "./Components/Admin/changeUserName/ChangeUserName";
 import SignUp from "./Components/Admin/signUp/SignUp";
 import SaleSlider from "./Components/Home/Sliders/SaleSlider";
 import Cart from "./Components/shoopingCart/Cart";
+import ShowMore from './Components/Home/filterBar/utilits/ShowMoreCetegories';
 
 function App() {
   // const context = useContext(userContext);
@@ -44,6 +45,9 @@ function App() {
         </Route>
       <Route path = "/ChangeUserName" exact>
         <ChangeUserName/>
+      </Route>
+      <Route path = "/ShowMore" exact>
+        <ShowMore/>
       </Route>
       <Route path = "/Home" exact>
         <Home/>

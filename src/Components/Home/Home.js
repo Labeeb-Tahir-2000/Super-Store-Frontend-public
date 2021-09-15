@@ -4,7 +4,8 @@ import Axios from "axios";
 import {useCookies} from "react-cookie";
 import CardProductsJSX from "./cardProductsJSX";
 import './line.css';
-import './imageSlider.css'
+import './imageSlider.css';
+import FilterBar from "./filterBar/FilterBar";
 import SaleSlider from "./Sliders/SaleSlider";
 import ImageSliderLarge from "./Sliders/ImageSliderLarger";
 
@@ -32,7 +33,7 @@ function Home(){
       
       
     }catch(err){
-      console.log(err.responce)
+      console.log(err.responcee)
     }
   }
 
@@ -50,7 +51,7 @@ function Home(){
           return ( 
            <div>
             { hrCount === 1?  
-            <hr className="hr-text" data-content="Big Discounts" style={{marginBottom:'50px'}}/>
+            <hr className="hr-text" data-content="Flash Sale" style={{marginBottom:'50px'}}/>
              :
               null}
             
@@ -78,22 +79,18 @@ function Home(){
     
     return(
   <div>
+    {/* image Sliders */}
     <div className="imageSliderLarge">
-                    <ImageSliderLarge/>
-                    </div>
-                    <div className="imageSliderSmall">
-                    <ImageSLiderSmall/>
-      </div>
-      <div>
-      <hr className="hr-text" data-content="Filter Products" style={{marginBottom:'50px'}}/>
-        <div>
-          <ul style={{display:'flex-block', justifyContent:'space-around'}} >
-           <div> <li style={{textDecoration:'none',display:'inline', background:'red'}}>Edible Products</li> </div>
-           <div> <li style={{textDecoration:'none' ,display:'inline'}}>Non Edible Products</li> </div>
-          </ul>
-        </div>
-      </div>
-       
+       <ImageSliderLarge/>
+    </div>
+    <div className="imageSliderSmall">
+      <ImageSLiderSmall/>
+    </div>
+
+{/* Filter bar */} 
+<FilterBar/>
+
+ {/* Products cart */}      
        {products.length === 0 ?
                 <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
                     <h2>No post yet...</h2>
@@ -110,7 +107,7 @@ function Home(){
                         {itemsSale}
                      </div>
                     </div>
-                  <hr style={{marginTop:'30px'}}className="hr-text" data-content="All Products"/>
+                  <hr style={{marginTop:'0px'}}className="hr-text" data-content="All Products"/>
                     <div style={{marginTop:'50px' ,paddingRight:'4px',paddingLeft:'5%'}} className="row container-fluid myAllProducts">
                       {items}
                     </div>

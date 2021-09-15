@@ -4,7 +4,7 @@
     position: relative;
     outline: 0;
     border: 0;
-    color: black;
+    color: rgb(131, 131, 131);
     text-align: center;
     height: 1.5em;
     opacity: .5;}
@@ -22,12 +22,12 @@
       content: attr(data-content);
       position: relative;
       display: inline-block;
-      color: black;
+      
   
       padding: 0 .5em;
       line-height: 1.5em;
       
-      color: #818078;
+      color: #000000;
       background-color: #fcfcfa;
     }
   

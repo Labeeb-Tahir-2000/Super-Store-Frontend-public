@@ -6,12 +6,16 @@ import {Link} from "react-router-dom";
 
 function CardProducts (props){
     const [cartItem , setCartItem] = useContext(CartContext)
-    let id ={} ;
+    let id =[] ;
     const addToCartHandler=(pID)=>{
         console.log(pID);
-   
-        setCartItem(data=>[data , pID])
-       
+        if(cartItem === {}){//if cart is empty array then set id into it
+            setCartItem(pID)
+ //NOTE: must initialize cartItem as array so then we can use ...cartItem else if it is object then error of cartItem is not iterable occur
+        }else{   
+            id= [...cartItem,pID]//hard copying the cart array into id array as first asgument 
+            setCartItem(id) // now seting cartItem with id array that have all recent IDs
+        } 
     }
 
 

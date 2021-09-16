@@ -33,7 +33,7 @@ function Home(){
       
       
     }catch(err){
-      console.log(err.responcee)
+      console.log(err.response)
     }
   }
 

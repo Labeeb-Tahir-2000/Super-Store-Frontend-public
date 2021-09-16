@@ -33,9 +33,13 @@ function useLogin(){
                 if(res.data && res.data.jwt && res.data.status === "success") return history.push("/Home");
           
         }catch(err){
-            if(err.response.data) document.getElementById('errMessage').innerHTML = err.response.data.message;
+            if(err.response.data){
+             document.getElementById('errMessage').innerHTML = err.response.data.message;
+            }else{
             document.getElementById('errMessage').innerHTML = err;
             document.getElementById('errMessage').style.visibility = 'visible';
+            
+            }
         }
     }
 

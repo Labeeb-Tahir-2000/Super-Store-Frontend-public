@@ -37,7 +37,7 @@ function SaleSlider(){
         count = count +1;
         if(count < 4 ){// making condition so only first 3 products will be rendered by CardProductsJSX and other will be skipped
             return <div className="col-4 saleCardStyle" style={{marginLeft:'0px',paddingRight:'10%'}}>
-             <CardProductsJSX  url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription} />
+             <CardProductsJSX  id={item._id} url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription} />
         </div>
         }else {
             return;
@@ -51,7 +51,7 @@ function SaleSlider(){
         count = count +1;
         if(count > 3 && count < 7 ){ // making condition so only first 3 will be skipped and next 3 products will be rendered by CardProductsJSX
             return <div className="col-4 saleCardStyle "style={{marginLeft:'0px',paddingRight:'10%'}}>
-             <CardProductsJSX  url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription} />
+             <CardProductsJSX  id={item._id} url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription} />
         </div>
         }else {
             return;
@@ -66,7 +66,7 @@ function SaleSlider(){
         count = count +1;
         if(count > 6 && count < 10 ){ // making condition so only first 3 will be skipped and next 3 products will be rendered by CardProductsJSX
             return <div className="col-4 saleCardStyle " style={{marginLeft:'0px',paddingRight:'10%'}}>
-             <CardProductsJSX  url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription} />
+             <CardProductsJSX id={item._id} url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription} />
         </div>
         }else {
             return;

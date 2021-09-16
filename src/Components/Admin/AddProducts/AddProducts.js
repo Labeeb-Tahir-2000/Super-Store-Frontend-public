@@ -10,18 +10,37 @@ function AddProducts (){
 	const [edible, setEdible]= useState(' ');
 	const [URL, setURL] = useState(' ');
 	const [cetegoryValue, setCetegoryValue] = useState(1)
-	const Cetegories = [
-		{ key: 1, value: "Beans" },
-		{ key: 2, value: "Lays" },
-		{ key: 3, value: "Cold Drinks" },
-		{ key: 4, value: "Biscuits" },
-		{ key: 5, value: "Spices" },
-		{ key: 6, value: "Deturjunts" },
-		{ key: 7, value: "Sprays" },
-		{ key: 8, value: "Cooking Oil" },
-		{ key: 9, value: "Stationary" },
-		{ key: 10, value: "Chocolate" },
-		{ key: 11, value: "Cell" }
+	const edibleCetegories = [
+		{ key: 1, value: "Chips" },
+		{ key: 2, value: "Chocolate" },
+		{ key: 3, value: "Biscuit" },
+		{ key: 4, value: "Juice" },
+		{ key: 5, value: "Cold Drink" },
+		{ key: 6, value: "Cooking Ghee" },
+		{ key: 7, value: "Cooking Oil" },
+		{ key: 8, value: "Recipe Masalah" },
+		{ key: 9, value: "Spice" },
+		{ key: 10, value: "Herb" },
+		{ key: 11, value: "Grain" },
+		{ key: 12, value: "Souce" },
+		{ key: 13, value: "Kachup" },
+		{ key: 14, value: "Rice" },
+	
+	]
+	const nonEdibleCetegories =[
+		{ key: 1, value: "Stationary" },
+		{ key: 2, value: "Beuty & Beuty" },
+		{ key: 3, value: "Perfume" },
+		{ key: 4, value: "Soap" },
+		{ key: 5, value: "Detergent" },
+		{ key: 6, value: "Surface Cleaner" },
+		{ key: 7, value: "Bathroom Cleaner" },
+		{ key: 8, value: "Tissue" },
+		{ key: 9, value: "Insect Killer" },
+		{ key: 10, value: "Electronic" },
+		{ key: 11, value: "Face Mask" },
+		{ key: 12, value: "Baby Pamper" },
+		{ key: 13, value: "Adult Pamper" }
 	]
 	const useAddProductFuncCall = useAddProductFunc();
 
@@ -76,7 +95,7 @@ function AddProducts (){
 			<div className="main-login-form">
 				<div className="login-group">
 					<div className="form-group">
-						<input type="text" className="form-control"  name="pTitle" placeholder="Prodcut Name" required='true'/>
+						<input type="text" className="form-control"  name="pTitle" placeholder="Product Name" required='true'/>
 					</div>
 
                     <div className="form-group">
@@ -96,10 +115,16 @@ function AddProducts (){
 						<select className="form-select form-select-sm  " style={{color:'#6e6e6e ',fontWeight: 'bold',
 						fontSize: '20px',padding: 'none ',marginBottom:'3px !important',marginTop:'7px !important' , overflow:'scroll'}}
 						name="pCetegory" onChange={onCetegoryChange} value={cetegoryValue}>
-
-						{Cetegories.map(item => (
-							<option style={{overflow:'scroll !important'}}key={item.key} value={item.value}>{item.value} </option>
-						))}
+						
+						{edible === 'edible'?
+							edibleCetegories.map(item => (
+								<option style={{overflow:'scroll !important'}}key={item.key} value={item.value}>{item.value} </option>
+							))
+						:
+							nonEdibleCetegories.map(item => (
+								<option style={{overflow:'scroll !important'}}key={item.key} value={item.value}>{item.value} </option>
+							))
+						}
 
                			</select>
 					</div>

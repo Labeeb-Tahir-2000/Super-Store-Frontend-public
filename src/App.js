@@ -18,12 +18,15 @@ import SignUp from "./Components/Admin/signUp/SignUp";
 import SaleSlider from "./Components/Home/Sliders/SaleSlider";
 import Cart from "./Components/shoopingCart/Cart";
 import ShowMore from './Components/Home/filterBar/utilits/ShowMoreCetegories';
+import CetegoryProducts from './Components/Home/filterBar/CetegoryProducts';
+import {ProviderFunc} from './Components/cartContext/cartContext';
 
 function App() {
   // const context = useContext(userContext);
   
   return (
     <div className = "App">
+<ProviderFunc>    
    <Router>
      <NavbarAdmin/>
     <Switch>   
@@ -37,6 +40,7 @@ function App() {
       <Route path = "/SaleSlider" exact>
         <SaleSlider/>
         </Route>
+       
       <Route path = "/forgetPassword" exact>
         <Forget/>
       </Route>
@@ -66,8 +70,12 @@ function App() {
       <Route path = "/about" exact>
           <About/>
       </Route>
+      
+      {/* routing component with sending data as props in it from <Link/> */}
+      <Route path="/CetegoryProducts"  render={(props) => <CetegoryProducts {...props}/>}/> 
     </Switch>
       </Router>
+</ProviderFunc>      
     </div>
   );
 }

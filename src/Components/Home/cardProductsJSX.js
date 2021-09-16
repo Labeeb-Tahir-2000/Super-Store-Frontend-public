@@ -1,10 +1,20 @@
-import React from "react";
+import React,{useContext} from "react";
 import  "./cardProducts.css";
 import 'bootstrap/dist/css/bootstrap.css';
-
-import {Link} from "react-router-dom"
+import { CartContext } from "../cartContext/cartContext";
+import {Link} from "react-router-dom";
 
 function CardProducts (props){
+    const [cartItem , setCartItem] = useContext(CartContext)
+    let id ={} ;
+    const addToCartHandler=(pID)=>{
+        console.log(pID);
+   
+        setCartItem(data=>[data , pID])
+       
+    }
+
+
     return(       
                 <div className="card product_item" >
                     <div className="body" >
@@ -13,10 +23,10 @@ function CardProducts (props){
                             <div  className="hover ">
                                <div style={{display:'flex',}} className="justify-content-center">
                                 <div style={{ display:'inline'}}>
-                                    <Link style={{textDecoration:'none'}}to="Buy" ><i style={{color:'blue'}} className="zmdi zmdi-plus icon"></i></Link>
+                                    <Link style={{textDecoration:'none'}} onClick={()=>addToCartHandler(props.id)} ><i style={{color:'blue'}} className="zmdi zmdi-plus icon"></i></Link>
                                 </div>
                                 <div style={{marginLeft:'10px', display:'inline'}}>
-                                 <Link style={{textDecoration:'none'}}to="Cart" ><i style={{color:'blue',textDecoration:'none'}} className="zmdi zmdi-shopping-cart icon"></i></Link>
+                                 <Link style={{textDecoration:'none'}}to="Buy" ><i style={{color:'blue',textDecoration:'none'}} className="zmdi zmdi-shopping-cart icon"></i></Link>
                                 </div>
                                 </div>
                             </div>

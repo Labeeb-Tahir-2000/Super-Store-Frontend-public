@@ -40,7 +40,7 @@ function Home(){
     //product image must have size 500x500 for better adjustment in card
       const items= products.map(item=>{
           return <div className="col-sm-4 col-lg-3 col-6 " >
-               <CardProductsJSX  url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription}/>
+               <CardProductsJSX  id={item._id} url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription}/>
           </div>
       });
 
@@ -67,7 +67,7 @@ function Home(){
         if(item.pOnSale === 'onSale'){                       
           return (  
           <div  className="col-sm-4 col-lg-3 col-6 " >
-          <CardProductsJSX  url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription}/>
+          <CardProductsJSX  id={item._id} url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription}/>
           </div>
            )
         } else{

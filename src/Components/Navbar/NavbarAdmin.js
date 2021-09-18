@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import {NavLink,Link} from "react-router-dom";
 import {Nav , Navbar} from "react-bootstrap";
 import "./Navbar.css";
@@ -7,12 +7,16 @@ import Axios from 'axios';
 import {useCookies} from 'react-cookie';
 import { useHistory } from "react-router-dom";
 // import styled from 'styled-components';
-
-
+import { CartContext } from "../cartContext/cartContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileExcel, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 function MyNavbar(){
+    const [cartItem]= useContext(CartContext)
     const [cookie,setCookie] = useCookies(['jwt']);
     const history = useHistory();
+    
+    const cartItemCount = cartItem.length;
     const style={
         color:"red",
         marginLeft:"15px",
@@ -21,6 +25,14 @@ function MyNavbar(){
         textDecoration:"none",
         color:"blue",
         padding:"10px",
+       
+    }
+    const style3={
+        textDecoration:"none",
+        color:"blue",
+        padding:"10px",
+       display:'flex',
+       justifyContent:'center',
        
     }
     function useSignOut(){ 
@@ -50,7 +62,9 @@ function MyNavbar(){
                         <Link style={style2} to="/EditProducts">Edit Products</Link>
                         <Link style={style2} to="/SaleSlider">SaleSlider</Link>
                         <Link style={style2} to="/Home">Home</Link>
-                        <Link style={style2} to="/Cart">Cart</Link>
+                        <Link style={style3}  to="/Cart"><FontAwesomeIcon style={{marginTop:"4px",}}icon={faShoppingCart}/>
+                        <p style={{background:'yellow',padding:'0px 4px', marginLeft:'3px',borderRadius:'50%',color:'blueviolet',display:'inline'}}>{cartItemCount}</p>
+                        </Link>
                         <Link style={style2} to="/Sale">Sale</Link>
                     
                         <a style={style2} onClick={useSignOut}><i class="fa fa-sign-out" aria-hidden="true"></i></a>

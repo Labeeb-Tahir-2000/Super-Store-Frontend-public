@@ -8,8 +8,9 @@ import './cartJSX.css'
 
  function Cart(){
     const [cookie] = useCookies(['jwt']);
-    const [cartItem,setCartItem] = useContext(CartContext)
-    const [products , setProducts] = useState([])
+    const [cartItem,setCartItem] = useContext(CartContext);
+    const [products , setProducts] = useState([]);
+    const [totalPrice , setTotalPrice] = useState(0)
 
     useEffect(() => {
     
@@ -33,27 +34,50 @@ import './cartJSX.css'
         
         
       }catch(err){
-        console.log(err.response.data.message)
+        if(err.response){
+          console.log(err.response.data.message)
+        }else{
+          console.log(err.message)
+        }
+       
       }
     }
     const removeFromCart = (productId) => {
-console.log(productId)
-     setCartItem(cartItem.filter(item=> item !== productId))
+     const index=  cartItem.indexOf(productId);
+     let arrayItems = [...cartItem];//hard copying array so to implement splice() on it 
+    arrayItems.splice(index,1)
+    setCartItem(arrayItems); // setting cartItem to spliced array
              
+  }
+  const totalPriceHandler =(totalPrice)=>{
+    setTotalPrice(totalPrice)
   }
 
     const cartProductsDisplay = products.map(item=>{
-return <CartProducts imageURL ={item.pImagePath} title={item.pTitle} price={item.pPrice} description={item.pDescription}/>
+return <CartProducts removeItem={removeFromCart} imageURL ={item.pImagePath} id={item._id} title={item.pTitle} price={item.pPrice} description={item.pDescription}/>
 
     })
     return(
-        <div >
-  <div className='container' >
-{cartProductsDisplay}
-<CartTable product={[...products]} removeItem={removeFromCart}/>
-  </div>
-       
-      </div>
+        <div  >
+              {products.length === 0? 
+            <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
+              <div><h2>Empty cart!</h2></div>
+              <br />
+              <div><h2>Please add Products in Cart....</h2></div>
+            </div>
+            :
+            <div className='container' style={{marginBottom:'100px'}}>
+              {cartProductsDisplay}
+              <CartTable product={[...products]} totalPrice={totalPrice=>{totalPriceHandler(totalPrice)}} removeItem={removeFromCart}/>
+            </div>
+           
+           }
+
+            <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'center', bottom:'0px',background:'white'}}>
+                    <h4 >Total:<span style={{color:'red'}}> Rs. {totalPrice}</span></h4>
+            </div>
+                
+        </div>
     )
 }
 export default Cart;

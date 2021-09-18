@@ -34,6 +34,7 @@ function useLogin(){
           
         }catch(err){
             if(err.response.data){
+                document.getElementById('errMessage').style.visibility = 'visible';
              document.getElementById('errMessage').innerHTML = err.response.data.message;
             }else{
             document.getElementById('errMessage').innerHTML = err;

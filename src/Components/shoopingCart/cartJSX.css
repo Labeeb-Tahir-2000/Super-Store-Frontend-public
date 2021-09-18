@@ -6,10 +6,13 @@
 @media (max-width : 400px) {
     .externel{
         width:auto !important;
+        padding-left: 0px;
         }
         .image{
             height:90px !important;
             padding-Right: 50px !important;
+            padding-left: 0px;
+            margin-left: 0px;
         }
         .datail{
          

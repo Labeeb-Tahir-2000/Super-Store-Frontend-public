@@ -1,0 +1,70 @@
+@media (min-width : 300px)  {
+  
+    .myAddressBook{
+        position:absolute;
+        top:0px
+    
+    }
+    .myCart{
+        position:absolute;
+        top:250px
+    }
+    .outSide{
+    
+        padding-top: 50px !important
+        }
+        
+}
+@media (min-width : 500px) and (max-width:775px){
+    .outSide{
+   
+        padding:50px 10px !important
+        }
+        
+}
+@media (min-width :765px) {
+    .myAddressBook{
+        position:initial;
+       
+    
+    }
+    .myCart{
+        position:initial;
+       
+    }
+}
+@media (min-width : 776px) and (max-width:819px){
+    .outSide{
+   
+        padding:50px 20px !important
+        }
+        
+}
+@media (min-width : 820px) {
+    .outSide{
+  
+        padding:50px 50px !important
+        }
+        
+}
+@media (min-width : 1000px) {
+    .outSide{
+  
+        padding: 50px 70px !important;
+        }
+        
+}
+@media (min-width : 1130px) {
+    .outSide{
+  
+        padding: 50px 100px !important;
+        }
+        
+}
+@media (min-width : 1200px) {
+    .outSide{
+  
+        padding: 50px 150px !important;
+        }
+        
+}

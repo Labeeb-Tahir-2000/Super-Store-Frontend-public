@@ -6,15 +6,16 @@ import {useEffect} from 'react';
 import Axios from 'axios';
 import {useCookies} from 'react-cookie';
 import { useHistory } from "react-router-dom";
-// import styled from 'styled-components';
 import { CartContext } from "../cartContext/cartContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileExcel, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import {  faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
 
 function MyNavbar(){
-    const [cartItem]= useContext(CartContext)
+
     const [cookie,setCookie] = useCookies(['jwt']);
     const history = useHistory();
+    const [cartItem , setCartItem] = useContext(CartContext)
     
     const cartItemCount = cartItem.length;
     const style={
@@ -38,6 +39,7 @@ function MyNavbar(){
     function useSignOut(){ 
         try{
                     setCookie('jwt',cookie, { path:'/' , expires : new Date(Date.now()) }); 
+                    setCartItem([])
                     console.log('loggedout succesfully');
                     return history.push("/");
         }catch(err){
@@ -63,7 +65,7 @@ function MyNavbar(){
                         <Link style={style2} to="/SaleSlider">SaleSlider</Link>
                         <Link style={style2} to="/Home">Home</Link>
                         <Link style={style3}  to="/Cart"><FontAwesomeIcon style={{marginTop:"4px",}}icon={faShoppingCart}/>
-                        <p style={{background:'yellow',padding:'0px 4px', marginLeft:'3px',borderRadius:'50%',color:'blueviolet',display:'inline'}}>{cartItemCount}</p>
+                        <p style={{background:'yellow',padding:'0px 4px', marginLeft:'2px',borderRadius:'50%',color:'blueviolet',display:'inline'}}>{cartItemCount}</p>
                         </Link>
                         <Link style={style2} to="/Sale">Sale</Link>
                     

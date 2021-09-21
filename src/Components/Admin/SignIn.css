@@ -1,7 +1,7 @@
 
 html,
 body {
-  background: #efefef;
+  background: #F4F4F4;
   
   font-family: 'Varela Round';
 }
@@ -98,9 +98,10 @@ a:hover {
 }
 
 .login-form-1 .form-group {
+  margin-right: 15px !important;
   margin-bottom: 0;
   border-bottom: 2px solid #efefef;
-  padding-right: 20px;
+  padding-right: 10px;
   position: relative;
 }
 .login-form-1 .form-group:last-child {

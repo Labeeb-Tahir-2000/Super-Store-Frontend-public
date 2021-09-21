@@ -22,11 +22,11 @@ function CartProducts (props){
                     <img style={{ width: '70px' }} alt="product" 
                     src={product.pImagePath} />
                 </td> 
-                <td style={{paddingTop:'25px'}} >{product.pTitle}</td>
-                <td style={{paddingTop:'25px'}}>{product.pDescription}</td>
-                <td style={{paddingTop:'25px'}}>{cartItem.filter((itemID)=> itemID === product._id).length}</td>
+                <td style={{paddingTop:'25px',color:'rgb(104, 104, 104)'}} >{product.pTitle}</td>
+                <td style={{paddingTop:'25px',color:'rgb(104, 104, 104)'}}>{product.pDescription}</td>
+                <td style={{paddingTop:'25px',color:'rgb(104, 104, 104)'}}>{cartItem.filter((itemID)=> itemID === product._id).length}</td>
                 <td style={{ paddingTop:'25px',color:'red' }} >Rs. {product.pPrice} </td>
-                <td style={{paddingTop:'25px'}}><button style={{background:'rgb(237, 33, 33)' , border:'1px' , color :' #F8F9FA'}}
+                <td style={{paddingTop:'25px'}}><button style={{background:'rgb(237, 33, 33)' , border:'1px' , color :' white'}}
                 onClick={()=> props.removeItem(product._id)}
                 > Remove </button> </td>
                 
@@ -39,8 +39,8 @@ function CartProducts (props){
         <div>  
                
                 <div className='displayLarge'>
-                 <table className="table  table-hover" style={{background:'white',textAlign:'center'}}>
-                     <thead>
+                 <table className="table  table-hover" style={{outlineStyle: 'solid',outlineWidth:'thin',outlineColor:'rgb(178, 178, 178)',textAlign:'center'}}>
+                     <thead  style={{background:'rgb(56, 188, 255)',color:'white'}}>
                          <tr>
                              <th>Product Image</th>
                              <th>Product Title</th>
@@ -50,7 +50,7 @@ function CartProducts (props){
                              <th>Remove Item</th>
                          </tr>
                      </thead>
-                     <tbody >
+                     <tbody  style={{background:'white'}} >
                          {renderItems()}
                      </tbody>
                  </table>

@@ -14,13 +14,13 @@ function CartProducts (props){
                         <img className='image'src={props.imageURL}></img>
                     </div>
                     <div className='col-5 detail' style={{ display:'flex-inline' , alignItems:'center' }}>
-                       <h5>{props.title}</h5>
+                       <h4>{props.title}</h4>
+                       <p style={{ color:'rgb(135, 135, 135)', fontSize:'15px'}}>QTY: <span style={{color:'rgb(42, 237, 139)',fontSize:'16px',fontWeight:'bold'}}>{cartItem.filter((itemID)=> itemID === props.id).length}</span></p>
                        <p style={{ color:'blue'}}>{props.description}</p>
-                       <p style={{ color:'rgb(163, 163, 163)'}}>Number of Items <span style={{color:'rgb(42, 237, 139)', fontWeight:'bold'}}>{cartItem.filter((itemID)=> itemID === props.id).length}</span></p>
                        <p style={{fontWeight:'bold' , color:'red'}}>Rs. {props.price} <span style={{fontWeight:'normal', color:'black', fontSize:'11px'}}>per Item</span></p>
                     </div>
-                    <div className='col-3'  style={{ display:'flex-inline' , alignItems:'center', marginLeft:'0px',paddingLeft:'0px' }}>
-                    <button style={{background:'rgb(237, 33, 33)' , border:'1px' , color :' #F8F9FA'}}
+                    <div className='col-3'  style={{ display:'flex-inline' , alignItems:'center', marginLeft:'0px',paddingLeft:'2px' }}>
+                    <button style={{background:'rgb(237, 33, 33)' , border:'1px' , color :' white'}}
                         onClick={()=> props.removeItem(props.id)}
                         > Remove </button>
                     </div>

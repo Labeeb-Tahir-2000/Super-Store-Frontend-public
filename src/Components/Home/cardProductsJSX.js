@@ -30,7 +30,8 @@ function CardProducts (props){
                                     <Link style={{textDecoration:'none'}} onClick={()=>addToCartHandler(props.id)} ><i style={{color:'blue'}} className="zmdi zmdi-plus icon"></i></Link>
                                 </div>
                                 <div style={{marginLeft:'10px', display:'inline'}}>
-                                 <Link style={{textDecoration:'none'}}to="Buy" ><i style={{color:'blue',textDecoration:'none'}} className="zmdi zmdi-shopping-cart icon"></i></Link>
+                                 <Link style={{textDecoration:'none'}} to={{pathname:'/shippingPage', state:`${props.id}`}} >
+                                     <i style={{color:'blue',textDecoration:'none'}} className="zmdi zmdi-shopping-cart icon"></i></Link>
                                 </div>
                                 </div>
                             </div>

@@ -6,12 +6,12 @@ import './../line.css';
 
 
 function Home(props){
-
+  const[cetegory , setCetegory] = useState('');
    const[products , setProduct] = useState([]);
    
   useEffect(() => {
     const pCetegory =  props.location.state;
-    console.log(pCetegory)
+    setCetegory(pCetegory)
     getProducts(pCetegory);
   }, []);
 
@@ -49,7 +49,7 @@ function Home(props){
                 :
 
                 <div>
-                  <hr style={{marginTop:'0px'}}className="hr-text" data-content="All Products"/>
+                  <h1 style={{marginTop:'3%', textAlign:'center'}}>{cetegory}</h1>
                     <div style={{marginTop:'50px' ,paddingRight:'4px',paddingLeft:'5%'}} className="row container-fluid myAllProducts">
                       {items}
                     </div>

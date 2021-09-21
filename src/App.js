@@ -19,6 +19,8 @@ import SaleSlider from "./Components/Home/Sliders/SaleSlider";
 import Cart from "./Components/shoopingCart/Cart";
 import ShowMore from './Components/Home/filterBar/utilits/ShowMoreCetegories';
 import CetegoryProducts from './Components/Home/filterBar/CetegoryProducts';
+import ShippingAddressPage from './Components/shipping/shippingAddress';
+import BuyNow from './Components/buyNow/BuyNow';
 import {ProviderFunc} from './Components/cartContext/cartContext';
 
 function App() {
@@ -39,9 +41,14 @@ function App() {
       </Route>
       <Route path = "/SaleSlider" exact>
         <SaleSlider/>
+      </Route>
+        <Route path = "/shippingPage" exact>
+        <ShippingAddressPage/>
         </Route>
-       
-      <Route path = "/forgetPassword" exact>
+        <Route path = "/BuyNow" exact>
+        <BuyNow/>
+        </Route>
+      <Route path = "/forgetPassword" exact>/shippingPage
         <Forget/>
       </Route>
       <Route path = "/Cart" exact>

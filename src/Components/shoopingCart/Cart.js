@@ -4,7 +4,8 @@ import CartProducts from "./CartJSX";
 import CartTable from "./cartTableJSX";
 import {useCookies} from "react-cookie";
 import Axios from 'axios';
-import './cartJSX.css'
+import './cartJSX.css';
+import {Link} from 'react-router-dom'
 
  function Cart(){
     const [cookie] = useCookies(['jwt']);
@@ -60,23 +61,26 @@ return <CartProducts removeItem={removeFromCart} imageURL ={item.pImagePath} id=
     return(
         <div  >
               {products.length === 0? 
-            <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ display: 'flex',flexDirection:'column', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
               <div><h2>Empty cart!</h2></div>
               <br />
-              <div><h2>Please add Products in Cart....</h2></div>
+              <div><h3>Please add Products in Cart......</h3></div>
             </div>
             :
-            <div className='container' style={{marginBottom:'100px'}}>
-              {cartProductsDisplay}
-              <CartTable product={[...products]} totalPrice={totalPrice=>{totalPriceHandler(totalPrice)}} removeItem={removeFromCart}/>
+            <div>
+              <h2 style={{color:'rgb(94, 94, 94)',textAlign:'center', marginTop:'2%',paddingTop:'0px',marginBottom:'1%'}}>My Cart ({cartItem.length})</h2>
+              <div className='container' style={{marginBottom:'100px'}}>
+                {cartProductsDisplay}
+                <CartTable product={[...products]} totalPrice={totalPrice=>{totalPriceHandler(totalPrice)}} removeItem={removeFromCart}/>
+              </div>
+              <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'space-around', bottom:'0px',background:'white'}}>
+                <h4 >Total:<span style={{color:'red',marginTop:'0px'}}> Rs. {totalPrice}</span></h4>
+                <Link to='/shippingPage' style={{marginBottom:'5px'}}className='btn btn-outline-warning'>Check Out</Link>
+              </div>
             </div>
-           
            }
 
-            <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'center', bottom:'0px',background:'white'}}>
-                    <h4 >Total:<span style={{color:'red'}}> Rs. {totalPrice}</span></h4>
-            </div>
-                
+            
         </div>
     )
 }

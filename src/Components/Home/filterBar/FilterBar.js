@@ -1,5 +1,8 @@
 import './filterBar.css';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+
 function filterBar(){
     return(
         <div>
@@ -7,7 +10,8 @@ function filterBar(){
         <div className='row container-fluid outerCetegoryFilterBar ' style={{padding:'4px',margin:'0px'}} >
                 <div className='col-12 filterBarHeading' style={{ padding:'5px 7px',marginTop:'20px' ,display:'flex',justifyContent:'space-between' }}>
                     <h2 style={{display:'inline'  }}>Cetegories</h2> 
-                    <Link style={{paddingTop:'4px',textDecoration:'none' ,color:'red' }} to='ShowMore'><p>Show More</p></Link>
+                    <Link style={{paddingTop:'4px',textDecoration:'none' ,color:'red' }} to='ShowMore'><p >Show More
+                        <FontAwesomeIcon  style={{color:'rgb(60, 205, 242)',marginLeft:'4px'}} icon={faArrowRight}/> </p></Link>
                 </div>
                 <div className='row container-fluid cetegoryFilterBar'style={{ padding:'0px',margin:'0px' }}>
                 <div className='col-12 col-sm-6 col-lg-6 col-xl-6' style={{ padding:'0px',margin:'0px' ,display:'flex-inline'}}>

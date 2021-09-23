@@ -2,8 +2,8 @@
 html,
 body {
   background: #F4F4F4;
-  
-  font-family: 'Varela Round';
+    font-family: Roboto ,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,sans-serif!important;
+
 }
 .flex-container{
   display : flex;
@@ -18,7 +18,7 @@ body {
 select option { 
   color: #6e6e6e;
   font-size: 15px;
-  font-weight: bold;
+ 
   padding: 0px !important;
  }
 
@@ -88,13 +88,14 @@ a:hover {
   background: transparent;
   color: #6e6e6e;
   padding: 10px 0px;
-  font-weight: bold;
+  font-weight: 600;
   height:auto;
-  font-size: 20px;
+  font-size: 17px !important;
 }
 .login-form-1 .form-control::-webkit-input-placeholder {
   color: #a8a8a8;
-  font-size: 20px;
+  font-size: 18px !important;
+  
 }
 
 .login-form-1 .form-group {
@@ -284,9 +285,13 @@ label.form-invalid:after {
   }
  }
  @media (max-width: 380px) {
-  input{
+  .login-form-1 .form-control{
  font-size:15px !important;
   }
-
+  .login-form-1 .form-control::-webkit-input-placeholder {
+    color: #a8a8a8;
+    font-size: 16px !important;
+    
+  }
  }
  

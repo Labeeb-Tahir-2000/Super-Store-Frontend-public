@@ -231,7 +231,7 @@ body{
 }
 
 .details .colors .not-available:before {
-  font-family: Material-Design-Iconic-Font;
+  font-family: Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,sans-serif!important;
   content: "\f136";
   color: #fff
 }

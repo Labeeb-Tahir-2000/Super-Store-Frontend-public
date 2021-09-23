@@ -74,7 +74,7 @@ return <CartProducts removeItem={removeFromCart} imageURL ={item.pImagePath} id=
                 <CartTable product={[...products]} totalPrice={totalPrice=>{totalPriceHandler(totalPrice)}} removeItem={removeFromCart}/>
               </div>
               <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'space-around', bottom:'0px',background:'white'}}>
-                <h4 >Total:<span style={{color:'red',marginTop:'0px'}}> Rs. {totalPrice}</span></h4>
+                <h4 >Subtotal:<span style={{color:'red',marginTop:'0px'}}> Rs. {totalPrice}</span></h4>
                 <Link to='/shippingPage' style={{marginBottom:'5px'}}className='btn btn-outline-warning'>Check Out</Link>
               </div>
             </div>

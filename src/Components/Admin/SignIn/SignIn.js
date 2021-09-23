@@ -17,10 +17,10 @@ return(
 			<div className="main-login-form">
 				<div className="login-group">
 					<div className="form-group">
-						<input type="email" className="form-control"  name="email" placeholder="Email" style={{fontSize:'20px'}} required='true'/>
+						<input type="email" className="form-control"  name="email" placeholder="Email"  required='true'/>
 					</div>
 					<div className="form-group">
-						<input type="password" className="form-control"  name="password" placeholder="password" style={{fontSize:'20px'}} required='true'/>
+						<input type="password" className="form-control"  name="password" placeholder="password"  required='true'/>
 					</div>
 					<div >
 					<p id='errMessage' style={{visibility:'hidden',color:'red',paddingTop:'10px'}}>empty</p>

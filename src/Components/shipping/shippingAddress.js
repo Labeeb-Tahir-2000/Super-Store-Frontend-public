@@ -41,21 +41,25 @@ function AddrressForm(props){
 	}, []);
 		
 	const cities=[
-			{ key: 1, value: "Chiniot" },
-			{ key: 2, value: "Chenab Nagar" },
-			{ key: 3, value: "Ahmad Nagar" },
+		{ key: 0, value: "" ,},
+			{ key: 1, value: "Chiniot" ,disabled:'true'  },
+			{ key: 2, value: "Chenab Nagar", disabled:""},
+			{ key: 3, value: "Ahmad Nagar" , disabled:'true'},
 	]
 	const provinces=[
-		{ key: 1, value: "Punjab" },
-		{ key: 2, value: "Sindh" },
-		{ key: 4, value: "Kpk" },
-		{ key: 5, value: "Kashmir" },
-		{ key: 6, value: "Balochistan" },
+		{ key: 0, value: "",},
+		{ key: 1, value: "Punjab",  disabled:''},
+		{ key: 2, value: "Sindh" ,disabled:'true'},
+		{ key: 4, value: "Kpk" ,disabled:'true' },
+		{ key: 5, value: "Kashmir" ,disabled:'true'},
+		{ key: 6, value: "Balochistan" ,disabled:'true'},
 	]
 
 	const cityChangeHandler= (event)=>{
-		setCity(event.target.value)
-	}
+			setCity(event.target.value);
+
+		}
+		
 	const provinceChangeHandler= (event)=>{
 		setProvince(event.target.value)
 	}
@@ -82,18 +86,18 @@ return(
 					<div className='  row'>
 						<div className="col-sm-6 col-12 form-group" >
 							<label className='label'style={{marginRight:'15px',fontWeight:'bold'  ,color:'black'}} for='cityName'>Select City</label>
-								<select className="select" id='cityName'  style={{ border:'10px solid red'}} onChange={cityChangeHandler} value={cityName}>
+								<select className="select" id='cityName'  style={{ border:'10px solid red'}} onChange={cityChangeHandler} value={cityName} required='true'>
 								{cities.map(city=>(
-									<option name='option' value={city.value}>{city.value}</option>
+									<option name='option' key={city.key}  disabled={city.disabled}  value={city.value} selected>{city.value} </option>
 								)) }	
 								</select>
 						
 						</div>
-						<div className="col-12 col-sm-6 form-group" >
+						<div className="col-12 col-sm-6 form-group" style={{marginRight:'0px',paddingRight:'0px'}}>
 						<label className='label'style={{marginRight:'15px',fontWeight:'bold' ,color:'black'}} for='provinceName'>Select Province</label>
-							<select className="select" name='provinceName' onChange={provinceChangeHandler} value={provinceName}>
+							<select className="select" style={{margin:'0px'}}name='provinceName' onChange={provinceChangeHandler} value={provinceName} required='true'>
 							{provinces.map(province=>(
-								<option name='option' key={province.key} value={province.value} selected>{province.value}</option>
+								<option name='option' key={province.key} disabled={province.disabled} value={province.value} selected>{province.value}</option>
 							)) }	
 							</select>
 						</div>

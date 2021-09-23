@@ -10,23 +10,34 @@ function CartProducts (props){
     const [cartItem] = useContext(CartContext)
     useEffect(() => {
         if(props.cartDisplay){
-            setQTY(1)
+            setQTY(1);
+          
+            props.totalPrice(props.price)
       
         }else{
-            setQTY(cartItem.filter((itemID)=> itemID === props.id).length)
+            setQTY(cartItem.filter((itemID)=> itemID === props.id).length);
+            setTotalPriceFunc();
+            props.totalPrice(totalPrice)
         }
+    
+            
+        
     }, [cartItem,props.id])
     
-
+    let totalPrice = 0;
+    const setTotalPriceFunc =()=> props.product.map(item=>{
+      totalPrice= totalPrice + (item.pPrice) * cartItem.filter((itemID)=> itemID === item._id).length;
+    })
+ 
     return( 
         <div>  
                 
-                <div className="row cartExternel " style={{marginTop:'5px',backgroundColor:'white', display:'flex-inline' , alignItems:'center'}} >
+                <div className="row cartExternel " style={{backgroundColor:'white', display:'flex-inline' , alignItems:'center'}} >
                     <div className='col-6 ' style={{ display:'flex' , alignItems:'center',margin:'0px', padding:'0px'}}>
-                        <img className='col-auto cartImage' style={{ display:'inline',margin:'0px', padding:'0px'}} src={props.imageURL}></img>
-                        <div className='col-auto 'style={{ display:'inline',paddingTop: '8px'}}>
-                            <p className='title'>{props.title}</p>
-                            <p style={{ color:'blue'}}>{props.description}</p>
+                        <img className='col-auto cartImage' style={{ display:'inline',marginBottom:'2px', padding:'0px'}} src={props.imageURL}></img>
+                        <div className='col-auto 'style={{ display:'inline'}}>
+                            <p className='title' style={{ paddingBottom:'0px', marginBottom:'0px'}}>{props.title}</p>
+                            <p style={{ paddingTop:'0px', marginTop:'2px',color:'blue'}}>{props.description}</p>
                         </div>
                     </div>
                     <div className='col-6 cartDetail' style={{ display:'flex',margin:'0px', padding:'0px',justifyContent:'space-between'}}>
@@ -40,7 +51,7 @@ function CartProducts (props){
                            {props.cartDisplay?
                            null
                            : 
-                            <button   style={{border:'none',fontSize:'20px',display:'flex',  marginLeft:'10px',padding:'0px', backgroundColor:'white', color:'rgb(249, 22, 22)'}}
+                            <button   style={{border:'none',fontSize:'20px',display:'flex',marginBottom:'4px',  marginLeft:'14px',padding:'0px', backgroundColor:'white', color:'rgb(249, 22, 22)'}}
                             onClick={()=> props.removeItem(props.id)}
                             > <FontAwesomeIcon icon={faTrashAlt} ></FontAwesomeIcon> </button>
                             }

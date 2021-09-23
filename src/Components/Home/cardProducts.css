@@ -159,7 +159,9 @@ body{
   color: #555555;
   padding: 20px;
   font-weight: 300 !important;
-  font-family: serif;
+
+    font-family: Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,sans-serif!important;
+
 }
 
 @media (max-width : 400px){

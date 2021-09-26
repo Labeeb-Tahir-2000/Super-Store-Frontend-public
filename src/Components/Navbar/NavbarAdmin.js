@@ -68,7 +68,7 @@ function MyNavbar(){
                         <p style={{background:'yellow',padding:'0px 4px', marginLeft:'2px',borderRadius:'50%',color:'blueviolet',display:'inline'}}>{cartItemCount}</p>
                         </Link>
                         <Link style={style2} to="/Sale">Sale</Link>
-                    
+                        <Link style={style2} to="/Orders">Ordes</Link>
                         <a style={style2} onClick={useSignOut}><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                     </Nav>
                 </Navbar.Collapse>

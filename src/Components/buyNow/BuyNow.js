@@ -23,8 +23,9 @@ function BuyNow(props){
     const [count,setCount] = useState(0);
     const [totalPrice , setTotalPrice] = useState(0);
     const [shippingFee, setShippingFee] = useState();
+    const [ previousTotal, setPreviousTotal] = useState(0)
 
-    const submit = useBuyNow();
+    const submit = useBuyNow(location.state);
  
     useEffect(async() => {
       if(location.state){
@@ -75,8 +76,19 @@ function BuyNow(props){
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${cookie.jwt}`        
         }});
-        
+        console.log(res.data.user)
             if(res.data  && res.data.status === "success" && res.data.user.address ){
+              if(res.data.user.orderedProducts){
+                  if(res.data.user.orderedProducts.length > 0){
+                    const productsArray = res.data.user.orderedProducts
+                    let previousTotal = 0;
+                    productsArray.map(item=>{
+                      previousTotal= previousTotal + (item.pPrice) ;
+                    })
+                    setPreviousTotal(previousTotal)
+                   
+                  }
+              }
               setUserAddress(res.data.user.address)
                 setShowAddress(true)
             }
@@ -112,9 +124,11 @@ const cartProductsDisplay = products.map(item=>{
 
 const totalPriceHandler =(price)=>{
           setTotalPrice(price)
-          if(price > 1000)setShippingFee(0)
-          if(price >=500 && price <= 1000)setShippingFee(30)
-          if(price < 500 )setShippingFee(50)
+       console.log(previousTotal)
+            if(price+previousTotal > 1000) setShippingFee(0);
+            else if(price+previousTotal >=500 && price+previousTotal <= 1000) setShippingFee(30)
+            else if(price+previousTotal < 500 ) setShippingFee(50)
+   
         }
 const displayShippingDetailsFunc=()=>{
   console.log(displayShippingDetails)
@@ -175,6 +189,10 @@ const hideShippingDetailsFunc=()=>{
                             <h5 style={{width:'100%', border:'0px', background:'#F57224' , color:'white',paddingTop:'8px',paddingBottom:'8px',textAlign:'center'}} >Order Details</h5>
                         </div>  
                         <div className='myOrderDetails' style={{padding:'12px 25px 10px 25px'}}>
+                        <div style={{display:'flex', justifyContent:'space-between'}}>
+                            <p style={{color:'rgb(76, 209, 69)' }}>Pending Order </p>
+                            <p style={{color:'rgb(244, 165, 36)'}}>Rs. {previousTotal}</p>
+                           </div> 
                           <div style={{display:'flex', justifyContent:'space-between'}}>
                             <p>Subtotal ({count} items) </p>
                             <p>Rs. {totalPrice}</p>
@@ -185,7 +203,7 @@ const hideShippingDetailsFunc=()=>{
                            </div>
                            <div style={{display:'flex', justifyContent:'space-between'}}> 
                             <h5>Total</h5>
-                            <h5 style={{color:'rgb(252, 22, 22)'}}>Rs. {totalPrice + shippingFee}</h5>
+                            <h5 style={{color:'rgb(252, 22, 22)'}}>Rs. {previousTotal +totalPrice + shippingFee}</h5>
                            </div> 
 
                         </div> 
@@ -195,8 +213,8 @@ const hideShippingDetailsFunc=()=>{
                </div>
               
                <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'space-around', bottom:'0px',background:'white',left:'0px',width:'100%'}}>
-                <h4 >Total:<span style={{color:'red',marginTop:'0px'}}> Rs. {totalPrice + shippingFee}</span></h4>
-                <button onClick={submit}  style={{marginBottom:'5px'}}>Check Out</button>
+                <h4 >Total:<span style={{color:'red',marginTop:'0px'}}> Rs. {previousTotal +totalPrice + shippingFee}</span></h4>
+                <button onClick={submit}  style={{marginBottom:'5px', border:'solid rgb(188, 11, 11)',padding:'3px ' ,width:'200px', background:'rgb(247, 142, 4)', color:'white'}}>Confirm Order</button>
               </div>
             </div>
              :
@@ -205,10 +223,17 @@ const hideShippingDetailsFunc=()=>{
               <div className='container-fluid' id='shippingDetails' style={{position:'fixed', display:'flex',left:'0px',alignContent:'center',top:'8%',display:'none',textAlign:'center'}}>
                               <div className='container shippingDetails' >
                               <h5><u>Shipping Charges:</u></h5>
-                               <p> Zero Charges if Subtotal is above Rs.1000</p>
-                                <p>30rs Charges if Subtotal is b/w Rs. 500 & 1000</p>
-                                <p>50rs Charges if Subtotal is below  Rs.500 </p>
+                               <p> Zero Charges if Subtotal + Pending Order is above Rs.1000</p>
+                                <p>30rs Charges if Subtotal + Pending Order is b/w Rs.500 & 1000</p>
+                                <p>50rs Charges if Subtotal + Pending Order is below  Rs.500 </p>
                                 <h4 style={{color:'red'}}>Click To Hide Shipping Details!</h4>
+                              </div>
+              </div> 
+              <div className='container-fluid' id='goToHome' style={{position:'fixed', display:'flex',left:'0px',alignContent:'center',top:'30%',display:'none',textAlign:'center'}}>
+                              <div className='container goToHome' >
+                              <h2>Order Submitted</h2>
+                            
+                                <Link to='/Home' style={{color:'red' }}><h6>Click To Continue Shopping!</h6></Link>
                               </div>
               </div> 
         </div>

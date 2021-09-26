@@ -9,6 +9,15 @@
     width:370px;
     border-radius:10%
 }
+.goToHome{
+    background:rgb(255, 170, 0);
+    color:white;
+    padding:10px 0px;
+    width:270px;
+    border-radius:10%;
+    text-decoration: none !important;
+}
+
 @media (max-width : 410px)  {
     .shippingDetails h5{
         font-size: 15px !important;
@@ -24,6 +33,7 @@
     } 
 }
   
+
 @media (max-width : 385px)  {
   
     .myAddressBook{
@@ -33,7 +43,7 @@
     }
     .myCart{
         position:absolute;
-        top:490px
+        top:510px
     }
     .outSide{
     
@@ -51,7 +61,7 @@
     }
     .myCart{
         position:absolute;
-        top:470px
+        top:500px
     }
     .outSide{
     

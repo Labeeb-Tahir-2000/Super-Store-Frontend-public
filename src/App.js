@@ -22,6 +22,8 @@ import CetegoryProducts from './Components/Home/filterBar/CetegoryProducts';
 import ShippingAddressPage from './Components/shipping/shippingAddress';
 import BuyNow from './Components/buyNow/BuyNow';
 import {ProviderFunc} from './Components/cartContext/cartContext';
+import Orders from './Components/Admin/showOrders/ShowOrders';
+import UserOrderDetails from './Components/Admin/showOrders/UserOrderDetails';
 
 function App() {
   // const context = useContext(userContext);
@@ -47,6 +49,12 @@ function App() {
         </Route>
         <Route path = "/BuyNow" exact>
         <BuyNow/>
+        </Route>
+        <Route path = "/Orders" exact>
+        <Orders/>
+        </Route>
+        <Route path = "/userOrderDetails" exact>
+        <UserOrderDetails/>
         </Route>
       <Route path = "/forgetPassword" exact>/shippingPage
         <Forget/>

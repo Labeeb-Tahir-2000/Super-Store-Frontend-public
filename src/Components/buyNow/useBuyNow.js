@@ -4,32 +4,40 @@ import {CartContext} from "../cartContext/cartContext";
 import { useCookies } from 'react-cookie'; 
 import { useHistory } from "react-router-dom";
 
-function useBuyNow(){
+function useBuyNow(props){
   
     const history = useHistory();
     const [cartItem] = useContext(CartContext);
     const [cookie] = useCookies(['jwt']);        
-return function(){
+return async function(){
+
     try{
-            const res=   Axios.post('http://localhost:3000/api/v1/users/setUserOrder',{products:cartItem},{
+           let  items =[]
+            {console.log('this is buy Now props',props)}
+            if(props){
+              items[0] = props;
+            }else{
+                items = [...cartItem]
+            }
+            const res=  await Axios.post('http://localhost:3000/api/v1/users/setUserOrder',{products:items},{
                 headers:{
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${cookie.jwt}`        
                 }}
             );
-               
+            if(res.data.status === 'success'){
+                document.getElementById('goToHome').style.display = 'inline';
+                document.getElementById('addressCartFooter').style.display = 'none';
+                document.getElementById('goToHome').style.opacity = '1';
+            }
             console.log(res)
          
           
         }catch(err){
-            if(err.response.data){
-                console.log(err.response.data.message)
-    
-            }else{
-   
+            
             console.log(err)
-            }
+            
         }
     }
 }

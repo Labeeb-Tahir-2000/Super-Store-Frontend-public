@@ -7,7 +7,9 @@
     color: rgb(131, 131, 131);
     text-align: center;
     height: 1.5em;
-    opacity: .5;}
+    opacity: .5;
+  margin-top: 0px !important;
+  }
     .hr-text:before {
       content: '';
      

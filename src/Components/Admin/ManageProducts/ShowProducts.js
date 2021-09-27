@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useContext } from 'react';
 import Axios from 'axios';
 import {useCookies} from 'react-cookie';
 import {Table} from 'antd';
 import ProductTableJSX from './ProductTable';
 import './productTable.css';
+import { UserContext } from '../../userContext/UserContext';
+import {useHistory} from 'react-router-dom'
 
 function ManageProducts (){
-
+    const history = useHistory();
+	const [userLoggedIn,setUserLoggedIn] = useContext(UserContext)
   const [cookie] = useCookies(['jwt']);  
   const [table,setTable] = useState();
   const [resProducts,setResProducts] = useState([]);
@@ -17,21 +20,36 @@ function ManageProducts (){
   const [allProducts,setAllProducts] = useState(" ");
 
   const edibleCetegories = [
-    { key: 1, value: "Beans" },
-    { key: 2, value: "Lays" },
-    { key: 3, value: "Cold Drinks" },
-    { key: 4, value: "Biscuits" },
-    { key: 5, value: "Spices" },
-    { key: 6, value: "Cooking Oil" },
-    { key: 7, value: "Chocolate" },
+    { key: 1, value: "Chips" },
+    { key: 2, value: "Chocolate" },
+    { key: 3, value: "Biscuit" },
+    { key: 4, value: "Juice" },
+    { key: 5, value: "Cold Drink" },
+    { key: 6, value: "Cooking Ghee" },
+    { key: 7, value: "Cooking Oil" },
+    { key: 8, value: "Recipe Masalah" },
+    { key: 9, value: "Spice" },
+    { key: 10, value: "Herb" },
+    { key: 11, value: "Grain" },
+    { key: 12, value: "Souce" },
+    { key: 13, value: "Kachup" },
+    { key: 14, value: "Rice" },
 
 ]
-const nonEdibleCetegories = [
-    { key: 1, value: "Deturjunts" },
-    { key: 2, value: "Sprays" },
-    { key: 3, value: "Stationary" },
-    { key: 11, value: "Cell" }
-    
+const nonEdibleCetegories =[
+    { key: 1, value: "Stationary" },
+    { key: 2, value: "Beuty & Beuty" },
+    { key: 3, value: "Perfume" },
+    { key: 4, value: "Soap" },
+    { key: 5, value: "Detergent" },
+    { key: 6, value: "Surface Cleaner" },
+    { key: 7, value: "Bathroom Cleaner" },
+    { key: 8, value: "Tissue" },
+    { key: 9, value: "Insect Killer" },
+    { key: 10, value: "Electronic" },
+    { key: 11, value: "Face Mask" },
+    { key: 12, value: "Baby Pamper" },
+    { key: 13, value: "Adult Pamper" }
 ]
 
    const  onEdibleChange=()=>{
@@ -103,16 +121,10 @@ const nonEdibleCetegories = [
         }
     };
 
-    const productTableDisplay = resProducts.map(item=>{
-        return <ProductTableJSX pTitle={item.pTitle} pID={item._id} pCetegory={item.pCetegory} pPrice={item.pPrice} pEdible={item.pEdible}
-         pOnSale={item.pOnSale} pImagePath={item.pImagePath} pStock={item.pStock} pDescription={item.pDescription} />
-    })
-    
-
-
 
     return(
-        
+        <>
+		{userLoggedIn.role === 'admin'?  
         <div >
          <div className="container-fluid myFilterBar row myForm" style={{paddingTop:'20px', paddingBottom:'20px', paddingLeft:'30px',margin:'0px' }} >
             <div className="col-sm-12">
@@ -177,12 +189,15 @@ const nonEdibleCetegories = [
             </div>
          </div>  
          <div style={{paddingTop:'10px'}}>
-         {productTableDisplay}
+         <ProductTableJSX products={resProducts}/>
          </div>
         
        
          </div>   
-      
+      	:
+          history.push({pathname:'/Home'})
+                          }
+          </>
 
     );
 }

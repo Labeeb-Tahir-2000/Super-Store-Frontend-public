@@ -1,10 +1,18 @@
 import React from 'react';
 import useSignUp from '../../userHooks/useSignUp';
 import "./../SignIn.css";
+import {Link, useHistory} from 'react-router-dom';
+import {useCookies} from 'react-cookie';
 
 function  SignUp(){
+	const history = useHistory();
     const signUp = useSignUp();
+	const [cookie] = useCookies(['jwt']);
     return(
+<>
+{cookie.jwt?
+history.push({pathname:'/Home'})
+:
 <div className="text-center" style={{padding:'50px'  }}>
 	<div className="logo">Sign Up</div>
 	 <div className="login-form-1" style={{width:'400px'}} >
@@ -30,9 +38,14 @@ function  SignUp(){
 				</div>
 				<button type="submit" onSubmit={signUp} className="login-button"><i className="fa fa-chevron-right"></i></button>
 			</div>
+			<div className="etc-login-form">
+				<p>Already have a account? <Link to="/">Log In</Link></p>
+			</div>
 		</form>
 	</div>	
 </div>
+}
+</>
     )
 }
 export default SignUp;

@@ -12,7 +12,7 @@
 .goToHome{
     background:rgb(255, 170, 0);
     color:white;
-    padding:10px 0px;
+    padding:50px 0px;
     width:270px;
     border-radius:10%;
     text-decoration: none !important;
@@ -35,7 +35,9 @@
   
 
 @media (max-width : 385px)  {
-  
+    .confirmOrder{
+        width:170px !important
+    }
     .myAddressBook{
         position:absolute;
         top:0px
@@ -63,10 +65,39 @@
         position:absolute;
         top:500px
     }
+    .goToHome{
+       
+        width:370px;
+      
+    }
     .outSide{
     
         padding-top: 40px !important
         }
+}
+@media (min-width : 715px) and (max-width:750px){
+    .pendingOrder{
+        font-size: 15px !important;
+        }
+        
+}
+@media (min-width : 700px) and (max-width:714px){
+    .pendingOrder{
+        font-size: 14px !important;
+        }
+        
+}
+@media (min-width : 595px) and (max-width:640px){
+    .pendingOrder{
+        font-size: 15px !important;
+        }
+        
+}
+@media (min-width : 576px) and (max-width:594px){
+    .pendingOrder{
+        font-size: 14px !important;
+        }
+        
 }
 @media (min-width : 576px) and (max-width:700px)  {
   .myOrderDetails{

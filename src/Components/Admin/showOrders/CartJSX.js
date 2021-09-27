@@ -40,11 +40,12 @@ function CartProducts (props){
                         </div>
                         <div className='col-auto ' style={{display:'flex',justifyContent:'space-between', flexDirection:'column'}} >
                             <h6 style={{ color:'rgb(135, 135, 135)'}}>QTY: <span style={{color:'rgb(42, 237, 139)',fontWeight:'bold'}}>{QTY}</span></h6>
-                          
+                          {props.removeItem?
                             <button   style={{border:'none',fontSize:'20px',display:'flex',marginBottom:'4px',  marginLeft:'14px',padding:'0px', backgroundColor:'white', color:'rgb(249, 22, 22)'}}
                             onClick={()=> props.removeItem(props.id)}
                             > <FontAwesomeIcon icon={faTrashAlt} ></FontAwesomeIcon> </button>
-                            
+                           :
+                           null} 
                         </div>
                        
                     </div>

@@ -6,7 +6,7 @@ import Axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { useLocation } from "react-router-dom"
 
-function AddrressForm(props){
+function AddrressForm(){
 	const location = useLocation();
 	const [cookie, setCookie] = useCookies(['jwt']);  
 	const history = useHistory();
@@ -65,7 +65,8 @@ function AddrressForm(props){
 	}
 
 return(
-
+<>	
+{cookie.jwt ?
 <div className="my-text-center" style={{padding:'50px' }} >
 		{showAddressForm?
 		<form onSubmit={submitAddress}>
@@ -118,8 +119,10 @@ return(
 		}
 		
 </div>
-
-
+:
+history.push({pathname:'/'})
+	}
+</>
 )
 };
 export default AddrressForm;

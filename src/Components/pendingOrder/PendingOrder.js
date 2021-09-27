@@ -2,52 +2,35 @@ import React,{useState,useEffect,useContext} from 'react';
 import Axios from 'axios';
 import { useCookies } from 'react-cookie';
 
-import CartProducts from './CartJSX';
-import '../../buyNow/buyNow.css';
+import CartProducts from '../Admin/showOrders/CartJSX';
+import '../buyNow/buyNow.css';
 import { useLocation } from "react-router-dom";
 import { useHistory,Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faAddressCard ,faThumbtack,faSignature, faPhoneAlt} from '@fortawesome/free-solid-svg-icons';
-import { getSuggestedQuery } from '@testing-library/dom';
+
 
 
 function BuyNow(){
   const history = useHistory();
   const [productsIDs, setProductsIDs] = useState([])
-    const  [showAddress, setShowAddress] = useState(false)
-    const  [userAddress, setUserAddress] = useState();
-    const [productListEdited, setProductListEdited] = useState('')
+ 
     const [cookie] = useCookies(['jwt']);
- const [shippingFee, setShippingFee] = useState()
     const [products , setProducts] = useState([]);
     const location = useLocation();
     const [count,setCount] = useState(0);
     const [totalPrice , setTotalPrice] = useState(0);
     const [user, setUser] = useState({});
-    let firstRender = true
+  
     
  
-    useEffect(async() => {
-      if(location.state){
-        if(firstRender){
-        getUser(location.state.user._id)
-        // 
-        //   productsIDFunc()
-        //   location.state.user.orderedProducts = []
-        // }else if(products.length > 0){
-        // productsIDFunc(products)
-      // }
-        }
-      }else{
-       console.log('no user sended here')
-      }
+    useEffect(async() => {  
+        getUser()
+    }, [])
     
-     
-    }, [productListEdited])
-    
-    const getUser=async(id)=>{
+    const getUser=async()=>{
       try{
-        const res = await Axios.post('http://localhost:3000/api/v1/users/allOrders',{ID :id},
+        const res = await Axios.post('http://localhost:3000/api/v1/users/allOrders',{ID :'LoggedInUser'},
         {
             headers:{
                 'Accept': 'application/json',
@@ -77,7 +60,7 @@ const  getProducts = async (idArray) =>{
         if(res){
           console.log(res.data.product)
         setProducts(res.data.product.sort((a, b) => parseFloat(a.pPrice) - parseFloat(b.pPrice)))
-        setProductListEdited('yes')
+       
         }
       }catch(err){
         if(err.response){
@@ -101,62 +84,27 @@ const  productsIDFunc=(products)=>{
     setProductsIDs(ID)
     getProducts(ID)
 }
-const removeItem = (productId) => {
-  console.log(productId)
-  const productsArray = [...productsIDs]
 
-    const index=  productsArray.indexOf(productId);
-
-    productsArray.splice(index,1)
-   
-   updateProductList(productsArray)
-       
- }
-
- const  updateProductList=async(productList)=>{
-  try{
- 
-    const res = await Axios.post('http://localhost:3000/api/v1/users/updateOrdersList',{productList:productList,userID:user._id},
-    {
-        headers:{
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${cookie.jwt}`        
-        }
-    }
-    );
-      if(res){
-        // setProducts(res.data.user.orderedProducts.sort((a, b) => parseFloat(a.pPrice) - parseFloat(b.pPrice)))
-        
-        productsIDFunc(res.data.user.orderedProducts)
-       
-        firstRender = false
-      //  console.log(res.data.users.orderedProducts.length)
-      }
-        
-  }catch(err){
-    console.log(err)
-  }
-
-}
- const cartProdcutsHeader = <div  className="row " style={{color:'white',paddingTop:'8px', paddingBottom:'0px',backgroundColor:'rgb(0, 191, 255)', display:'flex-inline' , justifyContent:'center',alignContent:'center'}}>
-                              <div className='col-6' style={{ display:'flex',justifyContent:'start'}}>
-                                <p><span style={{color:'black'}}>{count}</span> ITEM(s)</p>
+ const cartProdcutsHeader = <div >
+                              <div className="row " style={{color:'white',paddingTop:'8px', paddingBottom:'0px',backgroundColor:'rgb(242, 0, 255)',textAlign:'center'}}>
+                                <h3>Following orders are not yet delivered</h3>
                               </div>
-                              <div className='col-6 ' style={{ display:'flex',justifyContent:'space-between',textAlign:'end'}}>
-                                <p style={{ textAlign:'start'}}>PRICE</p>
-                                <p style={{ textAlign:'end'}}>QUANTITY</p>
+                              <div className="row " style={{color:'white',paddingTop:'8px', paddingBottom:'0px',backgroundColor:'rgb(0, 191, 255)', display:'flex-inline' , justifyContent:'center',alignContent:'center'}}> 
+                                <div className='col-6' style={{ display:'flex',justifyContent:'start'}}>
+                                  <p><span style={{color:'black'}}>{count}</span> ITEM(s)</p>
+                                </div>
+                                <div className='col-6 ' style={{ display:'flex',justifyContent:'space-between',textAlign:'end'}}>
+                                  <p style={{ textAlign:'start'}}>PRICE</p>
+                                  <p style={{ textAlign:'end'}}>QUANTITY</p>
+                                </div>
                               </div>
                             </div>
-
 const cartProductsDisplay = products.map(item=>{
-  return <CartProducts product={[...products]} productID={[...productsIDs]} totalPrice={totalPrice=>{totalPriceHandler(totalPrice)}} removeItem={removeItem} imageURL ={item.pImagePath} id={item._id} title={item.pTitle} price={item.pPrice} description={item.pDescription}/>
+  return <CartProducts product={[...products]} productID={[...productsIDs]} totalPrice={totalPrice=>{totalPriceHandler(totalPrice)}} imageURL ={item.pImagePath} id={item._id} title={item.pTitle} price={item.pPrice} description={item.pDescription}/>
       })
+
       const totalPriceHandler =(price)=>{
         setTotalPrice(price)
-        if(price > 1000)setShippingFee(0)
-        if(price >=500 && price <= 1000)setShippingFee(30)
-        if(price < 500 )setShippingFee(50)
       }
 
 
@@ -205,13 +153,10 @@ const cartProductsDisplay = products.map(item=>{
                             <p>Subtotal ({count} items) </p>
                             <p>Rs. {totalPrice}</p>
                            </div> 
-                           <div style={{display:'flex', justifyContent:'space-between'}}>
-                            <p>Shipping fee</p>
-                            <p>Rs. {shippingFee}</p>
-                           </div>
+                          
                            <div style={{display:'flex', justifyContent:'space-between'}}> 
                             <h5>Total</h5>
-                            <h5 style={{color:'rgb(252, 22, 22)'}}>Rs. {totalPrice + shippingFee}</h5>
+                            <h5 style={{color:'rgb(252, 22, 22)'}}>Rs. {totalPrice}</h5>
                            </div> 
 
                         </div> 
@@ -221,8 +166,7 @@ const cartProductsDisplay = products.map(item=>{
                </div>
               
                <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'space-around', bottom:'0px',background:'white',left:'0px',width:'100%'}}>
-                <h4 >Total:<span style={{color:'red',marginTop:'0px'}}> Rs. {totalPrice + shippingFee}</span></h4>
-                <button  style={{marginBottom:'5px'}}>Check Out</button>
+                <h4 >Total:<span style={{color:'red',marginTop:'0px'}}> Rs. {totalPrice}</span></h4>
               </div>
             </div>
             

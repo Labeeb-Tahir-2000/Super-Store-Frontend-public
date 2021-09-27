@@ -31,14 +31,13 @@ function MyNavbar(){
         }
     }
     return(
-     
+  <>
+  {cookie.jwt?   
         <Navbar className="navigation-bar "  expand="lg" bg="light" variant="light">
         <Link className="navbar-brand" style={style} to="/Home">Mehar Super Store</Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse   id="basic-navbar-nav ">
         <Nav  className=" mr-auto  ">
-        <Link style={style2} to="/">Login</Link>
-        <Link style={style2} to="/SignUp">SignUp</Link>
         <Link style={style2} to="/Home">Home</Link>
           <Link style={style2} to="/Sale">Sale</Link>
           <Link style={style2} to="/Cart">Cart</Link>
@@ -49,6 +48,10 @@ function MyNavbar(){
         </Nav>
         </Navbar.Collapse>
         </Navbar>
+:
+history.push({pathname:'/'})
+        }
+ </> 
     )
 }
 export default MyNavbar;

@@ -5,9 +5,10 @@ import CartTable from "./cartTableJSX";
 import {useCookies} from "react-cookie";
 import Axios from 'axios';
 import './cartJSX.css';
-import {Link} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 
  function Cart(){
+   const history = useHistory();
     const [cookie] = useCookies(['jwt']);
     const [cartItem,setCartItem] = useContext(CartContext);
     const [products , setProducts] = useState([]);
@@ -59,6 +60,8 @@ return <CartProducts removeItem={removeFromCart} imageURL ={item.pImagePath} id=
 
     })
     return(
+      <>	
+  {cookie.jwt ?
         <div  >
               {products.length === 0? 
             <div style={{ display: 'flex',flexDirection:'column', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
@@ -73,15 +76,19 @@ return <CartProducts removeItem={removeFromCart} imageURL ={item.pImagePath} id=
                 {cartProductsDisplay}
                 <CartTable product={[...products]} totalPrice={totalPrice=>{totalPriceHandler(totalPrice)}} removeItem={removeFromCart}/>
               </div>
-              <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'space-around', bottom:'0px',background:'white'}}>
+              <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'space-around', bottom:'0px',background:'white',left:'0px',width:'100%'}}>
                 <h4 >Subtotal:<span style={{color:'red',marginTop:'0px'}}> Rs. {totalPrice}</span></h4>
-                <Link to='/shippingPage' style={{marginBottom:'5px'}}className='btn btn-outline-warning'>Check Out</Link>
+                <Link className='checkOut' to='/shippingPage' style={{textAlign:'center',textDecoration:'none', marginBottom:'5px', border:'solid rgb(188, 11, 11)',padding:'3px ' ,width:'200px', background:'rgb(247, 142, 4)', color:'white'}}>Check Out</Link>
               </div>
             </div>
            }
 
             
         </div>
+:
+history.push({pathname:'/'})     
+ }   
+        </>
     )
 }
 export default Cart;

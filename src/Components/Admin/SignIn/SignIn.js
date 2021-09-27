@@ -1,14 +1,19 @@
 import React, { useContext } from 'react';
 import useLogin from './../../userHooks/useLogin';
 import "./../SignIn.css";
-import User from './../../userHooks/UserContext';
-import { Link } from 'react-router-dom';
+import { Link ,useHistory} from 'react-router-dom';
+import {useCookies} from 'react-cookie';
 
 function Signin(){
+	const history = useHistory();
     const login = useLogin();
-	const {user} = useContext(User);
-return(
+	const [cookie] = useCookies(['jwt']);
 
+return(
+<>
+{cookie.jwt?
+history.push({pathname:'/Home'})
+:
 <div className="text-center" style={{padding:'50px' }} >
 	<div className="logo">login</div>
 	<div className="login-form-1" style={{width:'400px'}}>
@@ -36,6 +41,9 @@ return(
 		</form>
 	</div>	
 </div>
+
+}
+</>
 
 )
 };

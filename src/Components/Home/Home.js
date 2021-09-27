@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React,{useEffect,useState,useContext} from "react";
 import ImageSLiderSmall from "./Sliders/ImageSliderSmaller";
 import Axios from "axios";
 import {useCookies} from "react-cookie";
@@ -8,10 +8,12 @@ import './imageSlider.css';
 import FilterBar from "./filterBar/FilterBar";
 import SaleSlider from "./Sliders/SaleSlider";
 import ImageSliderLarge from "./Sliders/ImageSliderLarger";
-
+import { UserContext } from "../userContext/UserContext";
+import {useHistory} from 'react-router-dom'
 
 function Home(){
-  
+  const history = useHistory();
+  const [userLoggedIn] = useContext(UserContext)
   const [cookie] = useCookies(['jwt']);
    const[products , setProduct] = useState([]);
   
@@ -78,43 +80,52 @@ function Home(){
 
     
     return(
-  <div>
-    {/* image Sliders */}
-    <div className="imageSliderLarge">
-       <ImageSliderLarge/>
-    </div>
-    <div className="imageSliderSmall">
-      <ImageSLiderSmall/>
-    </div>
-
-{/* Filter bar */} 
-<FilterBar/>
-
- {/* Products cart */}      
-       {products.length === 0 ?
-                <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
-                    <h2>No post yet...</h2>
-                </div> 
-                :
-
-                <div>
-                  <div className="saleSliderLarger" >             
-                    <SaleSlider />
-                   </div>
-                   <div className='saleCardSmall' >
-                      <div style={{marginTop:'15px' , marginRight:'0px',paddingRight:'3px'}} className="row container-fluid">
-                        {hrLine}
-                        {itemsSale}
-                     </div>
+     
+      
+      <div>
+      {cookie.jwt ?
+    
+        <div>
+        {/* image Sliders */}
+        <div className="imageSliderLarge">
+           <ImageSliderLarge/>
+        </div>
+        <div className="imageSliderSmall">
+          <ImageSLiderSmall/>
+        </div>
+    
+    {/* Filter bar */} 
+    <FilterBar/>
+    
+     {/* Products cart */}      
+           {products.length === 0 ?
+                    <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
+                        <h2>Loading.....</h2>
+                    </div> 
+                    :
+    
+                    <div>
+                      <div className="saleSliderLarger" style={{marginBottom:'0px'}} >             
+                        <SaleSlider />
+                       </div>
+                       <div className='saleCardSmall' style={{marginTop:'0px'}}>
+                          <div style={{ marginRight:'0px',paddingRight:'3px'}} className="row container-fluid">
+                            {hrLine}
+                            {itemsSale}
+                         </div>
+                        </div>
+                      <hr style={{marginTop:'0px'}}className="hr-text" data-content="All Products"/>
+                        <div style={{marginTop:'50px' ,paddingRight:'4px',paddingLeft:'5%'}} className="row container-fluid myAllProducts">
+                          {items}
+                        </div>
+                        
                     </div>
-                  <hr style={{marginTop:'0px'}}className="hr-text" data-content="All Products"/>
-                    <div style={{marginTop:'50px' ,paddingRight:'4px',paddingLeft:'5%'}} className="row container-fluid myAllProducts">
-                      {items}
-                    </div>
-                    
-                </div>
-}
-  </div>
+    }
+      </div>
+      :
+      history.push({pathname:'/'})
+    }
+    </div>
     );
 
 }

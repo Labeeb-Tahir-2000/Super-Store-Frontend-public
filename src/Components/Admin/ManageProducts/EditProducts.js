@@ -1,15 +1,41 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState,useEffect,useContext} from 'react';
 import useEditProductFunc from './EditProductFunc';
 import { app }  from './../../firebase/firebaseConfig';
 import "./../SignIn.css";
+import {useLocation,useHistory} from 'react-router-dom';
+import { UserContext } from '../../userContext/UserContext';
 
 function EditProducts(){
+	const history = useHistory();
+	const [userLoggedIn,setUserLoggedIn] = useContext(UserContext)
+	const Location = useLocation();
     const [image, setImage]= useState(null);
 	const [sale, setSale]= useState(' ');
 	const [edible, setEdible]= useState(' ');
 	const [URL, setURL] = useState(' ');
 	const [cetegoryValue, setCetegoryValue] = useState(" ")
+	const [ID, setID] = useState('');
+	const [Title, setTitle] = useState('')
+	const [Description, setDescription] = useState('')
+	const [Price, setPrice] = useState()
+	useEffect(() => {
+	if(Location.state){
+		setID(Location.state.product._id)
+		setTitle(Location.state.product.pTitle)
+		setDescription(Location.state.product.pDescription)
+		setCetegoryValue(Location.state.product.pCetegory)
+		setPrice(Location.state.product.pPrice);
+		setEdible(Location.state.product.pEdible);
+		setSale(Location.state.product.pOnSale);
+		if(Location.state.product.pEdible === 'edible'){
+			document.getElementById('Edible').checked ='true'
+		}if(Location.state.product.pOnSale === 'onSale'){
+			document.getElementById('Sale').checked ='true'
+		}
+		
+	}
+	}, [])
     const edibleCetegories = [
 		{ key: 1, value: "Chips" },
 		{ key: 2, value: "Chocolate" },
@@ -44,8 +70,20 @@ function EditProducts(){
 	]
 	const useEditProductFuncCall = useEditProductFunc();
 
+	const IDChangeHandler =(event)=>{
+		setID(event.currentTarget.value)
+	}
+	const titleChangeHandler =(event)=>{
+		setTitle(event.currentTarget.value)
+	}
+	const descriptionChangeHandler =(event)=>{
+		setTitle(event.currentTarget.value)
+	}
 	const onCetegoryChange = (event) => {
         setCetegoryValue(event.currentTarget.value)
+    }
+	const priceChangeHandler = (event) => {
+        setPrice(event.currentTarget.value)
     }
     
 	const saleChangeLisner =()=>{
@@ -84,6 +122,8 @@ function EditProducts(){
 		
 	 }
     return(
+		<>
+		{userLoggedIn.role === 'admin'?
     <div className="text-center" style={{padding:'50px' }}>
 	<div className="logo">Edit Products</div>
 	    <div className="login-form-1">
@@ -92,18 +132,18 @@ function EditProducts(){
 			<div className="main-login-form">
 				<div className="login-group">
                 <div className="form-group">
-						<input type="text" className="form-control"  name="pID" placeholder="Prodcut ID" required='true'/>
+						<input type="text" className="form-control"  name="pID" placeholder="Prodcut ID" onChange={IDChangeHandler}required='true' value={ID}/>
 					</div>
 					<div className="form-group">
-						<input type="text" className="form-control"  name="pTitle" placeholder="Prodcut Name"/>
+						<input type="text" className="form-control"  name="pTitle" onChange={titleChangeHandler} placeholder="Prodcut Name" value={Title}/>
 					</div>
 
                     <div className="form-group">
-						<input type="text" className="form-control"  name="pPrice" placeholder="Product Price"/>
+						<input type="text" className="form-control"  name="pPrice" onChange={priceChangeHandler} value={Price} placeholder="Product Price"/>
 					</div>
 
 					<div className="form-group">
-						<input type="text" className="form-control"  name="pDescription" placeholder="Product Decription"/>
+						<input type="text" className="form-control"  name="pDescription" onChange={descriptionChangeHandler} value={Description} placeholder="Product Decription"/>
 					</div>
 					
                     <div className="form-group">
@@ -164,6 +204,10 @@ function EditProducts(){
 	<img style={{marginTop:'10px' , maxWidth:'250px', maxHeight:'240px' ,borderRadius:'50%'}}src={URL}/>
 	</div>
     </div>
+	:
+	history.push({pathname:'/Home'})
+					}
+	</>
     )
 }
 export default EditProducts;

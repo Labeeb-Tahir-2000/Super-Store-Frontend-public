@@ -1,11 +1,13 @@
 
 import Axios from 'axios';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import { useCookies } from 'react-cookie';
 import { useHistory } from "react-router-dom";
 
+
 function UseSignUp(){
    const [cookie,setCookie] = useCookies(['jwt']);
+
    const history = useHistory();
     return async function(e){
     try
@@ -18,6 +20,7 @@ function UseSignUp(){
          password :e.target.password.value,
          confirmPassword:e.target.confirmPassword.value
        });
+     
        setCookie('jwt',res.data.jwt, { path:'/' , expires : new Date(Date.now()+(1000*60*60*24*7)) }); 
        if(res.data && res.data.jwt && res.data.status === "success") return history.push("/Home");
        

@@ -1,10 +1,14 @@
-import React,{Component} from 'react';
+import React,{useContext} from 'react';
 import "./../SignIn.css";
+import { useHistory } from 'react-router';
 import useAddProductFunc from './AddProductFunc';
 import { app }  from './../../firebase/firebaseConfig';
 import { useState } from 'react';
+import { UserContext } from '../../userContext/UserContext';
 
 function AddProducts (){
+	const history = useHistory();
+	const [userLoggedIn,setUserLoggedIn] = useContext(UserContext)
 	const [image, setImage]= useState(null);
 	const [sale, setSale]= useState(' ');
 	const [edible, setEdible]= useState(' ');
@@ -87,7 +91,10 @@ function AddProducts (){
 	 }
 
     return(
+		<>
+		{userLoggedIn.role === 'admin'?
         <div className="text-center" style={{padding:'50px' }}>
+
 	<div className="logo">Add Products</div>
 	<div className="login-form-1">
 		<form id="register-form" className="text-left"  onSubmit={useAddProductFuncCall}>
@@ -164,7 +171,10 @@ function AddProducts (){
 	<img style={{marginTop:'10px' , maxWidth:'250px', maxHeight:'240px' ,borderRadius:'50%'}}src={URL}/>
 	</div>
     </div>
-	
+	:
+	history.push({pathname:'/Home'})
+	}
+	</>
     );
 
 }

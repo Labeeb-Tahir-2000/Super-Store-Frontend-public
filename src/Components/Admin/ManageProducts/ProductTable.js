@@ -1,12 +1,31 @@
 import React from 'react'; 
 import './productTable.css';
+import {useHistory} from 'react-router-dom'
+
 function ProductTable (props){
+ const history = useHistory();
+ 
+ const renderItems = props.products.map(product => (
+        <tr style={{color:'rgb(107, 107, 107)'}} key={product._id}>
+          <td onClick={()=> history.push({pathname:'/EditProducts' , state:{product:product}})} style={{maxWidth:'170px'}}>{product._id}</td>
+          <td style={{maxWidth:'120px',color:'black', fontWeight:'bold'}}>{product.pTitle}</td>
+          <td>{product.pDescription}</td>
+          <td >{product.pPrice}</td>
+          <td className="toNonDisplay">{product.pEdible}</td>
+          <td className="toNonDisplay">{product.pCetegory}</td>
+          <td>{product.pStock}</td>
+          <td>{product.pOnSale}</td>
+    
+        </tr>  
+         
+      ))
+  
     return(
+      
         <div className="container-fluid myTable" >
-        <h2 style={{textAlign:'center'}}>Product</h2>
-                
-        <table className="table table-hover">
-          <thead>
+  
+  <table className="table  table-hover" style={{outlineStyle: 'solid',outlineWidth:'thin',outlineColor:'rgb(178, 178, 178)',textAlign:'center'}}>
+        <thead  style={{background:'rgb(56, 188, 255)',color:'white'}}>
             <tr>
             <th >ID</th>
               <th style={{maxWidth:'80px'}}>Title</th>
@@ -15,23 +34,13 @@ function ProductTable (props){
               <th className="toNonDisplay">Edible</th>
               <th className="toNonDisplay">Cetegory</th>
               <th>Stock</th>
-              <th>On Sale</th>
-         
-              
+              <th>On Sale</th>  
             </tr>
           </thead>
           <tbody>
-            <tr>
-            <td >{props.pID}</td>
-            <td style={{maxWidth:'80px'}}>{props.pTitle}</td>
-            <td>{props.pDescription}</td>
-            <td >{props.pPrice}</td>
-            <td className="toNonDisplay">{props.pEdible}</td>
-            <td className="toNonDisplay">{props.pCetegory}</td>
-            <td>{props.pStock}</td>
-            <td>{props.pOnSale}</td>
-        
-            </tr>
+
+           {renderItems}
+
           </tbody>
         </table>
         </div>

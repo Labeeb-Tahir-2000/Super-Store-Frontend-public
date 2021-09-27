@@ -1,8 +1,7 @@
 import React from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import {useContext} from 'react';
-import {BrowserRouter as Router , Route,Switch ,Redirect} from "react-router-dom";
+import {BrowserRouter as Router , Route,Switch } from "react-router-dom";
 import NavbarUser from "./Components/Navbar/NavbarUser";
 import NavbarAdmin from "./Components/Navbar/NavbarAdmin";
 import Sale from "./Components/Sale/Sale";
@@ -22,14 +21,17 @@ import CetegoryProducts from './Components/Home/filterBar/CetegoryProducts';
 import ShippingAddressPage from './Components/shipping/shippingAddress';
 import BuyNow from './Components/buyNow/BuyNow';
 import {ProviderFunc} from './Components/cartContext/cartContext';
+import {UserProviderFunc} from './Components/userContext/UserContext';
 import Orders from './Components/Admin/showOrders/ShowOrders';
 import UserOrderDetails from './Components/Admin/showOrders/UserOrderDetails';
+import PendingOrder from './Components/pendingOrder/PendingOrder.js'
 
 function App() {
-  // const context = useContext(userContext);
+  
   
   return (
     <div className = "App">
+<UserProviderFunc>    
 <ProviderFunc>    
    <Router>
      <NavbarAdmin/>
@@ -37,7 +39,7 @@ function App() {
     <Route path = "/" exact>
         <Signin/>
       </Route>
-      <Route path = "/SignUp" exact>
+      <Route path = "/signUp" exact>
         {/* {context.user.role === 'user' ? <NavbarAdmin/> : <NavbarUser/>} */}
         <SignUp/>
       </Route>
@@ -61,6 +63,9 @@ function App() {
       </Route>
       <Route path = "/Cart" exact>
         <Cart/>
+        </Route>
+        <Route path = "/PendingOrder" exact>
+        <PendingOrder/>
         </Route>
       <Route path = "/ChangeUserName" exact>
         <ChangeUserName/>
@@ -90,7 +95,8 @@ function App() {
       <Route path="/CetegoryProducts"  render={(props) => <CetegoryProducts {...props}/>}/> 
     </Switch>
       </Router>
-</ProviderFunc>      
+</ProviderFunc>  
+</UserProviderFunc> 
     </div>
   );
 }

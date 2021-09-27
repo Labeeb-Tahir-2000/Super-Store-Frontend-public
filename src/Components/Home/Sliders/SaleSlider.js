@@ -80,7 +80,7 @@ function SaleSlider(){
       null
     :
     <div style={{background:'rgb(224, 224, 224)'}}>
-    <hr  style={{marginTop:'40px'}}className="hr-text" data-content="Big Discount "/>
+    <hr  style={{marginTop:'40px'}}className="hr-text" data-content="Flash Sale "/>
     <div
     id="carouselSaleSlider"
     className="carousel slide carousel-fade"

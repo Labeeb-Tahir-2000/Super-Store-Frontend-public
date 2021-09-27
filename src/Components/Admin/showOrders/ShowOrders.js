@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import Axios from 'axios';
 import {useCookies} from 'react-cookie';
-import OrdersTableJSX from './ordersTableJSX'
+import OrdersTableJSX from './ordersTableJSX';
+import { UserContext } from '../../userContext/UserContext';
+import {useHistory} from 'react-router-dom'
 
 function ManageProducts (){
-
+    const history = useHistory();
+	const [userLoggedIn,setUserLoggedIn] = useContext(UserContext)
   const [cookie] = useCookies(['jwt']);  
   const [users,setUsers] = useState([]);
 useEffect(() => {
@@ -35,14 +38,18 @@ useEffect(() => {
 
 
     return(
-        
+        <>
+		{userLoggedIn.role === 'admin'?  
         <div >
-      
-        
          <div style={{paddingTop:'10px'}}>
          <OrdersTableJSX  users={[...users]} />
          </div>
          </div>
+         	:
+             history.push({pathname:'/Home'})
+                             }
+             </>
+   
     );
 }
 

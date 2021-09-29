@@ -14,8 +14,6 @@ import { getSuggestedQuery } from '@testing-library/dom';
 function BuyNow(){
   const history = useHistory();
   const [productsIDs, setProductsIDs] = useState([])
-    const  [showAddress, setShowAddress] = useState(false)
-    const  [userAddress, setUserAddress] = useState();
     const [productListEdited, setProductListEdited] = useState('')
     const [cookie] = useCookies(['jwt']);
  const [shippingFee, setShippingFee] = useState()
@@ -31,12 +29,7 @@ function BuyNow(){
       if(location.state){
         if(firstRender){
         getUser(location.state.user._id)
-        // 
-        //   productsIDFunc()
-        //   location.state.user.orderedProducts = []
-        // }else if(products.length > 0){
-        // productsIDFunc(products)
-      // }
+
         }
       }else{
        console.log('no user sended here')
@@ -76,6 +69,9 @@ const  getProducts = async (idArray) =>{
         }});
         if(res){
           console.log(res.data.product)
+          if(res.data.product.length === 0){
+            history.push({pathname:'/Orders'})
+          }
         setProducts(res.data.product.sort((a, b) => parseFloat(a.pPrice) - parseFloat(b.pPrice)))
         setProductListEdited('yes')
         }
@@ -90,10 +86,10 @@ const  getProducts = async (idArray) =>{
     }
     
  
-const  productsIDFunc=(products)=>{
+const  productsIDFunc=(product)=>{
   
     let ID =[];
-    products.map(item=>{
+    product.map(item=>{
           ID.push(item._id)
     })
     
@@ -112,7 +108,9 @@ const removeItem = (productId) => {
    updateProductList(productsArray)
        
  }
-
+const allOrdersDelivered=()=>{
+  updateProductList([])
+}
  const  updateProductList=async(productList)=>{
   try{
  
@@ -126,12 +124,9 @@ const removeItem = (productId) => {
     }
     );
       if(res){
-        // setProducts(res.data.user.orderedProducts.sort((a, b) => parseFloat(a.pPrice) - parseFloat(b.pPrice)))
-        
-        productsIDFunc(res.data.user.orderedProducts)
-       
+        console.log('it is product',res.data.user.orderedProducts)  
+        productsIDFunc(res.data.user.orderedProducts)   
         firstRender = false
-      //  console.log(res.data.users.orderedProducts.length)
       }
         
   }catch(err){
@@ -222,7 +217,7 @@ const cartProductsDisplay = products.map(item=>{
               
                <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'space-around', bottom:'0px',background:'white',left:'0px',width:'100%'}}>
                 <h4 >Total:<span style={{color:'red',marginTop:'0px'}}> Rs. {totalPrice + shippingFee}</span></h4>
-                <button  style={{marginBottom:'5px'}}>Check Out</button>
+                <button onClick={allOrdersDelivered} style={{marginBottom:'5px'}}>Delivered</button>
               </div>
             </div>
             

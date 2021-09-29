@@ -70,15 +70,15 @@ return <CartProducts removeItem={removeFromCart} imageURL ={item.pImagePath} id=
               <div><h3>Please add Products in Cart......</h3></div>
             </div>
             :
-            <div>
-              <h2 style={{color:'rgb(94, 94, 94)',textAlign:'center', marginTop:'2%',paddingTop:'0px',marginBottom:'1%'}}>My Cart ({cartItem.length})</h2>
+            <div >
+              <h2 style={{color:'rgb(94, 94, 94)',textAlign:'center', marginTop:'0px',paddingTop:'3%',marginBottom:'1%'}}>My Cart ({cartItem.length})</h2>
               <div className='container' style={{marginBottom:'100px'}}>
                 {cartProductsDisplay}
                 <CartTable product={[...products]} totalPrice={totalPrice=>{totalPriceHandler(totalPrice)}} removeItem={removeFromCart}/>
               </div>
               <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'space-around', bottom:'0px',background:'white',left:'0px',width:'100%'}}>
                 <h4 >Subtotal:<span style={{color:'red',marginTop:'0px'}}> Rs. {totalPrice}</span></h4>
-                <Link className='checkOut' to='/shippingPage' style={{textAlign:'center',textDecoration:'none', marginBottom:'5px', border:'solid rgb(188, 11, 11)',padding:'3px ' ,width:'200px', background:'rgb(247, 142, 4)', color:'white'}}>Check Out</Link>
+                <Link className='checkOut' to='/shippingPage' style={{textAlign:'center',textDecoration:'none', marginBottom:'5px', border:'solid red',padding:'3px ' ,width:'200px', background:'rgb(247, 142, 4)', color:'white'}}>Check Out</Link>
               </div>
             </div>
            }

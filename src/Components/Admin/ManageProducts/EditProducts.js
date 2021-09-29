@@ -12,13 +12,15 @@ function EditProducts(){
 	const Location = useLocation();
     const [image, setImage]= useState(null);
 	const [sale, setSale]= useState(' ');
-	const [edible, setEdible]= useState(' ');
+	const [edible, setEdible]= useState(' ');//its initial value is ' ' empty string not '' which null value not string so '' will be set to undefined in EditProducFun.js
 	const [URL, setURL] = useState(' ');
 	const [cetegoryValue, setCetegoryValue] = useState(" ")
 	const [ID, setID] = useState('');
 	const [Title, setTitle] = useState('')
 	const [Description, setDescription] = useState('')
-	const [Price, setPrice] = useState()
+	const [Price, setPrice] = useState();
+	const [oldPriceDisable, setOldPriceDisable] = useState(true);
+	const [oldPrice, setOldPrice] = useState(' ')
 	useEffect(() => {
 	if(Location.state){
 		setID(Location.state.product._id)
@@ -28,6 +30,7 @@ function EditProducts(){
 		setPrice(Location.state.product.pPrice);
 		setEdible(Location.state.product.pEdible);
 		setSale(Location.state.product.pOnSale);
+		setOldPrice(Location.state.product.pOldPrice)
 		if(Location.state.product.pEdible === 'edible'){
 			document.getElementById('Edible').checked ='true'
 		}if(Location.state.product.pOnSale === 'onSale'){
@@ -85,12 +88,17 @@ function EditProducts(){
 	const priceChangeHandler = (event) => {
         setPrice(event.currentTarget.value)
     }
-    
+    const oldPriceChangeHandler =(event)=>{
+		setOldPrice(event.currentTarget.value)
+	}
+
 	const saleChangeLisner =()=>{
 	if(sale === ' '){
 		setSale('onSale');
+		setOldPriceDisable(false)
 	}else{
 		setSale(' ');
+		setOldPriceDisable(true)
 	}
 
 	}
@@ -139,7 +147,11 @@ function EditProducts(){
 					</div>
 
                     <div className="form-group">
-						<input type="text" className="form-control"  name="pPrice" onChange={priceChangeHandler} value={Price} placeholder="Product Price"/>
+						<div className=" row" style={{display:'flex',paddingLeft:'13px', paddingRight:'10px'}}	>
+							<input style={{width:'50%',display:'inline'}} type="number" className="form-control col-6"  onChange={priceChangeHandler} value={Price} name="pPrice" placeholder="Price" />
+							<input style={{width:'50%',display:'inline'}} disabled={oldPriceDisable} value={oldPrice} onChange={oldPriceChangeHandler}type="number" className="form-control col-6"  name="pOldPrice" placeholder="Old Price" />
+						</div>
+						
 					</div>
 
 					<div className="form-group">

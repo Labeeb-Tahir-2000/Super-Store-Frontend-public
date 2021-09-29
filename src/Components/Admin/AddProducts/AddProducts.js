@@ -8,6 +8,7 @@ import { UserContext } from '../../userContext/UserContext';
 
 function AddProducts (){
 	const history = useHistory();
+	const [oldPriceDisable, setOldPriceDisable] = useState(true)
 	const [userLoggedIn,setUserLoggedIn] = useContext(UserContext)
 	const [image, setImage]= useState(null);
 	const [sale, setSale]= useState(' ');
@@ -55,8 +56,12 @@ function AddProducts (){
 	const saleChangeLisner =()=>{
 	if(sale === ' '){
 		setSale('onSale');
+		setOldPriceDisable(false)
+		
 	}else{
 		setSale(' ');
+		setOldPriceDisable(true)
+	
 	}
 
 	}
@@ -106,9 +111,11 @@ function AddProducts (){
 					</div>
 
                     <div className="form-group">
-						<input type="text" className="form-control"  name="pPrice" placeholder="Product Price" required='true'/>
+						<div className=" row" style={{display:'flex',paddingLeft:'13px', paddingRight:'10px'}}	>
+							<input style={{width:'50%',display:'inline'}} type="number" className="form-control col-6"  name="pPrice" placeholder="Price" required='true'/>
+							<input style={{width:'50%',display:'inline'}} disabled={oldPriceDisable} type="number" className="form-control col-6"  name="pOldPrice" placeholder="Old Price" />
+						</div>
 					</div>
-
 					<div className="form-group">
 						<input type="text" className="form-control"  name="pDescription" placeholder="Product Decription" required='true'/>
 					</div>

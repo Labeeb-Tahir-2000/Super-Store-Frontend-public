@@ -13,6 +13,7 @@ const ImageSlider =()=>{
     const style={
         backgroundColor:"#2A2F3F",
         padding:"20px",
+        
     }
     return(
         <div style={style}  className="container-fluid">

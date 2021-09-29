@@ -12,9 +12,8 @@ export default  function forgetfunc(){
                 console.log(res)
         }
         catch(err){
-            // if(err.response)
-            // alert(err.response.data.message)
-            // else alert(err)
+            if(err.response) alert(err.response.data.message)    
+            else alert(err)
         }
     }
 

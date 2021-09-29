@@ -69,7 +69,7 @@ function Home(){
         if(item.pOnSale === 'onSale'){                       
           return (  
           <div  className="col-sm-4 col-lg-3 col-6 " >
-          <CardProductsJSX  id={item._id} url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription}/>
+          <CardProductsJSX  id={item._id} url={item.pImagePath} oldPrice={item.pOldPrice} title={item.pTitle} price={item.pPrice}  description={item.pDescription}/>
           </div>
            )
         } else{
@@ -82,7 +82,7 @@ function Home(){
     return(
      
       
-      <div>
+      <>
       {cookie.jwt ?
     
         <div>
@@ -125,7 +125,7 @@ function Home(){
       :
       history.push({pathname:'/'})
     }
-    </div>
+    </>
     );
 
 }

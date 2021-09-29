@@ -10,11 +10,12 @@ function useEditProductFunc(){
     {
         e.preventDefault();
         try{
-
+console.log( e.target.pOldPrice.value)
             const res = await Axios.patch('http://localhost:3000/api/v1/products/editProducts',{ // "" !== " "
                 //e.target.value of <input/> type text always have "" if nothing inputed in it so we do not send those inputs that are 
                 // not changed or are empty so we set them undefined and undefined means no data to send but "" is data to send
                 _id: e.target.pID.value,
+                pOldPrice: e.target.pOldPrice.value,
                 pTitle: e.target.pTitle.value === "" || e.target.pTitle.value === null ? undefined : e.target.pTitle.value,
                 pCetegory : e.target.pCetegory.value === "" || e.target.pCetegory.value === null? undefined : e.target.pCetegory.value,
                 pPrice: e.target.pPrice.value === "" || e.target.pPrice.value === null ? undefined : e.target.pPrice.value,

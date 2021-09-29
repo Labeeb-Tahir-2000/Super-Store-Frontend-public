@@ -24,6 +24,7 @@ function useAddProductFunc(){
                 pEdible: e.target.pEdible.value,
                 pImagePath:e.target.pURL.value,
                 pDescription:e.target.pDescription.value,
+                pOldPrice:e.target.pOldPrice.value
             },{
                 headers:{
                     'Accept': 'application/json',

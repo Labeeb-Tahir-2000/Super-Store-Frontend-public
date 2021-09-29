@@ -31,7 +31,7 @@ function ChangeUserName(){
 
                    <div className="main-login-form">
                       <div className="login-group">
-                      <div className="form-group"> 
+                      
                       <div className="form-group">
                               <label for="fp_email" className="sr-only">Enter Password</label>
                               <input type="password" className="form-control"  name="password" placeholder="Password"/>
@@ -40,7 +40,7 @@ function ChangeUserName(){
                               <label for="fp_email" className="sr-only">Enter New Email address</label>
                               <input type="email" className="form-control"  name="Email" placeholder="New email address"/>
                           </div>
-                      </div>
+                    
                       <button type="submit" className="login-button"><i className="fa fa-chevron-right"></i></button>
                   </div>
                   </div>

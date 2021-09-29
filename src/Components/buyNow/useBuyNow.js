@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 function useBuyNow(props){
   
     const history = useHistory();
-    const [cartItem] = useContext(CartContext);
+    const [cartItem,setCartItem] = useContext(CartContext);
     const [cookie] = useCookies(['jwt']);        
 return async function(){
 
@@ -27,9 +27,12 @@ return async function(){
                 }}
             );
             if(res.data.status === 'success'){
+                
                 document.getElementById('goToHome').style.display = 'inline';
                 document.getElementById('addressCartFooter').style.display = 'none';
                 document.getElementById('goToHome').style.opacity = '1';
+               
+               
             }
             console.log(res)
          

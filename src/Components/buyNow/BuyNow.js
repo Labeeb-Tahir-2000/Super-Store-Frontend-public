@@ -214,7 +214,7 @@ const hideShippingDetailsFunc=()=>{
               
                <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'space-around', bottom:'0px',background:'white',left:'0px',width:'100%'}}>
                 <h4 >Total:<span style={{color:'red',marginTop:'0px'}}> Rs. {previousTotal +totalPrice + shippingFee}</span></h4>
-                <button className='confirmOrder'onClick={submit}  style={{marginBottom:'5px', border:'solid rgb(188, 11, 11)',padding:'3px ' ,width:'200px', background:'rgb(247, 142, 4)', color:'white'}}>Confirm Order</button>
+                <button className='confirmOrder'onClick={submit}  style={{marginBottom:'5px', border:'solid red',padding:'3px ' ,width:'200px', background:'rgb(247, 142, 4)', color:'white'}}>Confirm Order</button>
               </div>
             </div>
              :
@@ -230,7 +230,10 @@ const hideShippingDetailsFunc=()=>{
                               </div>
               </div> 
               <div className='container-fluid' id='goToHome' style={{position:'fixed', display:'flex',left:'0px',alignContent:'center',top:'30%',display:'none',textAlign:'center'}}>
-                              <div onClick={()=> history.push({pathname:'./Home'})} className='container goToHome' >
+                              <div onClick={()=>{
+                                if(!location.state)setCartItem([]);
+                                history.push({pathname:'./Home'})}
+                              }  className='container goToHome' >
                               <h1>Order Submitted</h1>
                               <Link to='/Home' style={{color:'red' }}><h6>Click To Continue Shopping!</h6></Link>
                               </div>

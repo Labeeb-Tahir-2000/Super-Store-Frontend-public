@@ -18,7 +18,6 @@ function CardProducts (props){
         } 
     }
 
-
     return(       
                 <div className="card product_item" >
                     <div className="body" >
@@ -36,15 +35,30 @@ function CardProducts (props){
                                 </div>
                             </div>
                         </div>
-                        <div className="product_details">
-                            <h6 className="productTitle">{props.title}</h6>
-                            <ul style={{padding:'0px', margin:'0px'}}className="product_price list-unstyled">
-                                <li style={{padding:'0px', marginRight:'10px',color:'blue'}}className="new_price">{props.description}</li>
-                                <li style={{padding:'0px', margin:'0px', fontWeight:'bold'}} className="new_price">{props.price}rs</li>
-                            </ul>
+                       
+                        {
+                            props.oldPrice?//   Old Price is only send by products on sale components call e.g by in saleSlider.js
+                                <div className="product_details">
+                                    <h6 className="productTitle">{props.title}</h6>
+                                    <h7 style={{padding:'0px', marginRight:'0px',color:'blue'}}className="new_price">{props.description}</h7>
+                                    <ul style={{padding:'0px', margin:'0px'}}className="product_price list-unstyled">
+                                        <li style={{padding:'0px', margin:'0px',color:'green', fontWeight:'bold'}} className="new_price">Rs.{props.price}</li>
+                                        <li style={{padding:'0px', marginLeft:'10px',color:'black', fontSize:'12px'}} className="new_price"><del style={{color:'gray',}}><span style={{color:'red',fontWeight:'bold'}}>Rs.{props.oldPrice}</span></del></li>
+                                    </ul>
+                                </div>
+                        :
+                                <div className="product_details">
+                                    <h6 className="productTitle">{props.title}</h6>
+                                    <ul style={{padding:'0px', margin:'0px'}}className="product_price list-unstyled">
+                                        <li style={{padding:'0px', marginRight:'10px',color:'blue'}}className="new_price">{props.description}</li>
+                                        <li style={{padding:'0px', margin:'0px', fontWeight:'bold'}} className="new_price">Rs.{props.price}</li>
+                                    </ul>
+                                </div>
+                            }
+                          
                         </div>
                     </div>
-                </div>
+                
   
     )
 };

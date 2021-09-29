@@ -36,28 +36,23 @@ function App() {
    <Router>
      <NavbarAdmin/>
     <Switch>   
+      <div className='outer'>
+
     <Route path = "/" exact>
         <Signin/>
       </Route>
+
       <Route path = "/signUp" exact>
-        {/* {context.user.role === 'user' ? <NavbarAdmin/> : <NavbarUser/>} */}
         <SignUp/>
       </Route>
-      <Route path = "/SaleSlider" exact>
-        <SaleSlider/>
-      </Route>
+   
         <Route path = "/shippingPage" exact>
         <ShippingAddressPage/>
         </Route>
         <Route path = "/BuyNow" exact>
         <BuyNow/>
         </Route>
-        <Route path = "/Orders" exact>
-        <Orders/>
-        </Route>
-        <Route path = "/userOrderDetails" exact>
-        <UserOrderDetails/>
-        </Route>
+        
       <Route path = "/forgetPassword" exact>/shippingPage
         <Forget/>
       </Route>
@@ -67,7 +62,7 @@ function App() {
         <Route path = "/PendingOrder" exact>
         <PendingOrder/>
         </Route>
-      <Route path = "/ChangeUserName" exact>
+        <Route path = "/ChangeUserName" exact>
         <ChangeUserName/>
       </Route>
       <Route path = "/ShowMore" exact>
@@ -76,24 +71,36 @@ function App() {
       <Route path = "/Home" exact>
         <Home/>
       </Route>
-      <Route path = "/ShowProducts" exact>
-        <ShowProducts/>
-      </Route><Route path = "/EditProducts" exact>
-        <EditProducts/>
-      </Route>
-      <Route path = "/addProducts" exact>
-          <AddProducts/>
-      </Route>
       <Route path = "/Sale" exact>
         <Sale/>
       </Route>
       <Route path = "/about" exact>
           <About/>
-      </Route>
-      
+      </Route> 
       {/* routing component with sending data as props in it from <Link/> */}
       <Route path="/CetegoryProducts"  render={(props) => <CetegoryProducts {...props}/>}/> 
-    </Switch>
+     
+      </div> 
+      </Switch>
+      <Switch>
+        <Route path = "/Orders" exact>
+        <Orders/>
+        </Route>
+        <Route path = "/userOrderDetails" exact>
+        <UserOrderDetails/>
+        </Route>         
+      <Route path = "/ShowProducts" exact>
+        <ShowProducts/>
+      </Route>
+      <Route path = "/EditProducts" exact>
+        <EditProducts/>
+      </Route>
+      <Route path = "/addProducts" exact>
+          <AddProducts/>
+      </Route>
+     
+</Switch>
+    
       </Router>
 </ProviderFunc>  
 </UserProviderFunc> 

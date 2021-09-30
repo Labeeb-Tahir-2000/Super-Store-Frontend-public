@@ -123,6 +123,9 @@ const nonEdibleCetegories =[
 
 
     return(
+    <>
+     
+    {userLoggedIn.length !== 0 ?
         <>
 		{userLoggedIn.role === 'admin'?  
         <div >
@@ -198,6 +201,12 @@ const nonEdibleCetegories =[
           history.push({pathname:'/Home'})
                           }
           </>
+	:
+    <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
+                        <h2>Loading.....</h2>
+                    </div> 
+                    }
+    </>
 
     );
 }

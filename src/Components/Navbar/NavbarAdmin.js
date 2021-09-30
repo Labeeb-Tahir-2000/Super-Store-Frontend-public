@@ -1,6 +1,5 @@
 import React,{useContext} from "react";
 import {NavLink,Link} from "react-router-dom";
-import {Nav , Navbar} from "react-bootstrap";
 import "./Navbar.css";
 import {useEffect, useState} from 'react';
 import Axios from 'axios';
@@ -9,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { CartContext } from "../cartContext/cartContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { UserContext } from "../userContext/UserContext";
 
 
 
@@ -20,6 +20,7 @@ function MyNavbar(){
     const history = useHistory();
     const [cartItem , setCartItem] = useContext(CartContext)
     const cartItemCount = cartItem.length;
+    const [,setUserLoggedIn] = useContext(UserContext)
 
     useEffect(() => {
       getUser()
@@ -35,7 +36,8 @@ function MyNavbar(){
         }});
         console.log('bye',res.data.user)
             if(res.data  && res.data.status === "success" && res.data.user ){
-                    setUser(res.data.user)
+                    setUser(res.data.user);
+                    setUserLoggedIn(res.data.user)
               }
            
           }catch(err){
@@ -73,7 +75,7 @@ function MyNavbar(){
        <div style={{position:'relatve'}}>
                         {User.role === 'admin'?
                        <nav className="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark" style={{position:'fixed',zIndex:'100',width:'100%',top:'0px'}}>
-                    <Link className="navbar-brand" style={style} to="/Home">Mehar Super Store</Link>
+                    <Link className="navbar-brand" style={style} to="/Orders">Admin</Link>
                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                          <span className="navbar-toggler-icon"></span>
                        </button>

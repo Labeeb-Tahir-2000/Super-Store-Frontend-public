@@ -25,9 +25,9 @@ useEffect(() => {
                     'Authorization': `Bearer ${cookie.jwt}`        
                 }
             }
-            ); 
-            console.log(res.data);     
+            )
          setUsers(res.data.users)
+         setUserLoggedIn(res.data.currentUser)
         } 
         catch(err){ 
             console.log(err); 
@@ -39,6 +39,10 @@ useEffect(() => {
 
     return(
         <>
+     
+        {userLoggedIn.length !== 0 ?
+       
+        <>
 		{userLoggedIn.role === 'admin'?  
         <div >
          <div >
@@ -49,7 +53,12 @@ useEffect(() => {
              history.push({pathname:'/Home'})
                              }
              </>
-   
+   :
+    <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
+        <h2>Loading.....</h2>
+    </div> 
+                   }
+   </>
     );
 }
 

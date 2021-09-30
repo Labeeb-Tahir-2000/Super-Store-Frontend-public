@@ -131,95 +131,104 @@ function EditProducts(){
 	 }
     return(
 		<>
-		{userLoggedIn.role === 'admin'?
-    <div className="text-center" style={{padding:'50px' }}>
-	<div className="logo">Edit Products</div>
-	    <div className="login-form-1">
-		<form id="register-form" className="text-left"  onSubmit={useEditProductFuncCall}>
-			<div className="login-form-main-message"></div>
-			<div className="main-login-form">
-				<div className="login-group">
-                <div className="form-group">
-						<input type="text" className="form-control"  name="pID" placeholder="Prodcut ID" onChange={IDChangeHandler}required='true' value={ID}/>
-					</div>
-					<div className="form-group">
-						<input type="text" className="form-control"  name="pTitle" onChange={titleChangeHandler} placeholder="Prodcut Name" value={Title}/>
-					</div>
+     
+        {userLoggedIn.length !== 0 ?
+				<>
+				{userLoggedIn.role === 'admin'?
+			<div className="text-center" style={{padding:'50px' }}>
+			<div className="logo">Edit Products</div>
+				<div className="login-form-1">
+				<form id="register-form" className="text-left"  onSubmit={useEditProductFuncCall}>
+					<div className="login-form-main-message"></div>
+					<div className="main-login-form">
+						<div className="login-group">
+						<div className="form-group">
+								<input type="text" className="form-control"  name="pID" placeholder="Prodcut ID" onChange={IDChangeHandler}required='true' value={ID}/>
+							</div>
+							<div className="form-group">
+								<input type="text" className="form-control"  name="pTitle" onChange={titleChangeHandler} placeholder="Prodcut Name" value={Title}/>
+							</div>
 
-                    <div className="form-group">
-						<div className=" row" style={{display:'flex',paddingLeft:'13px', paddingRight:'10px'}}	>
-							<input style={{width:'50%',display:'inline'}} type="number" className="form-control col-6"  onChange={priceChangeHandler} value={Price} name="pPrice" placeholder="Price" />
-							<input style={{width:'50%',display:'inline'}} disabled={oldPriceDisable} value={oldPrice} onChange={oldPriceChangeHandler}type="number" className="form-control col-6"  name="pOldPrice" placeholder="Old Price" />
+							<div className="form-group">
+								<div className=" row" style={{display:'flex',paddingLeft:'13px', paddingRight:'10px'}}	>
+									<input style={{width:'50%',display:'inline'}} type="number" className="form-control col-6"  onChange={priceChangeHandler} value={Price} name="pPrice" placeholder="Price" />
+									<input style={{width:'50%',display:'inline'}} disabled={oldPriceDisable} value={oldPrice} onChange={oldPriceChangeHandler}type="number" className="form-control col-6"  name="pOldPrice" placeholder="Old Price" />
+								</div>
+								
+							</div>
+
+							<div className="form-group">
+								<input type="text" className="form-control"  name="pDescription" onChange={descriptionChangeHandler} value={Description} placeholder="Product Decription"/>
+							</div>
+							
+							<div className="form-group">
+								<input type="text" className="form-control" id="pCount" name="pStock" placeholder="Number of Products"/>
+							</div>
+
+							<div className="form-group-select" >
+							
+								<select className="form-select form-select-sm  " style={{color:'#6e6e6e ',fontWeight: 'bold',
+								fontSize: '20px',padding: 'none ',marginBottom:'3px !important',marginTop:'7px !important',overflow:'scroll'}}
+								name="pCetegory" onChange={onCetegoryChange} value={cetegoryValue}>
+								
+								{edible === 'edible'?
+									edibleCetegories.map(item => (
+										<option style={{overflow:'scroll !important'}}key={item.key} value={item.value}>{item.value} </option>
+									))
+								:
+									nonEdibleCetegories.map(item => (
+										<option style={{overflow:'scroll !important'}}key={item.key} value={item.value}>{item.value} </option>
+									))
+								}
+
+								</select>
+							</div>
+
+							<div style={{paddingTop:'9px',paddingBottom:'0px'}}className="form-group login-group-checkbox "  >                 
+							
+								<input type="checkbox" className="" name="pEdible"  onChange={edibleChangeLisner} id='Edible' value={edible} />
+								<label for="Edible" >Edible </label>
+							
+								<input  type="checkbox" className="" name="pOnSale" onChange={saleChangeLisner} id="Sale"  value={sale}/>
+								<label for="Sale">On Sale</label>
+						
+							</div>
+							
+							<div className=" rounded form-group  ">
+							<input  style={{marginBottom:'8px'}} onChange={handleChange} className="pic" type="file" />
+							</div>
+							
+						
+							<div  className="form-group" >
+							<input style={{marginTop:'8px',padding:'2px', width:'110%'}} type="button" className="btn btn-outline-primary btn-lg"  onClick={handleUpload}  value='Click here to upload the image'/>
+							<input style={{display:'none'}} role='button'   name="pURL" value={URL} />
+							</div>
+						
+
+							<div >
+								<p id='errMessage' style={{visibility:'hidden',color:'red',paddingTop:'10px'}}>empty</p>
+							</div>
+							
 						</div>
-						
-					</div>
-
-					<div className="form-group">
-						<input type="text" className="form-control"  name="pDescription" onChange={descriptionChangeHandler} value={Description} placeholder="Product Decription"/>
+						<button type="submit" onSubmit={useEditProductFuncCall} className="login-button"><i className="fa fa-chevron-right"></i></button>
 					</div>
 					
-                    <div className="form-group">
-						<input type="text" className="form-control" id="pCount" name="pStock" placeholder="Number of Products"/>
-					</div>
-
-					<div className="form-group-select" >
-					
-						<select className="form-select form-select-sm  " style={{color:'#6e6e6e ',fontWeight: 'bold',
-						fontSize: '20px',padding: 'none ',marginBottom:'3px !important',marginTop:'7px !important',overflow:'scroll'}}
-						name="pCetegory" onChange={onCetegoryChange} value={cetegoryValue}>
-						
-						{edible === 'edible'?
-							edibleCetegories.map(item => (
-								<option style={{overflow:'scroll !important'}}key={item.key} value={item.value}>{item.value} </option>
-							))
-						:
-							nonEdibleCetegories.map(item => (
-								<option style={{overflow:'scroll !important'}}key={item.key} value={item.value}>{item.value} </option>
-							))
-						}
-
-               			</select>
-					</div>
-
-                    <div style={{paddingTop:'9px',paddingBottom:'0px'}}className="form-group login-group-checkbox "  >                 
-					
-						<input type="checkbox" className="" name="pEdible"  onChange={edibleChangeLisner} id='Edible' value={edible} />
-						<label for="Edible" >Edible </label>
-                       
-						<input  type="checkbox" className="" name="pOnSale" onChange={saleChangeLisner} id="Sale"  value={sale}/>
-						<label for="Sale">On Sale</label>
-				
-					</div>
-					
-                    <div className=" rounded form-group  ">
-                    <input  style={{marginBottom:'8px'}} onChange={handleChange} className="pic" type="file" />
-                    </div>
-					
-				
-					<div  className="form-group" >
-					<input style={{marginTop:'8px',padding:'2px', width:'110%'}} type="button" className="btn btn-outline-primary btn-lg"  onClick={handleUpload}  value='Click here to upload the image'/>
-                    <input style={{display:'none'}} role='button'   name="pURL" value={URL} />
-                    </div>
-				
-
-					<div >
-						<p id='errMessage' style={{visibility:'hidden',color:'red',paddingTop:'10px'}}>empty</p>
-					</div>
-					
-				</div>
-				<button type="submit" onSubmit={useEditProductFuncCall} className="login-button"><i className="fa fa-chevron-right"></i></button>
+				</form>
 			</div>
-			
-		</form>
-	</div>
-	<div style={{marginTop:'10px' , width:'100%', maxHeight:'240px'}}>
-	<img style={{marginTop:'10px' , maxWidth:'250px', maxHeight:'240px' ,borderRadius:'50%'}}src={URL}/>
-	</div>
-    </div>
-	:
-	history.push({pathname:'/Home'})
-					}
-	</>
+			<div style={{marginTop:'10px' , width:'100%', maxHeight:'240px'}}>
+			<img style={{marginTop:'10px' , maxWidth:'250px', maxHeight:'240px' ,borderRadius:'50%'}}src={URL}/>
+			</div>
+			</div>
+		:
+			history.push({pathname:'/Home'})
+				}
+			</>
+		:
+		<div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
+		<h2>Loading.....</h2>
+	</div> 
+				}
+			</>
     )
 }
 export default EditProducts;

@@ -9,6 +9,7 @@ import { useHistory,Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faAddressCard ,faThumbtack,faSignature, faPhoneAlt} from '@fortawesome/free-solid-svg-icons';
 import { getSuggestedQuery } from '@testing-library/dom';
+import { UserContext } from '../../userContext/UserContext';
 
 
 function BuyNow(){
@@ -23,7 +24,7 @@ function BuyNow(){
     const [totalPrice , setTotalPrice] = useState(0);
     const [user, setUser] = useState({});
     let firstRender = true
-    
+    const [userLoggedIn,setUserLoggedIn] = useContext(UserContext)
  
     useEffect(async() => {
       if(location.state){
@@ -157,6 +158,12 @@ const cartProductsDisplay = products.map(item=>{
 
         
     return(
+      <>
+     
+      {userLoggedIn.length !== 0 ?
+     
+      <>
+  {userLoggedIn.role === 'admin'?  
         <div className='container-fluid outSide' >
       
              {products.length ===0 || user==={}?
@@ -224,6 +231,16 @@ const cartProductsDisplay = products.map(item=>{
              }
              
         </div>
+          	:
+            history.push({pathname:'/Home'})
+                            }
+            </>
+  :
+  <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
+      <h2>Loading.....</h2>
+   </div> 
+                  }
+  </>
     )
 }
 export default BuyNow;

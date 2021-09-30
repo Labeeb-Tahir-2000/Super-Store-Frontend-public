@@ -1,8 +1,9 @@
-import React from "react";
+import React  from "react";
 import './App.css';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter as Router , Route,Switch } from "react-router-dom";
-import NavbarUser from "./Components/Navbar/NavbarUser";
+
 import NavbarAdmin from "./Components/Navbar/NavbarAdmin";
 import Sale from "./Components/Sale/Sale";
 import Home from "./Components/Home/Home";
@@ -14,21 +15,22 @@ import ShowProducts from "./Components/Admin/manageProducts/ShowProducts";
 import EditProducts from "./Components/Admin/manageProducts/EditProducts";
 import ChangeUserName   from "./Components/Admin/changeUserName/ChangeUserName";
 import SignUp from "./Components/Admin/signUp/SignUp";
-import SaleSlider from "./Components/Home/Sliders/SaleSlider";
 import Cart from "./Components/shoopingCart/Cart";
 import ShowMore from './Components/Home/filterBar/utilits/ShowMoreCetegories';
 import CetegoryProducts from './Components/Home/filterBar/CetegoryProducts';
 import ShippingAddressPage from './Components/shipping/shippingAddress';
 import BuyNow from './Components/buyNow/BuyNow';
 import {ProviderFunc} from './Components/cartContext/cartContext';
-import {UserProviderFunc} from './Components/userContext/UserContext';
+import {UserProviderFunc } from './Components/userContext/UserContext';
 import Orders from './Components/Admin/showOrders/ShowOrders';
 import UserOrderDetails from './Components/Admin/showOrders/UserOrderDetails';
 import PendingOrder from './Components/pendingOrder/PendingOrder.js'
 
+
+
+	
 function App() {
-  
-  
+
   return (
     <div className = "App">
 <UserProviderFunc>    

@@ -6,12 +6,6 @@ import { CartContext } from "../../cartContext/cartContext";
 function CartProducts (props){
   const history = useHistory();
     
-    // useEffect(() => {
-    
-    // }, [cartItem])
-    let totalPrice = 0;
-  
-    
    const renderUsers = props.users.map(user => { 
        if(user.orderedProducts.length > 0){
             return   <tr key={user._id}>

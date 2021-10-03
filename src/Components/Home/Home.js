@@ -9,7 +9,7 @@ import FilterBar from "./filterBar/FilterBar";
 import SaleSlider from "./Sliders/SaleSlider";
 import ImageSliderLarge from "./Sliders/ImageSliderLarger";
 import { UserContext } from "../userContext/UserContext";
-import {useHistory} from 'react-router-dom'
+import {useHistory,Link} from 'react-router-dom'
 
 function Home(){
   const history = useHistory();
@@ -38,12 +38,16 @@ function Home(){
       console.log(err.response)
     }
   }
-
+let count = 0;
     //product image must have size 500x500 for better adjustment in card
       const items= products.map(item=>{
+        if(count <= 16){
+          count ++;
           return <div className="col-sm-4 col-lg-3 col-6 " >
                <CardProductsJSX  id={item._id} url={item.pImagePath} title={item.pTitle} price={item.pPrice}  description={item.pDescription}/>
           </div>
+          }else return;
+        
       });
 
       var hrCount =0;
@@ -118,7 +122,15 @@ function Home(){
                         <div style={{marginTop:'50px' ,paddingRight:'4px',paddingLeft:'5%'}} className="row container-fluid myAllProducts">
                           {items}
                         </div>
-                        
+                       
+                          <div style={{ display: 'flex', justifyContent: 'center' }}>
+                              <Link className='showMore' to={{pathname:'AllProducts'}} style={{ display: 'flex', justifyContent: 'center',flexDirection:'column' }}>
+                                <h5 style={{marginBottom:'0px'}} >Show More</h5>
+                                <i style={{fontSize:'50px',paddingLeft:'32%'}}className="fa fa-angle-double-down"></i>
+                              </Link>
+                          </div>
+          
+
                     </div>
     }
       </div>

@@ -104,7 +104,7 @@ function AddProducts (){
 				{userLoggedIn.role === 'admin'?
 				<div className="text-center" style={{padding:'50px' }}>
 
-			<div className="logo">Add Products</div>
+			<div className="logo" style={{color:'#F57224'}}>Add Products</div>
 			<div className="login-form-1">
 				<form id="register-form" className="text-left"  onSubmit={useAddProductFuncCall}>
 					<div className="login-form-main-message"></div>

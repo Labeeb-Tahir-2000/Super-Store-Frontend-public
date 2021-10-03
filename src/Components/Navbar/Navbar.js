@@ -33,7 +33,7 @@ function MyNavbar(){
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${cookie.jwt}`        
         }});
-        console.log('bye',res.data.user)
+      
             if(res.data  && res.data.status === "success" && res.data.user ){
                     setUser(res.data.user)
               }

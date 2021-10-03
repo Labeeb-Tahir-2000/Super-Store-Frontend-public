@@ -49,7 +49,7 @@ function Home(props){
                 :
 
                 <div>
-                  <h1 style={{marginTop:'3%', textAlign:'center'}}>{cetegory}</h1>
+                  <h1 style={{marginTop:'8%', textAlign:'center'}}>{cetegory}</h1>
                     <div style={{marginTop:'50px' ,paddingRight:'4px',paddingLeft:'5%'}} className="row container-fluid myAllProducts">
                       {items}
                     </div>

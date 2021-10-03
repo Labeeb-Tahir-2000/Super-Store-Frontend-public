@@ -15,7 +15,7 @@ return(
 history.push({pathname:'/Home'})
 :
 <div className="text-center" style={{padding:'50px' }} >
-	<div className="logo">login</div>
+	<div className="logo" style={{color:'#F57224'}}>Login</div>
 	<div className="login-form-1" style={{width:'400px'}}>
 		<form id="login-form" className="text-left" onSubmit={login}>
 			<div className="login-form-main-message"></div>

@@ -1,7 +1,7 @@
 import './filterBar.css';
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 
 function filterBar(){
     return(
@@ -9,9 +9,9 @@ function filterBar(){
       
         <div className='row container-fluid outerCetegoryFilterBar ' style={{padding:'4px',marginBottom:'15px'}} >
                 <div className='col-12 filterBarHeading' style={{ padding:'5px 7px',marginTop:'20px' ,display:'flex',justifyContent:'space-between' }}>
-                    <h2 style={{display:'inline'  ,marginLeft:'7px'}}>Categories</h2> 
-                    <Link style={{paddingTop:'4px',textDecoration:'none' ,color:'red' ,marginRight:'0px'}} to='ShowMore'><p >Show More
-                        <FontAwesomeIcon  style={{color:'rgb(60, 205, 242)',marginLeft:'4px',marginRight:'0px'}} icon={faArrowRight}/> </p></Link>
+                    <h2 style={{display:'inline'  ,marginLeft:'7px',color:'#F57224'}}>Categories</h2> 
+                    <Link style={{paddingTop:'4px',textDecoration:'none',fontWeight:'normal' ,color:'red' ,marginRight:'0px'}} to='ShowMore'><h6 >Show More
+                        <FontAwesomeIcon  style={{color:'rgb(60, 205, 242)',marginLeft:'4px',marginRight:'0px'}} icon={faAngleDoubleRight}/> </h6></Link>
                 </div>
                 <div className='row container-fluid cetegoryFilterBar'style={{ padding:'0px',margin:'0px' }}>
                 <div className='col-12 col-sm-6 col-lg-6 col-xl-6' style={{ padding:'0px',margin:'0px' ,display:'flex-inline'}}>

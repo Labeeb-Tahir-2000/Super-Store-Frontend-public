@@ -1,19 +1,23 @@
 
+  .showMore{
+    text-decoration:none !important;
+    color:#F57224;
+  }
   .hr-text {
     line-height: 1em;
     position: relative;
     outline: 0;
     border: 0;
-    color: rgb(131, 131, 131);
+    color: #F57224 !important;
     text-align: center;
     height: 1.5em;
-    opacity: .5;
+    opacity: .7;
   margin-top: 0px !important;
   }
     .hr-text:before {
       content: '';
      
-      background: linear-gradient(to right, transparent, #818078, transparent);
+      background: linear-gradient(to right, transparent,  #fcfcfa, transparent);
       position: absolute;
       left: 0;
       top: 50%;
@@ -29,7 +33,7 @@
       padding: 0 .5em;
       line-height: 1.5em;
       
-      color: #000000;
+      color: rgb(255, 97, 0) !important;
       background-color: #fcfcfa;
     }
   

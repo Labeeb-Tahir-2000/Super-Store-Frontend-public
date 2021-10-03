@@ -6,14 +6,25 @@ export default  function forgetfunc(){
         try{
             const res=  await Axios.post('http://localhost:3000/api/v1/users/forgetPassword',{
                 email: e.target.email.value});
-                if(res.status === "200"){
-                    alert('Token generated, goto your inbox!')
-                }
-                console.log(res)
+                if(res.data.status === 'success'){
+                    document.getElementById('instruction').style.display = 'none';
+                    document.getElementById('errMessage').style.visibility = 'visible';
+                    document.getElementById('errMessage').style.color = 'green';
+                    document.getElementById('errMessage').innerHTML = res.data.message;
+                 
+                 }
         }
         catch(err){
-            if(err.response) alert(err.response.data.message)    
-            else alert(err)
+            if(err.response) {
+                document.getElementById('instruction').style.display = 'none';
+                document.getElementById('errMessage').style.visibility = 'visible';
+                document.getElementById('errMessage').innerHTML = err.response.data.message;
+               
+            }else{
+                document.getElementById('errMessage').style.display = 'none';
+                alert(err)
+            }
+           
         }
     }
 

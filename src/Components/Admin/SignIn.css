@@ -1,7 +1,7 @@
 
 html,
 body {
-  background: #F4F4F4;
+ 
     font-family: Roboto ,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,sans-serif!important;
 
 }
@@ -123,9 +123,10 @@ a:hover {
   position: absolute;
   right: -25px;
   top: 50%;
-  background: #F57224;
+  background: #00BFFF;
   color: #f8f8f8;
-  padding: 11px 0;
+  padding-top: 10px ;
+  padding-bottom: 11px ;
   width: 50px;
   height: 50px;
   margin-top: -25px;

@@ -6,6 +6,12 @@
 .fa-shopping-cart{
   margin-right:8px !important
 }
+.myButton{
+  padding: 5px 10px !important;
+   text-decoration: none;
+   text-align: center;
+   border-radius: 7px;
+}
 @media  (min-width: 991px) {
   .cartSmall{
     display: none !important;
@@ -23,7 +29,7 @@
     .myButton{
         
         left:35%;
-        padding-top:8px !important;
+       
         margin-top:5px !important;
         margin-bottom:0px !important
     }

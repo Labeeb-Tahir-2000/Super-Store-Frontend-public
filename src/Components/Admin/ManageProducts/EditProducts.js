@@ -136,7 +136,7 @@ function EditProducts(){
 				<>
 				{userLoggedIn.role === 'admin'?
 			<div className="text-center" style={{padding:'50px' }}>
-			<div className="logo">Edit Products</div>
+			<div className="logo" style={{color:'#F57224'}}>Edit Products</div>
 				<div className="login-form-1">
 				<form id="register-form" className="text-left"  onSubmit={useEditProductFuncCall}>
 					<div className="login-form-main-message"></div>

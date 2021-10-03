@@ -224,7 +224,7 @@ const cartProductsDisplay = products.map(item=>{
               
                <div className='container-fluid' style={{position:'fixed',borderTop:'2px solid blue' , height:'10%',alignItems:'center',display:"flex",alignContent:'center', justifyContent:'space-around', bottom:'0px',background:'white',left:'0px',width:'100%'}}>
                 <h4 >Total:<span style={{color:'red',marginTop:'0px'}}> Rs. {totalPrice + shippingFee}</span></h4>
-                <button onClick={allOrdersDelivered} style={{marginBottom:'5px'}}>Delivered</button>
+                <button onClick={allOrdersDelivered} style={{textAlign:'center',textDecoration:'none', marginBottom:'5px', border:'solid red',padding:'3px ' ,width:'200px', background:'rgb(247, 142, 4)', color:'white'}}>Delivered</button>
               </div>
             </div>
             

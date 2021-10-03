@@ -27,14 +27,24 @@ return async function(){
                 }}
             );
             if(res.data.status === 'success'){
-                
+                try{
+                const res=  await Axios.post('http://localhost:3000/api/v1/products/editProductsCount',{products:items},{
+                    headers:{
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${cookie.jwt}`        
+                    }})
+                   
+                }catch(err){
+                   return  alert(err)
+                }
                 document.getElementById('goToHome').style.display = 'inline';
                 document.getElementById('addressCartFooter').style.display = 'none';
                 document.getElementById('goToHome').style.opacity = '1';
                
-               
+                
             }
-            console.log(res)
+            // console.log(res)
          
           
         }catch(err){

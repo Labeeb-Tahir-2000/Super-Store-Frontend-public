@@ -25,7 +25,7 @@ function ChangeUserName(){
         }
     return(
         <div className = "text-center" >
-        <div className = "logo">Change password</div>   
+        <div className = "logo"style={{color:'#F57224'}}>Change password</div>   
           <div className="login-form-1">
             <form className="text-left" onSubmit={changefunc()}> 
 

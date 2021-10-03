@@ -8,7 +8,7 @@ function Forget(){
     const forget = forgetFunc();
     return(
         <div className = "text-center" style = {style}>
-          <div className = "logo">forgot password</div>
+          <div className = "logo" style={{color:'#F57224'}}>forgot password</div>
             
             <div className="login-form-1">
                 <form  id="forgot-password-form" className="text-left" onSubmit={forget}>
@@ -21,9 +21,12 @@ function Forget(){
                             </div>
                         </div>
                         <button type="submit" onSubmit={forget} className="login-button"><i className="fa fa-chevron-right"></i></button>
-                    </div>
-                    <div className="etc-login-form">
-                        <p>When you fill in your registered email address, you will be sent instructions on how to reset your password.</p>
+                        <div >
+					<p id='errMessage' style={{visibility:'hidden',color:'red',paddingTop:'10px'}}>empty</p>
+					</div>
+                    </div>   
+                    <div id='instruction' style={{color:'red',paddingTop:'10px'}}>
+                        <p>When you submit your registered email address, you will be sent instructions on how to reset your password on your given Email Address.</p>
                     </div>
                 </form>
             </div>

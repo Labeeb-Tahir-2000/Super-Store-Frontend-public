@@ -20,7 +20,8 @@ function MyNavbar(){
     const history = useHistory();
     const [cartItem , setCartItem] = useContext(CartContext)
     const cartItemCount = cartItem.length;
-    const [,setUserLoggedIn] = useContext(UserContext)
+    const [userLoggedIn,setUserLoggedIn] = useContext(UserContext)
+    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
       getUser()
@@ -34,7 +35,7 @@ function MyNavbar(){
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${cookie.jwt}`        
         }});
-        console.log('bye',res.data.user)
+
             if(res.data  && res.data.status === "success" && res.data.user ){
                     setUser(res.data.user);
                     setUserLoggedIn(res.data.user)
@@ -65,7 +66,14 @@ function MyNavbar(){
         }
     }
     
-  
+  const searchChangeHandler=(event)=>{
+    console.log(event.currentTarget.value)
+    setSearchTerm(event.currentTarget.value)
+   
+  }
+  // const RedirectToAllProducts=()=>{
+  //    history.push({pathname:'/AllProducts', state:{searchTerm:searchTerm}})
+  // }
     return(
         <>	
   
@@ -108,6 +116,8 @@ function MyNavbar(){
                                  Edit Products
                              </Link>
                            </li>
+                           
+                           
                          </ul>
                      
                            <ul className="navbar-nav  " style={{marginLeft:'10px ',padding:'0px', marginTop:'0px',marginRight:'17px '}} >
@@ -186,8 +196,8 @@ function MyNavbar(){
                             </ul>
                             <form className="form-group row my-2 my-lg-0 " style={{paddingBottom:'0px',marginBottom:'0px'}}>
                               <div className=" form-group  search col-lg-12" style={{display:'flex',paddingBottom:'0px',marginBottom:'0px'}}>
-                               <input  className=" form-control mr-sm-2 col-lg-9 col-md-12" type="text" placeholder="Search" aria-label="Search"/>
-                               <button className="btn myButton my-2 my-sm-0 col-4 col-lg-3 " style={{color:'#F57224',background:'black',border:'1px solid #F57224'}}type="submit">Search</button>
+                               <input  className=" form-control mr-sm-2 col-lg-9 col-md-12" type="text" placeholder="Search Product" onChange={searchChangeHandler}  name="search"/>
+                              <Link  className=" myButton col-4 col-lg-3 " to={{pathname:'/AllProducts', state:`${searchTerm}`}} style={{color:'#F57224',background:'black',border:'3px solid #F57224'}}>Search</Link>
                               </div>
                               
                             </form>

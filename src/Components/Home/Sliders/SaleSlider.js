@@ -79,7 +79,7 @@ function SaleSlider(){
      {products.length === 0?
       null
     :
-    <div style={{background:'rgb(224, 224, 224)'}}>
+    <div style={{ background: '#F4F4F4'}}>
     <hr  style={{marginTop:'40px',marginBottom:'0px'}}className="hr-text" data-content="Flash Sale "/>
     <div
     id="carouselSaleSlider"

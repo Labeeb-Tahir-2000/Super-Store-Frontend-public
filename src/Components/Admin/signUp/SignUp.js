@@ -14,7 +14,7 @@ function  SignUp(){
 history.push({pathname:'/Home'})
 :
 <div className="text-center" style={{padding:'50px'  }}>
-	<div className="logo">Sign Up</div>
+	<div className="logo" style={{color:'#F57224'}}>Sign Up</div>
 	 <div className="login-form-1" style={{width:'400px'}} >
 		<form id="login-form" className="text-left" onSubmit={signUp}>
 			<div className="login-form-main-message"></div>

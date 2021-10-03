@@ -3,7 +3,7 @@ import './App.css';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter as Router , Route,Switch } from "react-router-dom";
-
+import ChangePassword from './Components/Admin/changePassword/ChangePassword'
 import NavbarAdmin from "./Components/Navbar/NavbarAdmin";
 import Sale from "./Components/Sale/Sale";
 import Home from "./Components/Home/Home";
@@ -25,7 +25,7 @@ import {UserProviderFunc } from './Components/userContext/UserContext';
 import Orders from './Components/Admin/showOrders/ShowOrders';
 import UserOrderDetails from './Components/Admin/showOrders/UserOrderDetails';
 import PendingOrder from './Components/pendingOrder/PendingOrder.js'
-
+import AllProducts from './Components/allProducts/allProducts'
 
 
 	
@@ -54,8 +54,11 @@ function App() {
         <Route path = "/BuyNow" exact>
         <BuyNow/>
         </Route>
-        
-      <Route path = "/forgetPassword" exact>/shippingPage
+          
+      <Route path = "/Allproducts" exact>
+        <AllProducts/>
+      </Route>
+      <Route path = "/forgetPassword" exact>
         <Forget/>
       </Route>
       <Route path = "/Cart" exact>
@@ -64,6 +67,7 @@ function App() {
         <Route path = "/PendingOrder" exact>
         <PendingOrder/>
         </Route>
+        
         <Route path = "/ChangeUserName" exact>
         <ChangeUserName/>
       </Route>
@@ -85,6 +89,9 @@ function App() {
       </div> 
       </Switch>
       <Switch>
+      <Route path = "/ChangePassword/*" exact>
+        <ChangePassword/>
+      </Route>
         <Route path = "/Orders" exact>
         <Orders/>
         </Route>

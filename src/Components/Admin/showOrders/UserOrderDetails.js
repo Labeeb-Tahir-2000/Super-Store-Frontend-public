@@ -167,7 +167,9 @@ const cartProductsDisplay = products.map(item=>{
         <div className='container-fluid outSide' >
       
              {products.length ===0 || user==={}?
+             <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
              <h1>No products to show</h1>
+             </div>
              :
             <div className='row ' id='addressCartFooter' style={{display:'flex',position:'relative' , justifyContent:'space-between'}} >  
                    

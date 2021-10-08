@@ -52,13 +52,14 @@ function MyNavbar(){
     const style={
         color:"red",
         marginLeft:"12px",
+        paddingRight:'30px'
     }
    
     function useSignOut(){ 
         try{
                     setCookie('jwt',cookie, { path:'/' , expires : new Date(Date.now()) }); 
                     setCartItem([])
-                    
+                    setUserLoggedIn([])
                     console.log('loggedout succesfully');
                     return history.push("/");
         }catch(err){
@@ -83,7 +84,8 @@ function MyNavbar(){
        <div style={{position:'relatve'}}>
                         {User.role === 'admin'?
                        <nav className="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark" style={{position:'fixed',zIndex:'100',width:'100%',top:'0px'}}>
-                    <Link className="navbar-brand" style={style} to="/Orders">Admin</Link>
+                    <Link style={{padding:'0px',margin:'0px'}}className="navbar-brand" style={style} to="/Orders"><object style={{padding:'0px',margin:'0px',transform: 'scale(1.5)'}} data="https://firebasestorage.googleapis.com/v0/b/meharsuperstore-2021.appspot.com/o/1232.svg?alt=media&token=344e67a3-1ece-4333-ad4e-53c0d5299fed" type="image/svg+xml"></object>
+</Link>
                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                          <span className="navbar-toggler-icon"></span>
                        </button>
@@ -116,8 +118,6 @@ function MyNavbar(){
                                  Edit Products
                              </Link>
                            </li>
-                           
-                           
                          </ul>
                      
                            <ul className="navbar-nav  " style={{marginLeft:'10px ',padding:'0px', marginTop:'0px',marginRight:'17px '}} >
@@ -128,13 +128,7 @@ function MyNavbar(){
                                  </a>
                              </li>
                            </ul>
-                           <form className="form-group row my-2 my-lg-0 " style={{paddingBottom:'0px',marginBottom:'0px'}}>
-                             <div className=" form-group  search col-lg-12" style={{display:'flex',paddingBottom:'0px',marginBottom:'0px'}}>
-                              <input  className=" form-control mr-sm-2 col-lg-9 col-md-12" type="text" placeholder="Search" aria-label="Search"/>
-                              <button className="btn myButton my-2 my-sm-0 col-4 col-lg-3 " style={{color:'#F57224',background:'black',border:'1px solid #F57224'}}type="submit">Search</button>
-                             </div>
-                             
-                           </form>
+                           
                        </div>
                     </nav>
                   :
@@ -182,6 +176,7 @@ function MyNavbar(){
                                     </a>
                                     <div className="dropdown-menu col-6 " aria-labelledby="navbarDropdown" style={{textAlign:'center',paddingLeft:'0px'}}>
                                         <Link className="dropdown-item " to="/PendingOrder">My Orders</Link>
+                                        <Link className="dropdown-item " to="/MyAccount">My Account</Link>
                                         <Link className="dropdown-item " to="/ChangeUserName">Change UserName</Link>
                                     </div>
                               </li>

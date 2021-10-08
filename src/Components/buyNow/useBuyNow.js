@@ -4,7 +4,7 @@ import {CartContext} from "../cartContext/cartContext";
 import { useCookies } from 'react-cookie'; 
 import { useHistory } from "react-router-dom";
 
-function useBuyNow(props){
+function useBuyNow(SingleItemID ,previousTotal , subTotal , shippingFee){
   
     const history = useHistory();
     const [cartItem,setCartItem] = useContext(CartContext);
@@ -13,13 +13,18 @@ return async function(){
 
     try{
            let  items =[]
-            {console.log('this is buy Now props',props)}
-            if(props){
-              items[0] = props;
+          console.log(SingleItemID ,previousTotal , subTotal , shippingFee)
+
+            if(SingleItemID){
+              items[0] = SingleItemID;
             }else{
                 items = [...cartItem]
             }
-            const res=  await Axios.post('http://localhost:3000/api/v1/users/setUserOrder',{products:items},{
+            const res=  await Axios.post('http://localhost:3000/api/v1/users/setUserOrder',{
+                products:items,
+                previousTotal : previousTotal ,
+                subTotal: subTotal ,
+                shippingFee:shippingFee},{
                 headers:{
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -36,7 +41,7 @@ return async function(){
                     }})
                    
                 }catch(err){
-                   return  alert(err)
+                   return  console(err)
                 }
                 document.getElementById('goToHome').style.display = 'inline';
                 document.getElementById('addressCartFooter').style.display = 'none';
@@ -44,7 +49,7 @@ return async function(){
                
                 
             }
-            // console.log(res)
+           
          
           
         }catch(err){

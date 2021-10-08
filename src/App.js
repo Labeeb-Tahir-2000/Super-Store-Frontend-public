@@ -25,7 +25,8 @@ import {UserProviderFunc } from './Components/userContext/UserContext';
 import Orders from './Components/Admin/showOrders/ShowOrders';
 import UserOrderDetails from './Components/Admin/showOrders/UserOrderDetails';
 import PendingOrder from './Components/pendingOrder/PendingOrder.js'
-import AllProducts from './Components/allProducts/allProducts'
+import AllProducts from './Components/allProducts/allProducts';
+import MyAccount from './Components/myAccountInfo/MyAccount'
 
 
 	
@@ -36,7 +37,7 @@ function App() {
 <UserProviderFunc>    
 <ProviderFunc>    
    <Router>
-     <NavbarAdmin/>
+     
     <Switch>   
       <div className='outer'>
 
@@ -49,62 +50,84 @@ function App() {
       </Route>
    
         <Route path = "/shippingPage" exact>
+        <NavbarAdmin/>
         <ShippingAddressPage/>
         </Route>
         <Route path = "/BuyNow" exact>
+        <NavbarAdmin/>
         <BuyNow/>
         </Route>
           
       <Route path = "/Allproducts" exact>
+      <NavbarAdmin/>
         <AllProducts/>
       </Route>
       <Route path = "/forgetPassword" exact>
         <Forget/>
       </Route>
       <Route path = "/Cart" exact>
+      <NavbarAdmin/>
         <Cart/>
         </Route>
         <Route path = "/PendingOrder" exact>
+          <NavbarAdmin/>
         <PendingOrder/>
         </Route>
-        
+        <Route path = "/MyAccount" exact>
+          <NavbarAdmin/>
+          <MyAccount/>
+        </Route>
+      
         <Route path = "/ChangeUserName" exact>
+        <NavbarAdmin/>
         <ChangeUserName/>
       </Route>
       <Route path = "/ShowMore" exact>
+      <NavbarAdmin/>
         <ShowMore/>
       </Route>
       <Route path = "/Home" exact>
+      <NavbarAdmin/>
         <Home/>
       </Route>
       <Route path = "/Sale" exact>
+      <NavbarAdmin/>
         <Sale/>
       </Route>
       <Route path = "/about" exact>
+      <NavbarAdmin/>
           <About/>
       </Route> 
       {/* routing component with sending data as props in it from <Link/> */}
-      <Route path="/CetegoryProducts"  render={(props) => <CetegoryProducts {...props}/>}/> 
+      <Route path="/CetegoryProducts"  >
+      <NavbarAdmin/>
+      <CetegoryProducts />
+      </Route>
      
       </div> 
       </Switch>
       <Switch>
-      <Route path = "/ChangePassword/*" exact>
+      <Route path = "/ChangePassword/:resetToken" >
         <ChangePassword/>
       </Route>
         <Route path = "/Orders" exact>
+        <NavbarAdmin/>
         <Orders/>
         </Route>
         <Route path = "/userOrderDetails" exact>
+        <NavbarAdmin/>
         <UserOrderDetails/>
         </Route>         
       <Route path = "/ShowProducts" exact>
+      <NavbarAdmin/>
         <ShowProducts/>
       </Route>
       <Route path = "/EditProducts" exact>
+      <NavbarAdmin/>
         <EditProducts/>
       </Route>
       <Route path = "/addProducts" exact>
+      <NavbarAdmin/>
           <AddProducts/>
       </Route>
      

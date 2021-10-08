@@ -3,14 +3,15 @@ import Axios from "axios";
 import {useCookies} from "react-cookie";
 import CardProductsJSX from "./../cardProductsJSX";
 import './../line.css';
+import {useLocation} from 'react-router-dom'
 
-
-function Home(props){
+function Home(){
+  const location = useLocation()
   const[cetegory , setCetegory] = useState('');
    const[products , setProduct] = useState([]);
    
   useEffect(() => {
-    const pCetegory =  props.location.state;
+    const pCetegory =  location.state;
     setCetegory(pCetegory)
     getProducts(pCetegory);
   }, []);

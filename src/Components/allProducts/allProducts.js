@@ -5,6 +5,8 @@ import CardProductsJSX from "../Home/cardProductsJSX";
 import { UserContext } from "../userContext/UserContext";
 import {useHistory,useLocation,Link} from 'react-router-dom'
 import './allProducts.css';
+import { CartContext } from "../cartContext/cartContext";
+
 function GetProducts(props){
   const location = useLocation();
   const history = useHistory();
@@ -15,18 +17,18 @@ function GetProducts(props){
    const [Limit, setLimit] = useState(12)
    const [PostSize, setPostSize] = useState()
    const [SearchTerms, setSearchTerms] = useState("")
-
+   const [cartItem , setCartItem] = useContext(CartContext)
   useEffect(() => {
     const variables = {
         skip: Skip,
         limit: Limit,
-        searchTerms :location.state? location.state : ""
+        searchTerms :location.state? location.state : SearchTerms
     }
     if(location.state){
       setSearchTerms(location.state)
       console.log(location.state)
     }
-    console.log(location.state)
+    
     getProducts(variables)
   }, [location.state?location.state:null]);
 
@@ -48,7 +50,7 @@ function GetProducts(props){
         }
         setPostSize(res.data.product.length)
     } else {
-       console.log('Failed to fectch product data')
+       console.log('Failed to fetch product data')
     }
       
     }catch(err){
@@ -92,7 +94,7 @@ const onLoadMore = () => {
     
                     <div>
                      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                       {location.state?
+                       {location.state || SearchTerms?
                         <h2 style={{marginTop:'3%'}}>Search Results</h2>
                         :
                         <h2 style={{marginTop:'3%'}}>All Products</h2>
@@ -100,7 +102,7 @@ const onLoadMore = () => {
                     
                     </div> 
                       
-                        <div style={{marginTop:'50px' ,paddingRight:'4px',paddingLeft:'5%'}} className="row container-fluid myAllProducts">
+                        <div style={{marginTop:'30px' ,paddingRight:'4px',paddingLeft:'5%'}} className="row container-fluid myAllProducts">
                           {items}
                         </div>
                         

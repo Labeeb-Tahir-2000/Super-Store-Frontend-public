@@ -25,7 +25,7 @@ function BuyNow(props){
     const [shippingFee, setShippingFee] = useState();
     const [ previousTotal, setPreviousTotal] = useState(0)
 
-    const submit = useBuyNow(location.state);
+    const submit = useBuyNow(location.state,previousTotal , totalPrice , shippingFee);
  
     useEffect(async() => {
       if(location.state){

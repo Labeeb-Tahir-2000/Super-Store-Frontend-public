@@ -50,8 +50,8 @@ function MyNavbar(){
     }
 }
     const style={
-        color:"red",
-        marginLeft:"12px",
+        // color:"red",
+        // marginLeft:"12px",
         paddingRight:'30px'
     }
    
@@ -84,14 +84,14 @@ function MyNavbar(){
        <div style={{position:'relatve'}}>
                         {User.role === 'admin'?
                        <nav className="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark" style={{position:'fixed',zIndex:'100',width:'100%',top:'0px'}}>
-                    <Link style={{padding:'0px',margin:'0px'}}className="navbar-brand" style={style} to="/Orders"><object style={{padding:'0px',margin:'0px',transform: 'scale(1.5)'}} data="https://firebasestorage.googleapis.com/v0/b/meharsuperstore-2021.appspot.com/o/1232.svg?alt=media&token=344e67a3-1ece-4333-ad4e-53c0d5299fed" type="image/svg+xml"></object>
+                    <Link style={{padding:'0px',margin:'0px'}}  to="/Orders"><img style={{height:'55px', width:'170px',margin:'0px',padding:'0px'}}src='https://firebasestorage.googleapis.com/v0/b/meharsuperstore-2021.appspot.com/o/Asset%206.svg?alt=media&token=e68b81c6-729e-4981-b5ae-be3cd7ae662c'></img>
 </Link>
                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                          <span className="navbar-toggler-icon"></span>
                        </button>
                        <div className="collapse navbar-collapse centered" id="navbarSupportedContent">
                        
-                         <ul className="navbar-nav mr-auto">
+                         <ul style={{marginLeft:'10px'}} className="navbar-nav mr-auto">
                            <li className="nav-item ">
                              <Link to="/Orders" className="nav-link" >
                              <img className='fa' style={{width:'40px', height:'29px',paddingBottom:'0px', marginBottom:'0px' }} src="https://img.icons8.com/external-itim2101-lineal-color-itim2101/64/000000/external-delivery-box-shopping-and-ecommerce-itim2101-lineal-color-itim2101.png"/>
@@ -133,8 +133,9 @@ function MyNavbar(){
                     </nav>
                   :
                     <nav className="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark" style={{position:'fixed',zIndex:'100',width:'100%',top:'0px'}}>
-                       <Link className="navbar-brand" style={style} to="/Home">Mehar Super Store</Link>
-                       <ul className="navbar-nav cartSmall" style={{position:'absolute',top:'10px',right:'90px'}}>
+                        <Link style={{padding:'0px',margin:'0px'}}  to="/Orders"><img style={{height:'55px', width:'170px',margin:'0px',padding:'0px',float:'left'}}src='https://firebasestorage.googleapis.com/v0/b/meharsuperstore-2021.appspot.com/o/Asset%206.svg?alt=media&token=e68b81c6-729e-4981-b5ae-be3cd7ae662c'></img>
+                        </Link>
+                       <ul className="navbar-nav cartSmall" style={{position:'absolute',top:'22px',right:'90px'}}>
                         <li className="nav-item cart">
                               <Link className="nav-link " to="/Cart">
                                   <i class="fa fa-shopping-cart">
@@ -149,7 +150,7 @@ function MyNavbar(){
                         </button>
                         <div className="collapse navbar-collapse centered" id="navbarSupportedContent">
                       
-                          <ul className="navbar-nav mr-auto">
+                          <ul style={{marginLeft:'15px'}} className="navbar-nav mr-auto">
                             <li className="nav-item ">
                               <Link to="/Home" className="nav-link" >
                                   <i class="fa fa-home"></i>
@@ -168,7 +169,7 @@ function MyNavbar(){
                            
                           </ul>
  
-                            <ul className="navbar-nav rightSide  " style={{marginLeft:'15px ',marginRight:'19px ',padding:'0px', marginTop:'0px'}} >
+                            <ul className="navbar-nav rightSide  " style={{marginLeft:'15px ',marginRight:'20px ',padding:'0px', marginTop:'0px'}} >
                               <li className="nav-item dropdown"style={{marginRight:'10px'}}>
                                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-user"></i>
@@ -177,7 +178,7 @@ function MyNavbar(){
                                     <div className="dropdown-menu col-6 " aria-labelledby="navbarDropdown" style={{textAlign:'center',paddingLeft:'0px'}}>
                                         <Link className="dropdown-item " to="/PendingOrder">My Orders</Link>
                                         <Link className="dropdown-item " to="/MyAccount">My Account</Link>
-                                        <Link className="dropdown-item " to="/ChangeUserName">Change UserName</Link>
+                                        <Link className="dropdown-item " to="/ChangeUserName">Change Email </Link>
                                     </div>
                               </li>
 

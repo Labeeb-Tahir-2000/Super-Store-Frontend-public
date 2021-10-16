@@ -14,7 +14,7 @@ return(
             
         </div>
     <hr style={{margin:'50px 0px',fontWeight:'bold',fontSize:'20px', color:'black'}}className="hr-text hr1" data-content="Edible Product Cetegories"/>
-   <div className='cetegory row container-fluid' style={{ margin:'0px',padding:'0px'}} >
+   <div className='cetegory row container-fluid' style={{ margin:'0px',marginBottom:'50px',padding:'0px'}} >
     <div className='col-12 col-sm-6 col-lg-6' style={{ marginLeft:'0px',padding:'auto',display:'flex-inline'}}>
             <Link to={{ pathname: "/CetegoryProducts", state:'Chips'}}> 
                 <div className=' col-3'style={{ display:'inline-block' }}  >

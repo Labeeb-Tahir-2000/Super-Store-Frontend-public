@@ -262,7 +262,11 @@ label.form-invalid:after {
   color: #868686;
   font-weight: bold;
 }
-@media (max-width: 750px) {
+.etc-login-form{
+  margin-top:12px;
+  padding-left: 13px;
+}
+@media (max-width: 650px) {
  
   .login-form-1{
     width:300px !important;

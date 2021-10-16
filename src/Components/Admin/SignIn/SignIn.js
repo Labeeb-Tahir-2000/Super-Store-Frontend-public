@@ -35,8 +35,8 @@ history.push({pathname:'/Home'})
 				<button type="submit" className="login-button"><i className="fa fa-chevron-right"></i></button>
 			</div>
 			<div className="etc-login-form">
-				<p>forgot your password? <Link  to="/forgetPassword">click here</Link></p>
-				<p>new user? <Link to="/signUp">create new account</Link></p>
+				<p>Forgot your password? <Link style={{color:'red'}} to="/forgetPassword">click here</Link></p>
+				<p>New user? <Link style={{color:'red'}} to="/signUp">create new account</Link></p>
 			</div>
 		</form>
 	</div>	

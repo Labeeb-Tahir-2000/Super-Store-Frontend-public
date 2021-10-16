@@ -43,6 +43,13 @@ function MyNavbar(){
            
           }catch(err){
             if(err.response){
+              if(err.response.data.message == 'jwt expired'){//check if jwt is expired it navbar will not load bcz jwt is send when ever it is loaded and backend will send jwt expired error so catch it and logout to login page
+                setCookie('jwt',cookie, { path:'/' , expires : new Date(Date.now()) }); 
+                    setCartItem([])
+                    setUserLoggedIn([])
+                    console.log('loggedout succesfully');
+                    return history.push("/");
+              }
               console.log(err.response.data.message)
             }else{
               console.log(err.message)
@@ -122,10 +129,10 @@ function MyNavbar(){
                      
                            <ul className="navbar-nav  " style={{marginLeft:'10px ',padding:'0px', marginTop:'0px',marginRight:'17px '}} >
                              <li className="nav-item">
-                                 <a className="nav-link "  onClick={useSignOut}>
-                                 <i className="fa fa-sign-out"></i>
-                                     SignOut
-                                 </a>
+                                 <Link className="nav-link "  onClick={useSignOut}>
+                                  <i className="fa fa-sign-out"></i>
+                                      SignOut
+                                  </Link>
                              </li>
                            </ul>
                            

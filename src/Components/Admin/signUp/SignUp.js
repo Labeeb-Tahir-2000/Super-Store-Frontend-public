@@ -39,7 +39,7 @@ history.push({pathname:'/Home'})
 				<button type="submit" onSubmit={signUp} className="login-button"><i className="fa fa-chevron-right"></i></button>
 			</div>
 			<div className="etc-login-form">
-				<p>Already have a account? <Link to="/">Log In</Link></p>
+				<p>Already have a account? <Link  style={{color:'red'}} to="/">Log In</Link></p>
 			</div>
 		</form>
 	</div>	

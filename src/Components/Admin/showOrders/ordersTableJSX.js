@@ -23,7 +23,7 @@ function CartProducts (props){
         
 
     return( 
-        <div>  
+        <div style={{marginTop:'70px'}}>  
                
                 <div >
                  <table className="table  table-hover" style={{outlineStyle: 'solid',outlineWidth:'thin',outlineColor:'rgb(178, 178, 178)',textAlign:'center'}}>

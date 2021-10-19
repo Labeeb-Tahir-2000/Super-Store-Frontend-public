@@ -72,6 +72,21 @@ function SaleSlider(){
             return;
         }});
    }
+   let itemsForth;
+   if(totalProducts > 9){
+    itemsForth= products.map(item=>{
+        if(count  === totalProducts){ //making count 0 bcz so count will start from 0 so products that where rendered by itemsFirst will skipped
+            count = 0;
+        }
+        count = count +1;
+        if(count > 9 && count < 13 ){ // making condition so only first 3 will be skipped and next 3 products will be rendered by CardProductsJSX
+            return <div className="col-4 saleCardStyle " style={{marginLeft:'0px',paddingRight:'10%'}}>
+             <CardProductsJSX id={item._id} url={item.pImagePath} title={item.pTitle} price={item.pPrice}  oldPrice={item.pOldPrice} description={item.pDescription} />
+        </div>
+        }else {
+            return;
+        }});
+   }
 
 
  return(
@@ -91,16 +106,17 @@ function SaleSlider(){
         
             <div className="carousel-item active ">
           
-            <div style={{marginTop:'60px' ,paddingRight:'10%',paddingLeft:'10%'}} className="row container-fluid">
-                          {itemsFirst}
-                        </div>
+              <div style={{marginTop:'60px' ,paddingRight:'10%',paddingLeft:'10%'}} className="row container-fluid">
+                            {itemsFirst}
+              </div>
             </div>
-            <div className="carousel-item ">
+            {totalProducts > 3 && <div className="carousel-item ">
             
             <div style={{marginTop:'60px' ,paddingRight:'10%',paddingLeft:'10%'}} className="row container-fluid">
                           {itemsSecond}
             </div>
             </div>
+            }
 
             {
                 totalProducts > 6?
@@ -112,6 +128,13 @@ function SaleSlider(){
             </div>
             :
             null
+            }
+             {totalProducts > 9 && <div className="carousel-item ">
+            
+            <div style={{marginTop:'60px' ,paddingRight:'10%',paddingLeft:'10%'}} className="row container-fluid">
+                          {itemsForth}
+            </div>
+            </div>
             }
 
         

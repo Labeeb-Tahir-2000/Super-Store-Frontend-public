@@ -220,7 +220,7 @@ const hideShippingDetailsFunc=()=>{
              :
              null
              }
-              <div className='container-fluid' id='shippingDetails' style={{position:'fixed', display:'flex',left:'0px',alignContent:'center',top:'8%',display:'none',textAlign:'center'}}>
+              <div className='container-fluid' id='shippingDetails' style={{position:'fixed', display:'flex',left:'0px',alignContent:'center',top:'20%',display:'none',textAlign:'center'}}>
                               <div className='container shippingDetails' >
                               <h5><u>Shipping Charges:</u></h5>
                                <p> Zero Charges if Subtotal + Pending Order is above Rs.1000</p>

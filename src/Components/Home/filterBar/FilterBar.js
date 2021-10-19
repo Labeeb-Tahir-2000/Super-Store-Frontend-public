@@ -10,7 +10,7 @@ function filterBar(){
         <div className='row container-fluid outerCetegoryFilterBar ' style={{padding:'4px',marginBottom:'15px'}} >
                 <div className='col-12 filterBarHeading' style={{ padding:'5px 7px',marginTop:'20px' ,display:'flex',justifyContent:'space-between' }}>
                     <h1 style={{display:'inline'  ,marginLeft:'7px',color:'#F57224',marginTop:'0px' }}>Categories</h1> 
-                    <Link style={{paddingTop:'4px',textDecoration:'none',fontWeight:'light' ,color:'red' ,marginRight:'0px',marginTop:'10px'}} to='ShowMore'><h5 >show more
+                    <Link style={{paddingTop:'4px',textDecoration:'none',color:'red' ,marginRight:'0px',marginTop:'1%'}} to='ShowMore'><h5 >show more
                         <FontAwesomeIcon  style={{color:'rgb(60, 205, 242)',marginLeft:'5px',marginRight:'0px',paddingTop:'3px'}} icon={faAngleDoubleRight}/> </h5></Link>
                 </div>
                 <div className='row container-fluid cetegoryFilterBar'style={{ padding:'0px',margin:'0px' }}>

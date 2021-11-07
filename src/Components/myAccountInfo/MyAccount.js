@@ -44,12 +44,17 @@ console.log(res.data)
     return(
         <div className='container-fluid outSide' >
       
-      { user == undefined || user == '' || user == ' '?
+      { user == undefined || user == '' || user == ' ' ?
               <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
              <h1>Loading.......</h1>
              </div>
              :
-            
+             <>
+             {  user.address == '' || user.address == undefined?
+              <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
+             <h1>No data available.......</h1>
+             </div>
+             :
             <div className='row ' id='addressCartFooter' style={{display:'flex',position:'relative' , justifyContent:'space-between'}} >  
                    
                
@@ -73,6 +78,8 @@ console.log(res.data)
                    </div>
                 </div>
              </div>
+    }
+    </>
 }
         </div>
     )

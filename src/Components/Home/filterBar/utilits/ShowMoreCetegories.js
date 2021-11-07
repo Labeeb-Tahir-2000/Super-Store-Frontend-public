@@ -10,8 +10,8 @@ return(
      
  <div className='row container-fluid' style={{padding:'auto'}} >
         <div className='col-12 ' style={{ marginTop:'30px' ,display:'flex',justifyContent:'center' }}>
-            <h2 style={{display:'inline'  }}>All Cetegories</h2> 
-            
+            {/* <h2 style={{display:'inline'  }}>All Cetegories</h2> 
+             */}
         </div>
     <hr style={{margin:'50px 0px',fontWeight:'bold',fontSize:'20px', color:'black'}}className="hr-text hr1" data-content="Edible Product Cetegories"/>
    <div className='cetegory row container-fluid' style={{ margin:'0px',marginBottom:'50px',padding:'0px'}} >

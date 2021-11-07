@@ -43,7 +43,7 @@ function AddrressForm(){
 	const cities=[
 		{ key: 0, value: "" ,},
 			{ key: 1, value: "Chiniot" ,disabled:'true'  },
-			{ key: 2, value: "Chenab Nagar", disabled:""},
+			{ key: 2, value: "Sargodha", disabled:""},
 			{ key: 3, value: "Ahmad Nagar" , disabled:'true'},
 	]
 	const provinces=[
